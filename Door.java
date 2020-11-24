@@ -15,7 +15,6 @@ public class Door {
 	}
 
 	public int getId() {
-		System.out.println("Coucou les gens!");
 		return this.id;
 	}
 
