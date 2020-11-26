@@ -6,14 +6,11 @@ public class Key extends Item implements Usable {
 	 */
 	public Key(String name) {
 		super(name);
+		// TODO - implement game.Key.game.Key
+		throw new UnsupportedOperationException();
+
 	}
 
-	/*
-        public Key() {
-            // TODO - implement game.Key.game.Key
-            throw new UnsupportedOperationException();
-        }
-    */
 	@Override
 	public void use() {
 		// TODO - implement game.Key.use
