@@ -43,7 +43,7 @@ public class Hero extends Character {
 	 */
 	public void use(Item i) {
 		// TODO - implement game.Hero.use
-		throw new UnsupportedOperationException();
+		//throw new UnsupportedOperationException();
 	}
 
 }

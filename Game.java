@@ -42,7 +42,7 @@ public class Game {
 	public void startQuest() throws IOException {
 		try (Scanner scanner = new Scanner(System.in)) {
 			System.out.println("To start the game, please type \"start\" and press Enter");
-			while(scanner.nextLine()!= "start" && scanner.hasNext()){
+			while(!scanner.nextLine().equals("start") && scanner.hasNext()){
 				System.out.println("Je n'ai pas compris votre commande.");
 			}
 			this.help();

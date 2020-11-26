@@ -5,8 +5,8 @@ import java.util.*;
 public abstract class Character {
 
 	private static int currentId = 0;
-	private int id;
-	private String name;
+	private final int id;
+	private final String name;
 	private Place place;
 	private Map<String,Item> inventory = new HashMap<>();
 
@@ -17,8 +17,6 @@ public abstract class Character {
 	public Character(String s) {
 		this.id = Character.currentId;
 		this.name = s;
-		this.place = null;
-		this.inventory = null;
 		Character.currentId++;
 	}
 
@@ -36,6 +34,7 @@ public abstract class Character {
 
 	public void setPlace(Place p) {
 		this.place = p;
+		p.getCharacters().put(this.name, this);
 	}
 
 	public Map<String,Item> getInventory() {

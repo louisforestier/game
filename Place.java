@@ -9,16 +9,12 @@ import java.util.*;
 
 public class Place implements Lookable {
 
+	private static int currentId = 0;
+	private final int id;
+	private final String name;
 	private List<Door> doors = new ArrayList<>();
-
-
-
-
 	private Map<String,Item> items = new HashMap<>();
 	private Map<String,Character> characters = new HashMap<>();
-	private static int currentId = 0;
-	private int id;
-	private String name;
 
 	/**
 	 * 
@@ -27,20 +23,27 @@ public class Place implements Lookable {
 	 * @param doors
 	 * @param items
 	 */
-	public Place(String name, List<Character> characters, List<Door> doors, List<Item> items) {
+	public Place(String name, Map<String, Character> characters, List<Door> doors, Map<String,Item> items) {
+		this.name = name;
+		this.id = Place.currentId;
+		this.doors = doors;
+		this.items = items;
+		this.characters = characters;
+
 		// TODO - implement game.Place.game.Place
-		throw new UnsupportedOperationException();
+		//throw new UnsupportedOperationException();
 	}
 
 	public List<Door> getDoors() {
 		// TODO - implement game.Place.getDoors
-		throw new UnsupportedOperationException();
+		//throw new UnsupportedOperationException();
+		return this.doors;
 	}
 
 
 	public void print() {
 		// TODO - implement game.Place.print
-		throw new UnsupportedOperationException();
+		//throw new UnsupportedOperationException();
 	}
 
 	public int getId() {

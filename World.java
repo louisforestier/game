@@ -7,7 +7,15 @@ public class World {
     private Map<String,Place> Places = new HashMap<>();
 
     public World (){
-        Place p = new Place("start", null, null,null);
+        Map<String, Item> items = new HashMap<>();
+        Key key = new Key("key");
+        items.put(key.getName(),key);
+
+        Map<String, Character> characters = new HashMap<>();
+
+        List<Door> doors = new ArrayList<>();
+
+        Place p = new Place("start", characters, doors, items);
         this.Places.put(p.getName(), p);
     }
 

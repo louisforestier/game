@@ -16,7 +16,6 @@ public class Door {
 	}
 
 	public int getId() {
-		//incroyable du  cul
 		return this.id;
 	}
 

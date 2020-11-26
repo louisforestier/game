@@ -11,6 +11,7 @@ public abstract class Item {
 	 * @param name
 	 */
 	public Item(String name) {
+		this.name = name;
 		// TODO - implement game.Item.game.Item
 		throw new UnsupportedOperationException();
 	}

@@ -6,8 +6,6 @@ public enum Direction {
 	E(2),
 	O(3);
 
-
-
 	private final int value;
 
 	Direction(int i) {
