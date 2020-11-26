@@ -4,7 +4,8 @@ import java.util.*;
 
 public class Door {
 
-	Collection<Place> places;
+	private Place entree;
+	private Place sortie;
 	private static int currentId = 0;
 	private int id;
 	private boolean isOpen;
@@ -31,6 +32,14 @@ public class Door {
 	public boolean close() {
 		// TODO - implement game.Door.close
 		throw new UnsupportedOperationException();
+	}
+
+	public Place getEntree() {
+		return entree;
+	}
+
+	public Place getSortie() {
+		return sortie;
 	}
 
 }

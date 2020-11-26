@@ -4,19 +4,22 @@ import java.util.*;
 
 public abstract class Character {
 
-	Collection<Item> inventory;
-	private Place place;
 	private static int currentId = 0;
 	private int id;
 	private String name;
+	private Place place;
+	private Map<String,Item> inventory = new HashMap<>();
 
 	/**
 	 * 
 	 * @param s
 	 */
 	public Character(String s) {
-		// TODO - implement game.Character.game.Character
-		throw new UnsupportedOperationException();
+		this.id = Character.currentId;
+		this.name = s;
+		this.place = null;
+		this.inventory = null;
+		Character.currentId++;
 	}
 
 	public int getId() {
@@ -25,6 +28,18 @@ public abstract class Character {
 
 	public String getName() {
 		return this.name;
+	}
+
+	public Place getPlace() {
+		return this.place;
+	}
+
+	public void setPlace(Place p) {
+		this.place = p;
+	}
+
+	public Map<String,Item> getInventory() {
+		return inventory;
 	}
 
 }

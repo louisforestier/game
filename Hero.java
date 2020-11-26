@@ -3,8 +3,7 @@ package game;
 public class Hero extends Character {
 
 	public Hero() {
-		// TODO - implement game.Hero.game.Hero
-		throw new UnsupportedOperationException();
+		super("hero");
 	}
 
 	/**
@@ -12,18 +11,20 @@ public class Hero extends Character {
 	 * @param d
 	 */
 	public void go(Direction d) {
-		// TODO - implement game.Hero.go
-		throw new UnsupportedOperationException();
-	}
-
-	public void help() {
-		// TODO - implement game.Hero.help
-		throw new UnsupportedOperationException();
+		Door door =getPlace().getDoors().get(d.getValue());
+		if (door != null){
+			if(door.getIsOpen()){
+				if(this.getPlace() == door.getEntree())
+					this.setPlace(door.getSortie());
+				else this.setPlace(door.getEntree());
+			}
+			else System.out.println("Cette porte est fermée.");
+		}
+		else System.out.println("Il n'y aucune issue de ce côté.");
 	}
 
 	public void look() {
-		// TODO - implement game.Hero.look
-		throw new UnsupportedOperationException();
+		this.getPlace().print();
 	}
 
 	/**
@@ -31,14 +32,10 @@ public class Hero extends Character {
 	 * @param i
 	 */
 	public void take(Item i) {
-		// TODO - implement game.Hero.take
-		throw new UnsupportedOperationException();
+		this.getInventory().put(i.getName(),i);
 	}
 
-	public void quit() {
-		// TODO - implement game.Hero.quit
-		throw new UnsupportedOperationException();
-	}
+
 
 	/**
 	 * 

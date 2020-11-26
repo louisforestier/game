@@ -9,9 +9,13 @@ import java.util.*;
 
 public class Place implements Lookable {
 
-	private Collection<Door> doors;
-	Collection<Item> items;
-	private Collection<Character> characters;
+	private List<Door> doors = new ArrayList<>();
+
+
+
+
+	private Map<String,Item> items = new HashMap<>();
+	private Map<String,Character> characters = new HashMap<>();
 	private static int currentId = 0;
 	private int id;
 	private String name;
@@ -33,10 +37,6 @@ public class Place implements Lookable {
 		throw new UnsupportedOperationException();
 	}
 
-	public List<Item> getItems() {
-		// TODO - implement game.Place.getItems
-		throw new UnsupportedOperationException();
-	}
 
 	public void print() {
 		// TODO - implement game.Place.print
@@ -49,6 +49,13 @@ public class Place implements Lookable {
 
 	public String getName() {
 		return this.name;
+	}
+	public Map<String,Character> getCharacters() {
+		return characters;
+	}
+
+	public Map<String,Item> getItems() {
+		return items;
 	}
 
 }
