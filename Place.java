@@ -30,8 +30,6 @@ public class Place implements Lookable {
 	}
 
 	public List<Door> getDoors() {
-		// TODO - implement game.Place.getDoors
-		//throw new UnsupportedOperationException();
 		return this.doors;
 	}
 
