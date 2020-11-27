@@ -12,7 +12,6 @@ public class Door {
 		this.exit = piece2;
 		this.currentId += 1;
 		this.id = this.currentId;
-		this.isOpen = false;
 	}
 
 	public int getId() {

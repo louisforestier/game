@@ -13,12 +13,9 @@ public class Hero extends Character {
 	public void go(Direction d) {
 		Door door =getPlace().getDoors().get(d.getValue());
 		if (door != null){
-			if(door.getIsOpen()){
-				if(this.getPlace() == door.getEntree())
-					this.setPlace(door.getSortie());
-				else this.setPlace(door.getEntree());
-			}
-			else System.out.println("Cette porte est fermée.");
+			if(this.getPlace() == door.getEntrance())
+				this.setPlace(door.getExit());
+			else this.setPlace(door.getEntrance());
 		}
 		else System.out.println("Il n'y aucune issue de ce côté.");
 	}
