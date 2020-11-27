@@ -2,8 +2,8 @@ package game;
 
 public interface Lockable {
 
-	boolean unlock();
+	boolean unlock(key key);
 
-	boolean lock();
+	boolean lock(Key key);
 
 }

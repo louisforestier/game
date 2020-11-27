@@ -1,32 +1,48 @@
 package game;
 
-public class DoorWithLock extends Door implements Lockable {
+public class DoorWithLock extends Door implements Lockable, Receiver {
 
 	private boolean isLocked;
+	private Key isKey;
 
-	public DoorWithLock() {
-		// TODO - implement game.DoorWithLock.game.DoorWithLock
-		throw new UnsupportedOperationException();
+	public DoorWithLock(Place p1, Place p2, Key key) {
+		super(p1,p2);
+		this.isKey = key;
+		this.isLocked = true;
 	}
 
-	public boolean unlock() {
-		// TODO - implement game.DoorWithLock.unlock
-		throw new UnsupportedOperationException();
+	@Override
+	public boolean unlock(Key key) {
+		if(this.isKey == key) {
+			this.isLocked = false;
+		}
+		return this.isLocked;
 	}
 
-	public boolean lock() {
-		// TODO - implement game.DoorWithLock.lock
-		throw new UnsupportedOperationException();
+	@Override
+	public boolean lock(Key key) {
+		if(this.isKey == key) {
+			this.isLocked = true;
+		}
+		return this.isLocked;
 	}
 
-	public boolean open() {
-		// TODO - implement game.DoorWithLock.open
-		throw new UnsupportedOperationException();
+	@Override
+	public Place cross() {
+		if(this.isLocked) {
+			System.out.println("the door is locked, please use a key");
+			return this.getEntrance();
+		}
+		else {
+			return this.getExit();
+		}
 	}
-
-	public boolean close() {
-		// TODO - implement game.DoorWithLock.close
-		throw new UnsupportedOperationException();
+	
+	@Override
+	public void receive(Item i) {
+		
+		if(this.isLocked) {
+			this.unlock()
+		}
 	}
-
 }
