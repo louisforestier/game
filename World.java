@@ -15,7 +15,9 @@ public class World {
 
         List<Door> doors = new ArrayList<>();
 
-        Place p = new Place("start", characters, doors, items);
+        String desc1 = "bonjour";
+
+        Place p = new Place("start", desc1,characters, doors, items);
         this.Places.put(p.getName(), p);
     }
 

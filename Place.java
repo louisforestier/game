@@ -1,10 +1,5 @@
 package game;
 
-import game.Character;
-import game.Door;
-import game.Item;
-import game.Lookable;
-
 import java.util.*;
 
 public class Place implements Lookable {
@@ -12,6 +7,7 @@ public class Place implements Lookable {
 	private static int currentId = 0;
 	private final int id;
 	private final String name;
+	private final String description;
 	private List<Door> doors = new ArrayList<>();
 	private Map<String,Item> items = new HashMap<>();
 	private Map<String,Character> characters = new HashMap<>();
@@ -23,15 +19,14 @@ public class Place implements Lookable {
 	 * @param doors
 	 * @param items
 	 */
-	public Place(String name, Map<String, Character> characters, List<Door> doors, Map<String,Item> items) {
+	public Place(String name, String description, Map<String, Character> characters, List<Door> doors, Map<String,Item> items) {
 		this.name = name;
 		this.id = Place.currentId;
+		this.description = description;
 		this.doors = doors;
 		this.items = items;
 		this.characters = characters;
-
-		// TODO - implement game.Place.game.Place
-		//throw new UnsupportedOperationException();
+		Place.currentId++;
 	}
 
 	public List<Door> getDoors() {
@@ -42,8 +37,7 @@ public class Place implements Lookable {
 
 
 	public void print() {
-		// TODO - implement game.Place.print
-		//throw new UnsupportedOperationException();
+		System.out.print(this.description);
 	}
 
 	public int getId() {

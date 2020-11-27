@@ -9,7 +9,6 @@ public class Game {
 	private Hero hero;
 	private World map;
 
-
 	public Game() {
 		this.hero = new Hero();
 		this.map = new World();
@@ -51,6 +50,7 @@ public class Game {
 			player.setPlace(world.getPlaces().get("start"));
 			while(this.isRunning){
 				Place location = player.getPlace();
+				System.out.print("What's next ?");
 				switch (scanner.next()){
 					case "go" :
 						player.go(Direction.valueOf(scanner.next()));
