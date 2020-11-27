@@ -42,10 +42,10 @@ public class DoorWithLock extends Door implements Lockable, Receiver {
 	public void receive(Item i) {
 		if(i instanceof Key) {
 			if(this.isLocked) {
-				this.unlock(i);
+				this.unlock((Key) i);
 			}
 			else {
-				this.lock(i);
+				this.lock((Key) i);
 			}
 		}
 		else {
