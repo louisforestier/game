@@ -2,7 +2,7 @@ package game;
 
 public interface Lockable {
 
-	boolean unlock(key key);
+	boolean unlock(Key key);
 
 	boolean lock(Key key);
 

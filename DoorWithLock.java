@@ -30,7 +30,7 @@ public class DoorWithLock extends Door implements Lockable, Receiver {
 	@Override
 	public Place cross() {
 		if(this.isLocked) {
-			System.out.println("the door is locked, please use a key");
+			System.out.println("The door is locked, please use a key.");
 			return this.getEntrance();
 		}
 		else {
@@ -40,9 +40,16 @@ public class DoorWithLock extends Door implements Lockable, Receiver {
 	
 	@Override
 	public void receive(Item i) {
-		
-		if(this.isLocked) {
-			this.unlock()
+		if(i instanceof Key) {
+			if(this.isLocked) {
+				this.unlock(i);
+			}
+			else {
+				this.lock(i);
+			}
+		}
+		else {
+			System.out.println("This item is not a key.");
 		}
 	}
 }
