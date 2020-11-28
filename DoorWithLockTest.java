@@ -1,7 +1,8 @@
 package game;
 
-import org.junit.Test;
+
 import org.junit.Assert;
+import org.junit.Test;
 
 
 public class DoorWithLockTest {

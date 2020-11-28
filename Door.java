@@ -10,8 +10,8 @@ public class Door {
 	public Door(Place piece1, Place piece2) {
 		this.entrance = piece1;
 		this.exit = piece2;
-		this.currentId += 1;
-		this.id = this.currentId;
+		Door.currentId += 1;
+		this.id = Door.currentId;
 	}
 
 	public int getId() {
