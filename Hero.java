@@ -32,9 +32,13 @@ public class Hero extends Character {
 	 * 
 	 * @param i
 	 */
-	public void use(Item i) {
+	public void use(Usable object) {
 		// TODO - implement game.Hero.use
 		//throw new UnsupportedOperationException();
+	}
+	
+	public void use(Usable obj1, Receiver obj2) {
+		
 	}
 
 	@Override

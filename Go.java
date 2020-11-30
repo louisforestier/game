@@ -18,7 +18,6 @@ public class Go extends Command{
 
 	@Override
 	public boolean argOk(List<String> argument) {
-		Map<String, Lookable> doorsOfHero = new HashMap<String, Lookable>();
 		boolean result;
 		String param;
 		if(argument.size() != Go.NB_ARG) {
@@ -26,9 +25,8 @@ public class Go extends Command{
 		}
 		else {
 			param = argument.get(0);
-			doorsOfHero = this.getHero().getPlace().getInteractions();
 			if(Go.places.containsKey(param)) {
-				result = doorsOfHero.containsKey(param);
+				result = this.getHero().getPlace().getInteractions().containsKey(param);
 			}
 			else result = false;
 		}
