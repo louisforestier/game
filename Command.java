@@ -5,10 +5,12 @@ import java.util.List;
 public abstract class Command {
 	private World world; 
 	private Hero hero;
+	private Game game;
 	
-	public Command(World world, Hero hero) {
+	public Command(World world, Hero hero, Game game) {
 		this.world = world;
 		this.hero = hero;
+		this.game = game;
 	}
 	
 	public World getWorld(){

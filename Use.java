@@ -8,9 +8,13 @@ public class Use extends Command {
 	
 	private static final int NB_ARG_MAX = 2;
 	private static final int NB_ARG_MIN = 1;
+	private static Hero hero = null;
+	private static Map<String, Place> args = new HashMap<String, Place>();
 
-	public Use(World world, Hero hero) {
-		super(world, hero);
+	public Use(World world, Hero hero, Game game) {
+		super(world, hero, game);
+		Use.args = this.getWorld().getPlaces();
+		Use.hero = this.getHero();
 	}
 
 	@Override
@@ -31,14 +35,10 @@ public class Use extends Command {
 		return result;
 	}
 
+
 	@Override
-	public void launchCommand(Hero hero, List<String> argument) {
-		if(argument.size() == Use.NB_ARG_MAX) {
-			//hero.use(arg1, arg2);
-		}
-		else {
-			//hero.use(argument.get(0));
-		}
+	public void launchCommand(List<String> argument) {
+		// TODO Auto-generated method stub
 		
 	}
 	

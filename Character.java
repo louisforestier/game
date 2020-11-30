@@ -34,7 +34,7 @@ public abstract class Character implements Lookable{
 
 	public void setPlace(Place p) {
 		this.place = p;
-		p.getCharacters().put(this.name, this);
+		p.addCharacter(this.name, this);
 	}
 
 	public Map<String,Item> getInventory() {

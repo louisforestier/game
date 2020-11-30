@@ -42,5 +42,8 @@ public class Place implements Lookable {
 		return this.name;
 	}
 	
+	public void addCharacter(String name, Character c) {
+		this.interactions.put(name, c);
+	}
 
 }

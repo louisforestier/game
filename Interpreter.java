@@ -9,9 +9,9 @@ public class Interpreter {
 	
 	private Map<String, Command> commands = new HashMap<String, Command>();
 	
-	public Interpreter(World world, Hero hero) {
-		Command go = new Go(world, hero);
-		Command use = new Use(world, hero);
+	public Interpreter(World world, Hero hero, Game game) {
+		Command go = new Go(world, hero, game);
+		Command use = new Use(world, hero, game);
 		this.commands.put("go", go);
 		this.commands.put("use", use);
 	}

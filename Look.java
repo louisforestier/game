@@ -4,8 +4,8 @@ import java.util.List;
 
 public class Look extends Command{
 
-	public Look(World world, Hero hero) {
-		super(world, hero);
+	public Look(World world, Hero hero, Game game) {
+		super(world, hero, game);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -16,9 +16,10 @@ public class Look extends Command{
 	}
 
 	@Override
-	public void launchCommand(Hero hero, List<String> argument) {
+	public void launchCommand(List<String> argument) {
 		// TODO Auto-generated method stub
 		
 	}
+
 
 }

@@ -17,4 +17,10 @@ public class Key extends Item implements Usable {
 		throw new UnsupportedOperationException();
 	}
 
+	@Override
+	public void print() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

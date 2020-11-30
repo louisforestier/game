@@ -4,9 +4,8 @@ import java.util.List;
 
 public class Quit extends Command{
 
-	public Quit(World world, Hero hero) {
-		super(world, hero);
-		// TODO Auto-generated constructor stub
+	public Quit(World world, Hero hero, Game game) {
+		super(world, hero, game);
 	}
 
 	@Override
@@ -16,9 +15,11 @@ public class Quit extends Command{
 	}
 
 	@Override
-	public void launchCommand(Hero hero, List<String> argument) {
+	public void launchCommand(List<String> argument) {
 		// TODO Auto-generated method stub
 		
 	}
+
+	
 
 }

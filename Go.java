@@ -7,36 +7,43 @@ import java.util.Map;
 public class Go extends Command{
 	
 	private static final int NB_ARG = 1;
-	private static Map<String, Place> args = new HashMap<String, Place>();
-	private static Hero hero = null;
+	private static Map<String, Place> places = new HashMap<String, Place>();
 	
-	public Go(World world, Hero hero) {
-		super(world, hero);
-		Go.args = this.getWorld().getPlaces();
-		Go.hero = this.getHero();
+	
+	public Go(World world, Hero hero, Game game) {
+		super(world, hero, game);
+		Go.places = this.getWorld().getPlaces();
 	}
 	
 
 	@Override
 	public boolean argOk(List<String> argument) {
+		Map<String, Lookable> doorsOfHero = new HashMap<String, Lookable>();
 		boolean result;
+		String param;
 		if(argument.size() != Go.NB_ARG) {
 			result = false;
 		}
 		else {
-			result = Go.args.containsKey(argument.get(0)); 
+			param = argument.get(0);
+			doorsOfHero = this.getHero().getPlace().getInteractions();
+			if(Go.places.containsKey(param)) {
+				result = doorsOfHero.containsKey(param);
+			}
+			else result = false;
 		}
 		return result;
 	}
 	
-	public Door convertStringToDoor(String name) {
-		Place p = this.args.get(name);
-		return (Door) p.getInteractions().get(name);
+	public static Door convertStringToDoor(String name) {
+		Place p = Go.places.get(name);
+		return (Door)p.getInteractions().get(name);
 	}
 
 	@Override
 	public void launchCommand(List<String> argument) {
-		//hero.go();	
+		Door door = Go.convertStringToDoor(argument.get(0));
+		this.getHero().go(door);	
 	}
 
 	
