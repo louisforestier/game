@@ -5,8 +5,8 @@ public class DoorWithLock extends Door implements Lockable, Receiver {
 	private boolean isLocked;
 	private Key isKey;
 
-	public DoorWithLock(Place p1, Place p2, Key key) {
-		super(p1,p2);
+	public DoorWithLock(Key key) {
+		super();
 		this.isKey = key;
 		this.isLocked = true;
 	}
