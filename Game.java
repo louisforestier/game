@@ -13,6 +13,7 @@ public class Game {
 		this.hero = new Hero();
 		this.map = new World();
 	}
+	
 
 	public void help() {
 		System.out.println("You can use the commands :");

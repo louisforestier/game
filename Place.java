@@ -8,9 +8,7 @@ public class Place implements Lookable {
 	private final int id;
 	private final String name;
 	private final String description;
-	private List<Door> doors = new ArrayList<>();
-	private Map<String,Item> items = new HashMap<>();
-	private Map<String,Character> characters = new HashMap<>();
+	private Map<String, Lookable> interactions = new HashMap<String, Lookable>(); 
 
 	/**
 	 * 
@@ -19,20 +17,18 @@ public class Place implements Lookable {
 	 * @param doors
 	 * @param items
 	 */
-	public Place(String name, String description, Map<String, Character> characters, List<Door> doors, Map<String,Item> items) {
+	public Place(String name, String description, Map<String, Lookable> interactions) {
 		this.name = name;
 		this.id = Place.currentId;
 		this.description = description;
-		this.doors = doors;
-		this.items = items;
-		this.characters = characters;
+		//peut throw exception : NullPointerException : faire try catch
+		this.interactions = interactions;
 		Place.currentId++;
 	}
-
-	public List<Door> getDoors() {
-		return this.doors;
+	
+	public Map<String, Lookable> getInteractions(){
+		return this.interactions;
 	}
-
 
 	public void print() {
 		System.out.print(this.description);
@@ -45,12 +41,6 @@ public class Place implements Lookable {
 	public String getName() {
 		return this.name;
 	}
-	public Map<String,Character> getCharacters() {
-		return characters;
-	}
-
-	public Map<String,Item> getItems() {
-		return items;
-	}
+	
 
 }

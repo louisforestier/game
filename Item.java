@@ -1,6 +1,6 @@
 package game;
 
-public abstract class Item {
+public abstract class Item implements Lookable{
 
 	private static int currentId = 0;
 	private int id;

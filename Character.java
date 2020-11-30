@@ -2,7 +2,7 @@ package game;
 
 import java.util.*;
 
-public abstract class Character {
+public abstract class Character implements Lookable{
 
 	private static int currentId = 0;
 	private final int id;

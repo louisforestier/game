@@ -10,14 +10,8 @@ public class Hero extends Character {
 	 * 
 	 * @param d
 	 */
-	public void go(Direction d) {
-		Door door =getPlace().getDoors().get(d.getValue());
-		if (door != null){
-			if(this.getPlace() == door.getEntrance())
-				this.setPlace(door.getExit());
-			else this.setPlace(door.getEntrance());
-		}
-		else System.out.println("Il n'y aucune issue de ce côté.");
+	public void go(Door door) {
+		
 	}
 
 	public void look() {
@@ -41,6 +35,12 @@ public class Hero extends Character {
 	public void use(Item i) {
 		// TODO - implement game.Hero.use
 		//throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public void print() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

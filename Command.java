@@ -21,6 +21,6 @@ public abstract class Command {
 	
 	public abstract boolean argOk(List<String> argument);
 	
-	public abstract void launchCommand(Hero hero,List<String> argument);
+	public abstract void launchCommand(List<String> argument);
 
 }

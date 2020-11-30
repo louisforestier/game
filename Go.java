@@ -8,10 +8,12 @@ public class Go extends Command{
 	
 	private static final int NB_ARG = 1;
 	private static Map<String, Place> args = new HashMap<String, Place>();
+	private static Hero hero = null;
 	
 	public Go(World world, Hero hero) {
 		super(world, hero);
 		Go.args = this.getWorld().getPlaces();
+		Go.hero = this.getHero();
 	}
 	
 
@@ -26,10 +28,15 @@ public class Go extends Command{
 		}
 		return result;
 	}
+	
+	public Door convertStringToDoor(String name) {
+		Place p = this.args.get(name);
+		return p.getInteractions().get(name);
+	}
 
 	@Override
-	public void launchCommand(Hero hero, List<String> argument) {
-		//hero.go(argument.get(0));	
+	public void launchCommand(List<String> argument) {
+		//hero.go();	
 	}
 
 	

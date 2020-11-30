@@ -7,22 +7,23 @@ import java.util.Map;
 
 public class Interpreter {
 	
-	private String command;
-	private List<String> arguments = new ArrayList<>();
 	private Map<String, Command> commands = new HashMap<String, Command>();
 	
-	public Interpreter(List<String> scanner, World world, Hero hero) {
-		this.command = scanner.get(0);
-		this.arguments = scanner;
-		this.arguments.remove(0);
+	public Interpreter(World world, Hero hero) {
 		Command go = new Go(world, hero);
+		Command use = new Use(world, hero);
 		this.commands.put("go", go);
+		this.commands.put("use", use);
 	}
 	
-	public void interprete(Hero hero) {
-		if(commands.containsKey(this.command)) {
-			if(commands.get(this.command).argOk(this.arguments)) {
-				commands.get(this.command).launchCommand(hero, this.arguments);
+	public void interprete(List<String> scanner) {
+		String command =scanner.get(0);
+		List<String> arguments = new ArrayList<>();
+		arguments = scanner;
+		arguments.remove(0);
+		if(commands.containsKey(command)) {
+			if(commands.get(command).argOk(arguments)) {
+				commands.get(command).launchCommand(arguments);
 			}
 		}
 	}

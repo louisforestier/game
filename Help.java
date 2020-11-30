@@ -16,7 +16,7 @@ public class Help extends Command{
 
 	@Override
 	public void launchCommand(Hero hero, List<String> argument) {
-		//this.getGame().help();	
+		//this.help();	
 	}
 
 }
