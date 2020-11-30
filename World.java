@@ -9,7 +9,7 @@ public class World {
     public World () {
     	String desc1 = "Bonjour il y a un certain nombre de piece dans ce monde.";
         
-        Map<String, Lookable> interactions = new HashMap<String, Lookable>();
+        Map<String, Lookable> interactions = new HashMap<>();
         Key key = new Key("key");
         Door d1 = new Door();
         Door d2 = new Door();
@@ -31,7 +31,12 @@ public class World {
         this.Places.put(p2.getName(), p2);
     }
 
-    public Map<String, Place> getPlaces() {
-        return Places;
+    public boolean isInWorld(String name){
+        return this.Places.containsKey(name);
     }
+
+    public void setStart(Hero hero){
+        hero.setPlace(Places.get("start"));
+    }
+
 }

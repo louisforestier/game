@@ -8,46 +8,41 @@ public class Use extends Command {
 	
 	private static final int NB_ARG_MAX = 2;
 	private static final int NB_ARG_MIN = 1;
-	private static Map<String, Lookable> objecsInPlace = new HashMap<String, Lookable>();
+	private static Map<String, Lookable> objectsInPlace = new HashMap<>();
 	
 
 	public Use(World world, Hero hero, Game game) {
 		super(world, hero, game);
-		Use.objecsInPlace = this.getHero().getPlace().getInteractions();
+		Use.objectsInPlace = this.getHero().getPlace().getInteractions();
 	}
 
 	@Override
 	public boolean argOk(List<String> argument) {
 		boolean result;
-		if((argument.size() != Use.NB_ARG_MAX) || (argument.size() != Use.NB_ARG_MIN)) {
-			result = false;
+		if((argument.size() == Use.NB_ARG_MAX) || (argument.size() == Use.NB_ARG_MIN)) {
+
+			if(argument.size() == Use.NB_ARG_MIN) {
+				if(Use.isInPlace(argument.get(0))) {
+					result = Use.objectsInPlace.get(argument.get(0)) instanceof Usable;
+				} else if (this.isInInventory(argument.get(0))) {
+					result = this.getHero().getInventory().get(argument.get(0)) instanceof Usable;
+				} else
+					result = false;
+			} else {
+				if(Use.isInPlace(argument.get(0)) && Use.isInPlace(argument.get(1))) {
+					result = Use.objectsInPlace.get(argument.get(0)) instanceof Usable && Use.objectsInPlace.get(argument.get(1)) instanceof Receiver;
+				} else if (Use.isInPlace(argument.get(0)) && this.isInInventory(argument.get(1))) {
+					result = Use.objectsInPlace.get(argument.get(0)) instanceof Usable && this.getHero().getInventory().get(argument.get(1)) instanceof Receiver;
+				} else if (this.isInInventory(argument.get(0)) && Use.isInPlace(argument.get(1))) {
+					result = this.getHero().getInventory().get(argument.get(0)) instanceof Usable && Use.objectsInPlace.get(argument.get(1)) instanceof Receiver;
+				} else if(this.isInInventory(argument.get(0)) && this.isInInventory(argument.get(1))) {
+					result = this.getHero().getInventory().get(argument.get(0)) instanceof Usable && this.getHero().getInventory().get(argument.get(1)) instanceof Receiver;
+				} else
+					result = false;
+			}
 		}
 		else {
-			if(argument.size() == Use.NB_ARG_MIN) {
-				if(Use.isInPlace(argument.get(0))) {  
-					result = Use.objecsInPlace.get(argument.get(0)) instanceof Usable;
-				}
-				else if (this.isInInventory(argument.get(0))) {
-					result = this.getHero().getInventory().get(argument.get(0)) instanceof Usable;
-				}
-				else result = false;
-			}
-			else {
-				if(Use.isInPlace(argument.get(0)) && Use.isInPlace(argument.get(1))) {  
-					result = Use.objecsInPlace.get(argument.get(0)) instanceof Usable && Use.objecsInPlace.get(argument.get(1)) instanceof Receiver;
-				}
-				else if (Use.isInPlace(argument.get(0)) && this.isInInventory(argument.get(1))) {
-					result = Use.objecsInPlace.get(argument.get(0)) instanceof Usable && this.getHero().getInventory().get(argument.get(1)) instanceof Receiver;
-				}
-				else if (this.isInInventory(argument.get(0)) && Use.isInPlace(argument.get(1))) {
-					result = this.getHero().getInventory().get(argument.get(0)) instanceof Usable && Use.objecsInPlace.get(argument.get(1)) instanceof Receiver;
-				}
-				else if(this.isInInventory(argument.get(0)) && this.isInInventory(argument.get(1))) {
-					result = this.getHero().getInventory().get(argument.get(0)) instanceof Usable && this.getHero().getInventory().get(argument.get(1)) instanceof Receiver;
-				}
-				else result = false;
-				
-			}
+			result = false;
 		}
 		return result;
 	}
@@ -65,7 +60,7 @@ public class Use extends Command {
 	public Usable convertStringToUsable(String name) {
 		Usable u;
 		if(Use.isInPlace(name)) {
-			u = (Usable)Use.objecsInPlace.get(name);
+			u = (Usable)Use.objectsInPlace.get(name);
 		}
 		else {
 			u = (Usable)this.getHero().getInventory().get(name);
@@ -76,7 +71,7 @@ public class Use extends Command {
 	public Receiver convertStringToReceiver(String name) {
 		Receiver r;
 		if(Use.isInPlace(name)) {
-			r = (Receiver)Use.objecsInPlace.get(name);
+			r = (Receiver)Use.objectsInPlace.get(name);
 		}
 		else {
 			r = (Receiver)this.getHero().getInventory().get(name);
@@ -85,7 +80,7 @@ public class Use extends Command {
 	}
 
 	public static boolean isInPlace(String name) {
-		return Use.objecsInPlace.containsKey(name);
+		return Use.objectsInPlace.containsKey(name);
 	}
 	
 	public boolean isInInventory(String name) {

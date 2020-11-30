@@ -8,10 +8,10 @@ public class Place implements Lookable {
 	private final int id;
 	private final String name;
 	private final String description;
-	private Map<String, Lookable> interactions = new HashMap<String, Lookable>(); 
+	private Map<String, Lookable> interactions = new HashMap<>();
 
 	/**
-	 * 
+	 *
 	 * @param name
 	 * @param characters
 	 * @param doors
@@ -22,10 +22,16 @@ public class Place implements Lookable {
 		this.id = Place.currentId;
 		this.description = description;
 		//peut throw exception : NullPointerException : faire try catch
-		this.interactions = interactions;
+		try {
+			this.interactions.putAll(interactions);
+		}
+		catch (NullPointerException e){
+			//dans le cas où la liste des interactions est vide, on ne fait rien
+			//potentiellement à transformer en if else
+		}
 		Place.currentId++;
 	}
-	
+
 	public Map<String, Lookable> getInteractions(){
 		return this.interactions;
 	}

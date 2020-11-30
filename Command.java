@@ -3,9 +3,9 @@ package game;
 import java.util.List;
 
 public abstract class Command {
-	private World world; 
-	private Hero hero;
-	private Game game;
+	private final World world;
+	private final Hero hero;
+	private final Game game;
 	
 	public Command(World world, Hero hero, Game game) {
 		this.world = world;
@@ -20,7 +20,11 @@ public abstract class Command {
 	public Hero getHero() {
 		return this.hero;
 	}
-	
+
+	public Game getGame() {
+		return game;
+	}
+
 	public abstract boolean argOk(List<String> argument);
 	
 	public abstract void launchCommand(List<String> argument);

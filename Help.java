@@ -12,13 +12,13 @@ public class Help extends Command{
 
 	@Override
 	public boolean argOk(List<String> argument) {
-		return (argument.size() != Help.NB_ARG);
+		return (argument.size() == Help.NB_ARG);
 	}
 
 
 	@Override
 	public void launchCommand(List<String> argument) {
-		// TODO Auto-generated method stub
+		this.getGame().help();
 		
 	}
 

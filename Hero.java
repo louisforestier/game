@@ -11,7 +11,7 @@ public class Hero extends Character {
 	 * @param door
 	 */
 	public void go(Door door) {
-		
+		this.setPlace(door.cross());
 	}
 
 	public void look() {
@@ -47,4 +47,7 @@ public class Hero extends Character {
 		
 	}
 
+	public void look(Lookable l) {
+		l.print();
+	}
 }

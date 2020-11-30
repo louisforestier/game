@@ -7,13 +7,15 @@ public class Game {
 
 	private boolean isRunning = true;
 	private Hero hero;
-	private World map;
+	private World world;
 	private Scanner scanner;
+	private Interpreter interpreter;
 
 	public Game() {
 		this.hero = new Hero();
-		this.map = new World();
+		this.world = new World();
 		this.scanner = new Scanner(System.in);
+		this.interpreter = new Interpreter(this.world, this.hero, this);
 	}
 	
 
@@ -40,58 +42,78 @@ public class Game {
 		}
 	}
 
+	public void init(){
+		System.out.println("To start the game, please type \"start\" and press Enter");
+		while(!scanner.nextLine().equals("start") && scanner.hasNext()){
+			System.out.println("Je n'ai pas compris votre commande.");
+		}
+		this.help();
+		this.world.setStart(this.hero);
+	}
 
-	public void startQuest() {
-		try (Scanner scanner = new Scanner(System.in)) {
-			System.out.println("To start the game, please type \"start\" and press Enter");
-			while(!scanner.nextLine().equals("start") && scanner.hasNext()){
-				System.out.println("Je n'ai pas compris votre commande.");
-			}
-			this.help();
-			Hero player = this.hero;
-			World world = this.map;
-			player.setPlace(world.getPlaces().get("start"));
-			while(this.isRunning){
-				Place location = player.getPlace();
-				System.out.print("What's next ?");
-				switch (scanner.next()){
-					case "go" :
-						player.go(Direction.valueOf(scanner.next()));
-						break;
-					case "help":
-						this.help();
-						break;
-					case "look":
-						player.look();
-						break;
-					case "take" :
-						String itemToTakeName = scanner.next();
-						if (location.getItems().containsKey(itemToTakeName)){
-							Item itemToTake = location.getItems().get(itemToTakeName);
-							player.take(itemToTake);
-						}
-						else{
-							System.out.println("I didn't understand that.");
-						}
-						break;
-					case "quit" : this.quit(scanner);
-						break;
-					case "use":
-						String itemToUseName = scanner.next();
-						if(player.getInventory().containsKey(itemToUseName)) {
-							Item i2 = player.getInventory().get(itemToUseName);
-							player.use(i2);
-						}
-						else{
-							System.out.println("I didn't understand that.");
-						}
-						break;
-					default :
-						System.out.println("I didn't understand that.");
-				}
-			}
+	public void runGame(){
+		while (this.isRunning){
+			String input = this.scanner.nextLine();
+			this.interpreter.interprete(input);
 		}
 	}
+
+	public void ending(){
+		System.out.println("Fin du jeu.");
+	}
+
+
+//	public void startQuest() {
+//		try (Scanner scanner = new Scanner(System.in)) {
+//			System.out.println("To start the game, please type \"start\" and press Enter");
+//			while(!scanner.nextLine().equals("start") && scanner.hasNext()){
+//				System.out.println("Je n'ai pas compris votre commande.");
+//			}
+//			this.help();
+//			Hero player = this.hero;
+//			World world = this.map;
+//			player.setPlace(world.getPlaces().get("start"));
+//			while(this.isRunning){
+//				Place location = player.getPlace();
+//				System.out.print("What's next ?");
+//				switch (scanner.next()){
+//					case "go" :
+//						player.go(Direction.valueOf(scanner.next()));
+//						break;
+//					case "help":
+//						this.help();
+//						break;
+//					case "look":
+//						player.look();
+//						break;
+//					case "take" :
+//						String itemToTakeName = scanner.next();
+//						if (location.getItems().containsKey(itemToTakeName)){
+//							Item itemToTake = location.getItems().get(itemToTakeName);
+//							player.take(itemToTake);
+//						}
+//						else{
+//							System.out.println("I didn't understand that.");
+//						}
+//						break;
+//					case "quit" : this.quit(scanner);
+//						break;
+//					case "use":
+//						String itemToUseName = scanner.next();
+//						if(player.getInventory().containsKey(itemToUseName)) {
+//							Item i2 = player.getInventory().get(itemToUseName);
+//							player.use(i2);
+//						}
+//						else{
+//							System.out.println("I didn't understand that.");
+//						}
+//						break;
+//					default :
+//						System.out.println("I didn't understand that.");
+//				}
+//			}
+//		}
+//	}
 
 	/**
 	 * 
@@ -99,6 +121,7 @@ public class Game {
 	 */
 	public static void main(String[] args) {
 		Game g = new Game();
-		g.startQuest();
+		g.init();
+		g.runGame();
 	}
 }
