@@ -31,7 +31,7 @@ public class Go extends Command{
 	
 	public Door convertStringToDoor(String name) {
 		Place p = this.args.get(name);
-		return p.getInteractions().get(name);
+		return (Door) p.getInteractions().get(name);
 	}
 
 	@Override
