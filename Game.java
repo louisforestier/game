@@ -8,10 +8,12 @@ public class Game {
 	private boolean isRunning = true;
 	private Hero hero;
 	private World map;
+	private Scanner scanner;
 
 	public Game() {
 		this.hero = new Hero();
 		this.map = new World();
+		this.scanner = new Scanner(System.in);
 	}
 	
 
@@ -24,10 +26,10 @@ public class Game {
 		System.out.println("use object to use an object in your inventory.");
 	}
 
-	public void quit(Scanner sc) {
+	public void quit() {
 		System.out.println("Do you really want to quit the game ?");
 		System.out.println("Answer with yes or no.");
-		switch (sc.next()){
+		switch (this.scanner.nextLine()){
 			case "yes" :
 				this.isRunning = false;
 				break;
@@ -39,7 +41,7 @@ public class Game {
 	}
 
 
-	public void startQuest() throws IOException {
+	public void startQuest() {
 		try (Scanner scanner = new Scanner(System.in)) {
 			System.out.println("To start the game, please type \"start\" and press Enter");
 			while(!scanner.nextLine().equals("start") && scanner.hasNext()){
@@ -95,7 +97,7 @@ public class Game {
 	 * 
 	 * @param args
 	 */
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 		Game g = new Game();
 		g.startQuest();
 	}

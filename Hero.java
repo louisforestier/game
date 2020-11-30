@@ -8,7 +8,7 @@ public class Hero extends Character {
 
 	/**
 	 * 
-	 * @param d
+	 * @param door
 	 */
 	public void go(Door door) {
 		
