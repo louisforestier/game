@@ -5,23 +5,27 @@ public abstract class Item implements Lookable{
 	private static int currentId = 0;
 	private int id;
 	private String name;
+        private boolean isTakable;
 
 	/**
 	 * 
 	 * @param name
 	 */
 	public Item(String name) {
-		this.name = name;
-		// TODO - implement game.Item.game.Item
-		throw new UnsupportedOperationException();
+            this.name = name;
+            
 	}
 
 	public int getId() {
-		return this.id;
+            return this.id;
 	}
 
 	public String getName() {
-		return this.name;
+            return this.name;
 	}
-
+        
+        public boolean isTakable(){
+            return this.isTakable;
+        }
+        
 }
