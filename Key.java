@@ -7,13 +7,14 @@ package game;
 public class Key extends Item implements Usable{
 	/**
 	 * @param name
-	 */
+	 */ 
 	public Key(String name) {
-		super(name);
+		super(name, true);
 	}
-
-	public void use() {
-            
+        
+        @Override
+	public void use(DoorWithlock door) {
+            door.unlock(this);
 	}
 
 	@Override
