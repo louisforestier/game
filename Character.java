@@ -33,6 +33,8 @@ public abstract class Character implements Lookable{
 	}
 
 	public void setPlace(Place p) {
+		if(this.place != null)
+			this.freePlace();
 		this.place = p;
 		p.addCharacter(this.name, this);
 	}
@@ -41,4 +43,8 @@ public abstract class Character implements Lookable{
 		return inventory;
 	}
 
+	public void freePlace() {
+		this.place.freeCharacter(this.name);
+		this.place = null;
+	}
 }

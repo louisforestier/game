@@ -1,9 +1,11 @@
 package game;
 
 public class Hero extends Character {
+	
+	private static final String NAME = "hero";
 
 	public Hero() {
-		super("hero");
+		super(Hero.NAME);
 	}
 
 	/**
@@ -33,12 +35,12 @@ public class Hero extends Character {
 	 * @param i
 	 */
 	public void use(Usable object) {
-		// TODO - implement game.Hero.use
-		//throw new UnsupportedOperationException();
+		object.use();
 	}
 	
 	public void use(Usable obj1, Receiver obj2) {
-		
+		obj1.use();
+		obj2.receive(obj1);
 	}
 
 	@Override

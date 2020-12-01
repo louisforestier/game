@@ -31,14 +31,19 @@ public class Use extends Command {
 			} else {
 				if(Use.isInPlace(argument.get(0)) && Use.isInPlace(argument.get(1))) {
 					result = Use.objectsInPlace.get(argument.get(0)) instanceof Usable && Use.objectsInPlace.get(argument.get(1)) instanceof Receiver;
-				} else if (Use.isInPlace(argument.get(0)) && this.isInInventory(argument.get(1))) {
+				} 
+				else if (Use.isInPlace(argument.get(0)) && this.isInInventory(argument.get(1))) {
 					result = Use.objectsInPlace.get(argument.get(0)) instanceof Usable && this.getHero().getInventory().get(argument.get(1)) instanceof Receiver;
-				} else if (this.isInInventory(argument.get(0)) && Use.isInPlace(argument.get(1))) {
+				} 
+				else if (this.isInInventory(argument.get(0)) && Use.isInPlace(argument.get(1))) {
 					result = this.getHero().getInventory().get(argument.get(0)) instanceof Usable && Use.objectsInPlace.get(argument.get(1)) instanceof Receiver;
-				} else if(this.isInInventory(argument.get(0)) && this.isInInventory(argument.get(1))) {
+				} 
+				else if(this.isInInventory(argument.get(0)) && this.isInInventory(argument.get(1))) {
 					result = this.getHero().getInventory().get(argument.get(0)) instanceof Usable && this.getHero().getInventory().get(argument.get(1)) instanceof Receiver;
-				} else
+				}
+				else {
 					result = false;
+				}
 			}
 		}
 		else {
@@ -57,6 +62,8 @@ public class Use extends Command {
 		}
 	}
 	
+	
+	
 	public Usable convertStringToUsable(String name) {
 		Usable u;
 		if(Use.isInPlace(name)) {
@@ -67,6 +74,8 @@ public class Use extends Command {
 		}
 		return u;
 	}
+	
+	
 	
 	public Receiver convertStringToReceiver(String name) {
 		Receiver r;
@@ -79,9 +88,13 @@ public class Use extends Command {
 		return r;
 	}
 
+	
+	
 	public static boolean isInPlace(String name) {
 		return Use.objectsInPlace.containsKey(name);
 	}
+	
+	
 	
 	public boolean isInInventory(String name) {
 		return this.getHero().getInventory().containsKey(name);

@@ -52,4 +52,13 @@ public class Place implements Lookable {
 		this.interactions.put(name, c);
 	}
 
+	public void freeCharacter(String name) {
+		this.interactions.remove(name);
+	}
 }
+
+
+
+
+
+

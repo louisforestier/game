@@ -40,8 +40,7 @@ public class Door implements Lookable{
 
 	@Override
 	public void print() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("This door goes from the room " + this.getEntrance() + " to room " + this.getExit() + ".");
 	}
 
 }

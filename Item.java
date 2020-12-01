@@ -5,27 +5,27 @@ public abstract class Item implements Lookable{
 	private static int currentId = 0;
 	private int id;
 	private String name;
-        private boolean isTakable;
+    private boolean isTakable;
 
 	/**
 	 * 
 	 * @param name
 	 */
 	public Item(String name) {
-            this.name = name;
-            
+		this.name = name;
+        this.isTakable = false;   
 	}
 
 	public int getId() {
-            return this.id;
+		return this.id;
 	}
 
 	public String getName() {
-            return this.name;
+    	return this.name;
 	}
         
-        public boolean isTakable(){
-            return this.isTakable;
-        }
-        
+	public boolean isTakable(){
+		return this.isTakable;
+	}
+	        
 }
