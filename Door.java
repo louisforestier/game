@@ -4,14 +4,10 @@ public class Door implements Lookable{
 
 	private Place entrance;
 	private Place exit;
-	private static int currentId = 0;
-	private int id;
 
 	public Door() {
 		this.entrance = null;
 		this.exit = null;
-		Door.currentId += 1;
-		this.id = Door.currentId;
 	}
 
 	public void setEntrance(Place entrance) {
@@ -22,10 +18,6 @@ public class Door implements Lookable{
 		this.exit = exit;
 	}
 	
-	public int getId() {
-		return this.id;
-	}
-
 	public Place getEntrance() {
 		return this.entrance;
 	}
