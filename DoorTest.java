@@ -13,8 +13,8 @@ public class DoorTest {
     private Door d1;
     private Place p1;
     private Place p2;
-    Map<String, Lookable> l1;
-	Map<String, Lookable> l2; 
+    private Map<String, Lookable> l1;
+	private Map<String, Lookable> l2; 
 
     @Before
     public void setUp(){

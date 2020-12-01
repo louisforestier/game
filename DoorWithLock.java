@@ -10,6 +10,12 @@ public class DoorWithLock extends Door implements Lockable, Receiver {
 		this.isKey = key;
 		this.isLocked = true;
 	}
+	
+	public Key printKeyForThisDoor() {
+		System.out.println("This door is open with " + this.isKey.getName() + ".");
+		return this.isKey;
+	}
+	
 
 	@Override
 	public boolean unlock(Key key) {
@@ -45,23 +51,27 @@ public class DoorWithLock extends Door implements Lockable, Receiver {
 	}
 	
 	@Override
-	public void receive(Usable u) {
+	public boolean receive(Usable u) {
+		boolean result;
 		if(u instanceof Key) {
 			if(this.isLocked) {
-				this.unlock((Key) u);
+				result = this.unlock((Key) u);
 			}
 			else {
-				this.lock((Key) u);
+				result = this.lock((Key) u);
 			}
 		}
 		else {
 			System.out.println("This item is not a key.");
+			result = false;
 		}
+		return result;
 	}
 	
 	@Override
 	public void print() {
 		super.print();
 		System.out.println("This door is a lockable door.");
+		this.printKeyForThisDoor();
 	}
 }
