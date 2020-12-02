@@ -13,7 +13,7 @@ public class Take extends Command{
 	public boolean argOk(List<String> argument) {
 		boolean result = false;
 		if (argument.size() == 1){
-			if (this.getHero().getPlace().getInteractions().containsKey(argument.get(0))){
+			if (this.getHero().getPlace().isInPlace(argument.get(0))){
 				result = this.getHero().getPlace().getInteractions().get(argument.get(0)) instanceof Item;
 			}
 		}

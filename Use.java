@@ -39,8 +39,7 @@ public class Use extends Command {
 		boolean result = false;
 		if(this.getPlaceOfHero().isInPlace(arg)) {
 			result = this.objectsInPlaceOfHero().get(arg) instanceof Usable;
-		}
-		else if (this.getHero().isInInventory(arg)) {
+		} else if (this.getHero().isInInventory(arg)) {
 			result = this.getHero().getInventory().get(arg) instanceof Usable;
 		}
 		return result;
@@ -58,8 +57,7 @@ public class Use extends Command {
 		boolean result = false;
 		if(this.getPlaceOfHero().isInPlace(arg)) {
 			result = this.objectsInPlaceOfHero().get(arg) instanceof Receiver;
-		}
-		else if (this.getHero().isInInventory(arg)) {
+		} else if (this.getHero().isInInventory(arg)) {
 			result = this.getHero().getInventory().get(arg) instanceof Receiver;
 		}
 		return result;
@@ -73,28 +71,26 @@ public class Use extends Command {
 			this.getHero().use(this.convertStringToUsable(argument.get(0)), this.convertStringToReceiver(argument.get(1)));
 		}
 	}
-	
-	
-	
+
+
+
 	public Usable convertStringToUsable(String name) {
 		Usable u;
 		if(this.getPlaceOfHero().isInPlace(name)) {
 			u = (Usable)this.objectsInPlaceOfHero().get(name);
-		}
-		else {
+		} else {
 			u = (Usable)this.getHero().getInventory().get(name);
 		}
 		return u;
 	}
-	
-	
-	
+
+
+
 	public Receiver convertStringToReceiver(String name) {
 		Receiver r;
 		if(this.getPlaceOfHero().isInPlace(name)) {
 			r = (Receiver)this.objectsInPlaceOfHero().get(name);
-		}
-		else {
+		} else {
 			r = (Receiver)this.getHero().getInventory().get(name);
 		}
 		return r;
