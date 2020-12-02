@@ -1,6 +1,5 @@
 package game;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -8,12 +7,18 @@ public class Use extends Command {
 	
 	private static final int NB_ARG_MAX = 2;
 	private static final int NB_ARG_MIN = 1;
-	private static Map<String, Lookable> objectsInPlace = new HashMap<>();
 	
 
 	public Use(World world, Hero hero, Game game) {
 		super(world, hero, game);
-		Use.objectsInPlace = this.getHero().getPlace().getInteractions();
+	}
+	
+	public Map<String, Lookable> objectsInPlaceOfHero(){
+		return this.getHero().getPlace().getInteractions();
+	}
+	
+	public Place getPlaceOfHero() {
+		return this.getHero().getPlace();
 	}
 
 	@Override
@@ -32,10 +37,10 @@ public class Use extends Command {
 	
 	public boolean testArgIsUsable(String arg) {
 		boolean result = false;
-		if(this.isInPlace(arg)) {
-			result = Use.objectsInPlace.get(arg) instanceof Usable;
+		if(this.getPlaceOfHero().isInPlace(arg)) {
+			result = this.objectsInPlaceOfHero().get(arg) instanceof Usable;
 		}
-		else if (this.isInInventory(arg)) {
+		else if (this.getHero().isInInventory(arg)) {
 			result = this.getHero().getInventory().get(arg) instanceof Usable;
 		}
 		return result;
@@ -51,10 +56,10 @@ public class Use extends Command {
 	
 	public boolean testArgIsReceiver(String arg) {
 		boolean result = false;
-		if(this.isInPlace(arg)) {
-			result = Use.objectsInPlace.get(arg) instanceof Receiver;
+		if(this.getPlaceOfHero().isInPlace(arg)) {
+			result = this.objectsInPlaceOfHero().get(arg) instanceof Receiver;
 		}
-		else if (this.isInInventory(arg)) {
+		else if (this.getHero().isInInventory(arg)) {
 			result = this.getHero().getInventory().get(arg) instanceof Receiver;
 		}
 		return result;
@@ -73,8 +78,8 @@ public class Use extends Command {
 	
 	public Usable convertStringToUsable(String name) {
 		Usable u;
-		if(this.isInPlace(name)) {
-			u = (Usable)Use.objectsInPlace.get(name);
+		if(this.getPlaceOfHero().isInPlace(name)) {
+			u = (Usable)this.objectsInPlaceOfHero().get(name);
 		}
 		else {
 			u = (Usable)this.getHero().getInventory().get(name);
@@ -86,8 +91,8 @@ public class Use extends Command {
 	
 	public Receiver convertStringToReceiver(String name) {
 		Receiver r;
-		if(this.isInPlace(name)) {
-			r = (Receiver)Use.objectsInPlace.get(name);
+		if(this.getPlaceOfHero().isInPlace(name)) {
+			r = (Receiver)this.objectsInPlaceOfHero().get(name);
 		}
 		else {
 			r = (Receiver)this.getHero().getInventory().get(name);
@@ -95,15 +100,4 @@ public class Use extends Command {
 		return r;
 	}
 
-	
-	
-	public boolean isInPlace(String name) {
-		return Use.objectsInPlace.containsKey(name);
-	}
-	
-	
-	
-	public boolean isInInventory(String name) {
-		return this.getHero().getInventory().containsKey(name);
-	}
 }
