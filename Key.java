@@ -13,14 +13,13 @@ public class Key extends Item implements Usable{
 	}
         
         @Override
-	public void use(DoorWithLock door) {
-            door.unlock(this);
+	public void use() {
+           
 	}
 
 	@Override
-	public void print() {
-		// TODO Auto-generated method stub
-		
+	public void print(){
+            System.out.println("This " + this.getName() + "is usable");
 	}
 
 }
