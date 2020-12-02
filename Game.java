@@ -54,7 +54,7 @@ public class Game {
 	public void runGame(){
 		while (this.isRunning){
 			String input = this.scanner.nextLine();
-			this.interpreter.interprete(input);
+			this.interpreter.interpret(input);
 		}
 	}
 

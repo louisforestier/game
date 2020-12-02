@@ -21,7 +21,7 @@ public class Interpreter {
 		this.commands.put("quit", quit);
 	}
 	
-	public void interprete(String input) {
+	public void interpret(String input) {
 		String[] parsedInput = input.split(" ");
 		List<String> arguments = Arrays.asList(parsedInput.clone());
 		String command = arguments.get(0);
