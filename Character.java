@@ -4,21 +4,13 @@ import java.util.*;
 
 public abstract class Character implements Lookable{
 
-	private static int currentId = 0;
-	private final int id;
 	private final String name;
 	private Place place;
 	private Map<String,Item> inventory = new HashMap<>();
 
 	
 	public Character(String s) {
-		this.id = Character.currentId;
 		this.name = s;
-		Character.currentId++;
-	}
-
-	public int getId() {
-		return this.id;
 	}
 
 	public String getName() {

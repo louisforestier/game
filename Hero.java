@@ -8,10 +8,6 @@ public class Hero extends Character {
 		super(Hero.NAME);
 	}
 
-	/**
-	 * 
-	 * @param door
-	 */
 	public void go(Door door) {
 		this.setPlace(door.cross());
 	}
@@ -20,20 +16,10 @@ public class Hero extends Character {
 		this.getPlace().print();
 	}
 
-	/**
-	 * 
-	 * @param i
-	 */
 	public void take(Item i) {
 		this.getInventory().put(i.getName(),i);
 	}
 
-
-
-	/**
-	 * 
-	 * @param i
-	 */
 	public void use(Usable object) {
 		object.use();
 	}
