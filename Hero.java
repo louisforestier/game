@@ -52,4 +52,9 @@ public class Hero extends Character {
 	public void look(Lookable l) {
 		l.print();
 	}
+
+	public boolean isInInventory(String name) {
+		return this.getInventory().containsKey(name);
+	}
+
 }
