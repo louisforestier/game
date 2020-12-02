@@ -45,7 +45,7 @@ public class Game {
 	public void init(){
 		System.out.println("To start the game, please type \"start\" and press Enter");
 		while(!scanner.nextLine().equals("start") && scanner.hasNext()){
-			System.out.println("Je n'ai pas compris votre commande.");
+			System.out.println("I didn't understand your command.");
 		}
 		this.help();
 		this.world.setStart(this.hero);
