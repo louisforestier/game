@@ -47,6 +47,11 @@ public class Place implements Lookable {
 	public void freeCharacter(String name) {
 		this.interactions.remove(name);
 	}
+
+	public  boolean isInPlace(String name) {
+		return this.getInteractions().containsKey(name);
+	}
+
 }
 
 

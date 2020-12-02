@@ -8,11 +8,15 @@ public class Take extends Command{
 		super(world, hero, game);
 	}
 
+
 	@Override
 	public boolean argOk(List<String> argument) {
-		boolean result = argument.size() == 1
-				&& this.getHero().getPlace().getInteractions().containsKey(argument.get(0))
-				&& this.getHero().getPlace().getInteractions().get(argument.get(0)) instanceof Item;
+		boolean result = false;
+		if (argument.size() == 1){
+			if (this.getHero().getPlace().getInteractions().containsKey(argument.get(0))){
+				result = this.getHero().getPlace().getInteractions().get(argument.get(0)) instanceof Item;
+			}
+		}
 		return result;
 	}
 

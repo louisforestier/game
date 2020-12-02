@@ -13,7 +13,7 @@ public class Key extends Item implements Usable{
 	}
         
         @Override
-	public void use(DoorWithlock door) {
+	public void use(DoorWithLock door) {
             door.unlock(this);
 	}
 
