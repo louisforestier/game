@@ -10,10 +10,7 @@ public abstract class Character implements Lookable{
 	private Place place;
 	private Map<String,Item> inventory = new HashMap<>();
 
-	/**
-	 * 
-	 * @param s
-	 */
+	
 	public Character(String s) {
 		this.id = Character.currentId;
 		this.name = s;
