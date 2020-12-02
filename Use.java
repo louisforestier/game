@@ -18,40 +18,47 @@ public class Use extends Command {
 
 	@Override
 	public boolean argOk(List<String> argument) {
-		boolean result;
-		if((argument.size() == Use.NB_ARG_MAX) || (argument.size() == Use.NB_ARG_MIN)) {
+		return this.oneArg(argument) || this.twoArg(argument);
+	}
 
-			if(argument.size() == Use.NB_ARG_MIN) {
-				if(Use.isInPlace(argument.get(0))) {
-					result = Use.objectsInPlace.get(argument.get(0)) instanceof Usable;
-				} else if (this.isInInventory(argument.get(0))) {
-					result = this.getHero().getInventory().get(argument.get(0)) instanceof Usable;
-				} else
-					result = false;
-			} else {
-				if(Use.isInPlace(argument.get(0)) && Use.isInPlace(argument.get(1))) {
-					result = Use.objectsInPlace.get(argument.get(0)) instanceof Usable && Use.objectsInPlace.get(argument.get(1)) instanceof Receiver;
-				} 
-				else if (Use.isInPlace(argument.get(0)) && this.isInInventory(argument.get(1))) {
-					result = Use.objectsInPlace.get(argument.get(0)) instanceof Usable && this.getHero().getInventory().get(argument.get(1)) instanceof Receiver;
-				} 
-				else if (this.isInInventory(argument.get(0)) && Use.isInPlace(argument.get(1))) {
-					result = this.getHero().getInventory().get(argument.get(0)) instanceof Usable && Use.objectsInPlace.get(argument.get(1)) instanceof Receiver;
-				} 
-				else if(this.isInInventory(argument.get(0)) && this.isInInventory(argument.get(1))) {
-					result = this.getHero().getInventory().get(argument.get(0)) instanceof Usable && this.getHero().getInventory().get(argument.get(1)) instanceof Receiver;
-				}
-				else {
-					result = false;
-				}
-			}
+	
+	public boolean oneArg(List<String> args) {
+		boolean res = args.size() == Use.NB_ARG_MIN ;
+		if(res) {
+			res = this.testArgIsUsable(args.get(0));
 		}
-		else {
-			result = false;
+		return	res;
+	}
+	
+	public boolean testArgIsUsable(String arg) {
+		boolean result = false;
+		if(this.isInPlace(arg)) {
+			result = Use.objectsInPlace.get(arg) instanceof Usable;
+		}
+		else if (this.isInInventory(arg)) {
+			result = this.getHero().getInventory().get(arg) instanceof Usable;
 		}
 		return result;
 	}
-
+	
+	public boolean twoArg(List<String> args) {
+		boolean res = args.size() == Use.NB_ARG_MAX;
+		if(res) {
+			res = this.testArgIsUsable(args.get(0)) && this.testArgIsReceiver(args.get(1));
+		}
+		return res;
+	}
+	
+	public boolean testArgIsReceiver(String arg) {
+		boolean result = false;
+		if(this.isInPlace(arg)) {
+			result = Use.objectsInPlace.get(arg) instanceof Receiver;
+		}
+		else if (this.isInInventory(arg)) {
+			result = this.getHero().getInventory().get(arg) instanceof Receiver;
+		}
+		return result;
+	}
 
 	@Override
 	public void launchCommand(List<String> argument) {
@@ -66,7 +73,7 @@ public class Use extends Command {
 	
 	public Usable convertStringToUsable(String name) {
 		Usable u;
-		if(Use.isInPlace(name)) {
+		if(this.isInPlace(name)) {
 			u = (Usable)Use.objectsInPlace.get(name);
 		}
 		else {
@@ -79,7 +86,7 @@ public class Use extends Command {
 	
 	public Receiver convertStringToReceiver(String name) {
 		Receiver r;
-		if(Use.isInPlace(name)) {
+		if(this.isInPlace(name)) {
 			r = (Receiver)Use.objectsInPlace.get(name);
 		}
 		else {
@@ -90,7 +97,7 @@ public class Use extends Command {
 
 	
 	
-	public static boolean isInPlace(String name) {
+	public boolean isInPlace(String name) {
 		return Use.objectsInPlace.containsKey(name);
 	}
 	
