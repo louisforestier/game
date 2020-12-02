@@ -1,6 +1,5 @@
 package game;
 
-import java.io.IOException;
 import java.util.*;
 
 public class Game {
@@ -45,7 +44,7 @@ public class Game {
 	public void init(){
 		System.out.println("To start the game, please type \"start\" and press Enter");
 		while(!scanner.nextLine().equals("start") && scanner.hasNext()){
-			System.out.println("Je n'ai pas compris votre commande.");
+			System.out.println("I did not understand your command.");
 		}
 		this.help();
 		this.world.setStart(this.hero);
@@ -59,7 +58,7 @@ public class Game {
 	}
 
 	public void ending(){
-		System.out.println("Fin du jeu.");
+		System.out.println("End of game.");
 	}
 
 
@@ -123,5 +122,6 @@ public class Game {
 		Game g = new Game();
 		g.init();
 		g.runGame();
+		g.ending();
 	}
 }
