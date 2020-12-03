@@ -22,14 +22,7 @@ public class Key extends Item implements Usable{
     public void use(Receiver obj) {
         if(obj instanceof Lockable){
             if (obj instanceof DoorWithLock) {
-                if (((DoorWithLock) obj).lock(this))
-                {
-                    ((DoorWithLock) obj).unlock(this);
-		}
-		else 
-                {
-                    ((DoorWithLock) obj).lock(this);
-		}
+               obj.receive(this);
             }
             else
             {
