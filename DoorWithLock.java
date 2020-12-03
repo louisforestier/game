@@ -1,6 +1,6 @@
 package game;
 
-public class DoorWithLock extends Door implements Lockable, Receiver {
+public class DoorWithLock extends Door implements Lockable{
 
 	private boolean isLocked;
 	private Key isKey;

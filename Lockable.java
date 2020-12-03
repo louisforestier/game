@@ -1,9 +1,9 @@
 package game;
 
-public interface Lockable {
+public interface Lockable extends Receiver {
 
-	boolean unlock(Key key);
+	public boolean unlock(Key key);
 
-	boolean lock(Key key);
+	public boolean lock(Key key);
 
 }

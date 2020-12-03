@@ -30,8 +30,7 @@ public class Hero extends Character {
 
 	@Override
 	public void print() {
-		// TODO Auto-generated method stub
-		
+		System.out.println();
 	}
 
 	public void look(Lookable l) {
