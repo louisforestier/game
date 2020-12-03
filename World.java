@@ -7,16 +7,16 @@ public class World {
     private Map<String,Place> places = new HashMap<>();
 
     public World () {
-    	String desc1 = "You are in the hall, there is a door and a key.";
-        String desc2 = "You are in the guard room, there are two doors.";
-        String desc3 = "You are in the throne room, there is a door and a key.";
+    	String desc1 = "You are in the hall, there is a door to the guard_room, and a small_key.";
+        String desc2 = "You are in the guard room, there are two doors to the hall and to the throne_room.";
+        String desc3 = "You are in the throne room, there is a door to the guard_room, and a gold_key.";
 
         Map<String, Lookable> interactions1 = new HashMap<>();
         Map<String, Lookable> interactions2 = new HashMap<>();
         Map<String, Lookable> interactions3 = new HashMap<>();
         
-        Key key1 = new Key("small key");
-        Key key2 = new Key("gold key");
+        Key key1 = new Key("small_key");
+        Key key2 = new Key("gold_key");
         
         Door d1 = new Door();
         Door d2 = new Door();
@@ -27,8 +27,8 @@ public class World {
         interactions3.put(key2.getName(),key2);
         
         Place p1 = new Place("hall", desc1, interactions1);
-        Place p2 = new Place("guard room", desc2, interactions2);
-        Place p3 = new Place("throne room", desc3, interactions3);
+        Place p2 = new Place("guard_room", desc2, interactions2);
+        Place p3 = new Place("throne_room", desc3, interactions3);
         
         d1.setEntrance(p1);
         d1.setExit(p2);
@@ -57,7 +57,7 @@ public class World {
     }
 
     public void setStart(Hero hero){
-        hero.setPlace(places.get("start"));
+        hero.setPlace(places.get("hall"));
     }
 
 }
