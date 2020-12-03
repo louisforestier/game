@@ -7,8 +7,8 @@ public class Key extends Item implements Usable {
     /**
      * @param name
      */
-    public Key(String name) {
-        super(name, true);
+    public Key(String name, String description) {
+        super(name, true, description);
     }
 
     @Override
@@ -25,10 +25,4 @@ public class Key extends Item implements Usable {
         }
 
     }
-
-    @Override
-    public void print() {
-        System.out.println("This " + this.getName() + "is usable.");
-    }
-
 }

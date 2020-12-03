@@ -2,15 +2,16 @@ package game;
 
 import java.util.*;
 
-public abstract class Character implements Lookable{
+public abstract class Character extends Interaction {
 
 	private final String name;
 	private Place place;
 	private Map<String,Item> inventory = new HashMap<>();
 
 	
-	public Character(String s) {
-		this.name = s;
+	public Character(String name, String description) {
+		super(description);
+		this.name = name;
 	}
 
 	public String getName() {

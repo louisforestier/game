@@ -13,7 +13,7 @@ public class Use extends Command {
 		super(world, hero, game);
 	}
 	
-	public Map<String, Lookable> objectsInPlaceOfHero(){
+	public Map<String, Interaction> objectsInPlaceOfHero(){
 		return this.getHero().getPlace().getInteractions();
 	}
 	

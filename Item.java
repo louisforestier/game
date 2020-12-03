@@ -1,36 +1,25 @@
 package game;
 
-public abstract class Item implements Lookable{
-    
-	private String name;
-    private boolean isTakable;
+public abstract class Item extends Interaction {
 
-	/**
-	 * 
-	 * @param name
-	 */
-	public Item(String name) {
-            this.name = name;
-            this.isTakable = false;
-	}
-        
-        public Item(String name, boolean takable)
-        {
-            this.name = name;
-            this.isTakable = takable;
-        }
+    private String name;
+    private boolean takable;
 
-	public String getName() {
-    	return this.name;
-	}
-        
-        public boolean isTakable(){
-            return this.isTakable;
-        }
-        
-        @Override
-        public void print() {
-            System.out.println("It is a " + this.getName()); 
-        }
-        
+    /**
+     * @param name
+     */
+
+    public Item(String name, boolean takable, String description) {
+        super(description);
+        this.name = name;
+        this.takable = takable;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public boolean isTakable() {
+        return this.takable;
+    }
 }
