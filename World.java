@@ -37,8 +37,10 @@ public class World {
         
         d3.setEntrance(p2);
         d3.setExit(p3);
+        d3.setMirrorDoor(d4);
         d4.setEntrance(p3);
         d4.setExit(p2);
+        d4.setMirrorDoor(d3);
         
         p1.getInteractions().put(d1.getExit().getName(), d1);
         
