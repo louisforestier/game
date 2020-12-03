@@ -8,14 +8,40 @@ public class Key extends Item implements Usable{
 	/**
 	 * @param name
 	 */ 
-	public Key(String name) {
-            super(name, true);
+    public Key(String name) {
+        super(name, true);
+    }
+    
+    @Override
+    public void use()
+    {
+        System.out.println("You can't use this alone.");
+    }
+        
+    @Override
+    public void use(Receiver obj) {
+        if(obj instanceof Lockable){
+            if (obj instanceof DoorWithLock) {
+                if (((DoorWithLock) obj).lock(this))
+                {
+                    ((DoorWithLock) obj).unlock(this);
+		}
+		else 
+                {
+                    ((DoorWithLock) obj).lock(this);
+		}
+            }
+            else
+            {
+                System.out.println("Sorry, but, for now, you can only use key with a door locked.");
+            }
+        }
+        else 
+        {
+            System.out.println("You can't use this with this object.");
 	}
         
-        @Override
-	public void use() {
-            System.out.println("You're using the " + this.getName() +".");
-	}
+    }            
 
 	@Override
 	public void print() {

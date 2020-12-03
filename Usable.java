@@ -3,6 +3,6 @@ package game;
 public interface Usable {
 
     void use();
-    void use(Receiver r);
+    void use(Receiver obj);
 
 }
