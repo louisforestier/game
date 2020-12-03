@@ -33,7 +33,7 @@ public class Place implements Lookable {
 	}
 
 	public void print() {
-		System.out.print(this.description);
+		System.out.println(this.description);
 	}
 
 	public String getName() {

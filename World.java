@@ -8,7 +8,8 @@ public class World {
 
     public World () {
     	String desc1 = "Bonjour il y a un certain nombre de piece dans ce monde.";
-        
+        String desc2 = "Bonjour il y a un peu de monde dans cette piece.";
+
         Map<String, Lookable> interactions = new HashMap<>();
         Key key = new Key("key");
         Door d1 = new Door();
@@ -16,7 +17,7 @@ public class World {
         interactions.put(key.getName(),key);
         
         Place p1 = new Place("start", desc1, interactions);
-        Place p2 = new Place("end", desc1, null);
+        Place p2 = new Place("end", desc2, null);
         
         d1.setEntrance(p1);
         d1.setExit(p2);
