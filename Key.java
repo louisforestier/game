@@ -20,14 +20,9 @@ public class Key extends Item implements Usable{
         
     @Override
     public void use(Receiver obj) {
-        if(obj instanceof Lockable){
-            if (obj instanceof DoorWithLock) {
+        if(obj instanceof Lockable)
+        {
                obj.receive(this);
-            }
-            else
-            {
-                System.out.println("Sorry, but, for now, you can only use key with a door locked.");
-            }
         }
         else 
         {
