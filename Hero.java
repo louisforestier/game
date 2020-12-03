@@ -25,8 +25,7 @@ public class Hero extends Character {
 	}
 	
 	public void use(Usable obj1, Receiver obj2) {
-		obj1.use();
-		obj2.receive(obj1);
+		obj1.use(obj2);
 	}
 
 	@Override
