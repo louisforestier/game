@@ -25,6 +25,7 @@ public class Game {
         System.out.println("look to get information about the room you are in.");
         System.out.println("take object to put the object in your inventory.");
         System.out.println("use object to use an object in your inventory.");
+        System.out.println("inventory allows you to see the objects in our inventory.");
         System.out.println("");
     }
 

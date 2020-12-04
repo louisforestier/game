@@ -41,5 +41,10 @@ public abstract class Character extends Interaction {
 	public boolean isInInventory(String name) {
 		return this.getInventory().containsKey(name);
 	}
+	
+	public void printInventory() {
+		System.out.println("You have :");
+		this.inventory.forEach((k, v) -> {v.print();});
+	}
 
 }

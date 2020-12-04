@@ -19,6 +19,8 @@ public class Interpreter {
 		this.commands.put("help", help);
 		Command quit = new Quit(world, hero, game);
 		this.commands.put("quit", quit);
+		Command inventory = new Inventory(world, hero, game);
+		this.commands.put("inventory", inventory);
 	}
 	
 	public void interpret(String input) {
