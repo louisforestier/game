@@ -1,12 +1,7 @@
 package game;
 
-/**
- * @author name
- */
 public class Key extends Item implements Usable {
-    /**
-     * @param name
-     */
+    
     public Key(String name, String description) {
         super(name, true, description);
     }
