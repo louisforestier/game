@@ -31,17 +31,8 @@ public class Hero extends Character {
         obj1.use(obj2);
     }
 
-    @Override
-    public void print() {
-        System.out.println();
-    }
-
     public void look(Interaction l) {
         l.print();
-    }
-
-    public boolean isInInventory(String name) {
-        return this.getInventory().containsKey(name);
     }
 
 }

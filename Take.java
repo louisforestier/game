@@ -5,6 +5,8 @@ import java.util.List;
 
 public class Take extends Command {
 
+    public static final int NB_ARG = 1;
+
     public Take(World world, Hero hero, Game game) {
         super(world, hero, game);
     }
@@ -16,7 +18,7 @@ public class Take extends Command {
     @Override
     public boolean argOk(List<String> argument) {
         boolean result = false;
-        if (argument.size() == 1) {
+        if (argument.size() == NB_ARG) {
             if (this.getHero().getPlace().isInPlace(argument.get(0))) {
                 if (this.getHero().getPlace().getInteractions().get(argument.get(0)) instanceof Item)
                     result = this.stringToItemInPlace(argument.get(0)).isTakable();

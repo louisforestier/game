@@ -37,4 +37,9 @@ public abstract class Character extends Interaction {
 		this.place.freeCharacter(this.name);
 		this.place = null;
 	}
+
+	public boolean isInInventory(String name) {
+		return this.getInventory().containsKey(name);
+	}
+
 }
