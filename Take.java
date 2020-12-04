@@ -19,9 +19,10 @@ public class Take extends Command {
         boolean result = false;
         if (argument.size() == NB_ARG) {
             if (this.getHero().getPlace().isInPlace(argument.get(0))) {
-                if (this.getHero().getPlace().getInteractions().get(argument.get(0)) instanceof Item)
+                if (this.getHero().getPlace().getInteractions().get(argument.get(0)) instanceof Item){
                     result = this.stringToItemInPlace(argument.get(0)).isTakable();
-                else
+                    System.out.println("You have a new item in your inventory.");
+                } else
                     System.out.println("You can't take that !");
             } else
                 System.out.println("There is no " + argument.get(0) + "in this place.");

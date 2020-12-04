@@ -44,7 +44,11 @@ public abstract class Character extends Interaction {
 	
 	public void printInventory() {
 		System.out.println("You have :");
-		this.inventory.forEach((k, v) -> {v.print();});
+                if (!(this.inventory.isEmpty()))
+                    this.inventory.forEach((k, v) -> {v.print();});
+                else {
+                    System.out.println("nothing J.S.");
+                }
 	}
 
 }
