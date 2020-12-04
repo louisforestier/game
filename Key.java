@@ -12,7 +12,7 @@ public class Key extends Item implements Usable {
     }
 
     @Override
-    public void use(Receiver obj) {
+    public void use(Receiver obj) throws ClassCastException {
         if (obj instanceof Lockable) {
             obj.receive(this);
         } else {

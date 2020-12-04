@@ -64,7 +64,7 @@ public class Use extends Command {
 	}
 
 	@Override
-	public void launchCommand(List<String> argument) {
+	public void launchCommand(List<String> argument) throws ClassCastException {
 		if(argument.size() == Use.NB_ARG_MIN)
 			this.getHero().use(this.convertStringToUsable(argument.get(0)));
 		else {

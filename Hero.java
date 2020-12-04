@@ -27,7 +27,7 @@ public class Hero extends Character {
         object.use();
     }
 
-    public void use(Usable obj1, Receiver obj2) {
+    public void use(Usable obj1, Receiver obj2) throws ClassCastException {
         obj1.use(obj2);
     }
 

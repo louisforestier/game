@@ -70,18 +70,14 @@ public class DoorWithLock extends Door implements Lockable {
     }
 
     @Override
-    public boolean receive(Usable u) {
-        boolean result;
-        if (u instanceof Key) {
-            if (this.isLocked) {
-                result = this.unlock((Key) u);
-            } else {
-                result = this.lock((Key) u);
-            }
-        } else {
-            System.out.println("This item is not a key.");
-            result = false;
-        }
-        return result;
+    public boolean receive(Usable u) throws ClassCastException{
+    	boolean result;
+    	if (this.isLocked) {
+    		result = this.unlock((Key) u);
+    	} else {
+    		result = this.lock((Key) u);
+    	}
+    	return result;
     }
+
 }
