@@ -41,11 +41,13 @@ public class DoorWithLockTest {
         d2.setExit(p1);
     }
 
+    /*
     @Test
     public void printKeyForThisDoor() {
         assertSame(key1, d1.printKeyForThisDoor());
     }
-
+     */
+    
     @Test
     public void unlock1() {
         assertFalse(d1.unlock(key1));

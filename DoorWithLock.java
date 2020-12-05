@@ -11,11 +11,12 @@ public class DoorWithLock extends Door implements Lockable {
         this.isLocked = true;
     }
 
+    /*
     public Key printKeyForThisDoor() {
         System.out.println("This door can be unlocked with a" + this.key.getName() + ".");
         return this.key;
     }
-
+     */
 
     public boolean getIsLocked() {
         return this.isLocked;

@@ -5,8 +5,8 @@ public class ChestWithLock extends Chest implements Lockable{
 	private boolean isLocked;
     private Key key;
 
-	public ChestWithLock(String name, boolean takable, String description, Key key) {
-		super(name, takable, description);
+	public ChestWithLock(String name, String description, Key key) {
+		super(name, description);
 		this.key = key;
         this.isLocked = true;
 	}
@@ -24,14 +24,36 @@ public class ChestWithLock extends Chest implements Lockable{
 
 	@Override
 	public boolean unlock(Key key) {
-		// TODO Auto-generated method stub
-		return false;
+		if (this.key == key) {	
+			this.isLocked = false;
+		} else {
+			System.out.println("Wrong key.");
+		}
+		return this.isLocked;
 	}
 
 	@Override
 	public boolean lock(Key key) {
-		// TODO Auto-generated method stub
-		return false;
+		if (this.key == key) {	
+			this.isLocked = true;
+		} else {
+			System.out.println("Wrong key.");
+		}
+		return this.isLocked;
 	}
 
+	@Override
+	public void printContent() {
+		if(!this.isLocked) {
+			System.out.println("There are :");
+			if (!(this.getContent().isEmpty())) {
+				this.getContent().forEach((k, v) -> {v.print();});
+			} else {
+				System.out.println("nothing J.S.");
+			}
+		} else {
+			System.out.println("This chest is locked, please unlock it to look this content.");
+		}
+	}
+	
 }
