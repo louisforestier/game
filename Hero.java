@@ -18,13 +18,18 @@ public class Hero extends Character {
         this.getPlace().print();
     }
 
-    public void look(Interaction l) throws NullPointerException{
+    public void look(Interaction l) throws NullPointerException {
         l.print();
     }
 
-    public void take(Item i) throws NullPointerException{
+    public void take(Item i) throws NullPointerException {
         this.getInventory().put(i.getName(), i);
         this.getPlace().takeOut(i);
+    }
+    
+    public void takeFromChest(Chest c, Item i) throws NullPointerException {
+    	this.getInventory().put(i.getName(), i);
+    	c.supprObj(i.getName());
     }
 
     public void use(Usable object) throws NullPointerException {
