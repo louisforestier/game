@@ -11,12 +11,8 @@ public class Place extends Interaction {
     public Place(String name, String description, Map<String, Interaction> interactions) {
         super(description);
         this.name = name;
-        //peut throw exception : NullPointerException : faire try catch
-        try {
+        if (interactions != null){
             this.interactions.putAll(interactions);
-        } catch (NullPointerException e) {
-            //dans le cas où la liste des interactions est vide, on ne fait rien
-            //potentiellement à transformer en if else
         }
     }
 
