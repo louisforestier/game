@@ -28,4 +28,10 @@ public class Take extends Command {
         else throw new InvalidArgumentNumberException();
     }
 
+	@Override
+	public void help() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

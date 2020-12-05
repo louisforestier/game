@@ -56,4 +56,22 @@ public class ChestWithLock extends Chest implements Lockable{
 		}
 	}
 	
+	@Override
+	public void supprObj(String name) {
+		if(!this.isLocked) {
+			this.getContent().remove(name);
+		} else {
+			System.out.println("This chest is locked, please unlock it to remove an object.");
+		}
+	}
+	
+	@Override
+	public void addObj(String name, Item object) {
+		if(!this.isLocked) {
+			this.getContent().put(name, object);
+		} else {
+			System.out.println("This chest is locked, please unlock it to add object.");
+		}
+	}
+	
 }
