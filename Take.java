@@ -1,5 +1,6 @@
 package game;
 
+import java.util.Iterator;
 import java.util.List;
 
 public class Take extends Command {
@@ -17,8 +18,11 @@ public class Take extends Command {
     @Override
     public void launchCommand(List<String> argument) throws InvalidArgumentNumberException, NullPointerException, ClassCastException {
         if (argument.size() == NB_ARG) {
-            this.getHero().take(this.stringToItemInPlace(argument.get(0)));
-            System.out.println("You add " + argument.get(0) + " to your inventory.");
+            Item i = this.stringToItemInPlace(argument.get(0));
+            if (i.isTakable()) {
+                this.getHero().take(i);
+                System.out.println("You add " + argument.get(0) + " to your inventory.");
+            } else System.out.println("You can't take this.");
         }
 
         else throw new InvalidArgumentNumberException();
