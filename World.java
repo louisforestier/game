@@ -20,6 +20,12 @@ public class World {
 
         Key key1 = new Key("small_key", keyDesc1);
         Key key2 = new Key("gold_key", keyDesc2);
+        
+        String ChestDesc1 = "This looks like an old wooden chest. ";
+        String ChestDesc2 = "This looks like a big gold chest. ";
+        
+        Chest chest1 = new Chest("wooden_chest", ChestDesc1);
+        Chest chest2 = new ChestWithLock("golden_chest", ChestDesc1, key2);
 
         String unlockedDoor = ", though it doesn't appear to be locked.";
         String lockedDoor = ", though it is definitely locked.";
@@ -32,6 +38,8 @@ public class World {
         Door d4 = new DoorWithLock(key1, woodenDoorDesc + lockedDoor);
 
         interactions1.put(key1.getName(), key1);
+        interactions1.put(chest1.getName(), chest1);
+        interactions2.put(chest2.getName(), chest2);
         interactions3.put(key2.getName(), key2);
 
         Place p1 = new Place("hall", desc1, interactions1);
