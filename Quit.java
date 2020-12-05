@@ -11,13 +11,10 @@ public class Quit extends Command{
 	}
 
 	@Override
-	public boolean argOk(List<String> argument) {
-		return (argument.size() == Quit.NB_ARG);
-	}
-
-	@Override
-	public void launchCommand(List<String> argument) {
-		this.getGame().quit();
+	public void launchCommand(List<String> argument) throws InvalidArgumentNumberException {
+		if (argument.size() == Quit.NB_ARG)
+			this.getGame().quit();
+		else throw new InvalidArgumentNumberException();
 	}
 
 	

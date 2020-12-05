@@ -9,7 +9,7 @@ public class Hero extends Character {
         super(Hero.NAME, Hero.DESCRIPTION);
     }
 
-    public void go(Door door) {
+    public void go(Door door) throws NullPointerException{
         this.setPlace(door.cross());
         this.look();
     }
@@ -18,21 +18,22 @@ public class Hero extends Character {
         this.getPlace().print();
     }
 
-    public void take(Item i) {
+    public void look(Interaction l) throws NullPointerException{
+        l.print();
+    }
+
+    public void take(Item i) throws NullPointerException{
         this.getInventory().put(i.getName(), i);
         this.getPlace().takeOut(i);
     }
 
-    public void use(Usable object) {
+    public void use(Usable object) throws NullPointerException {
         object.use();
     }
 
-    public void use(Usable obj1, Receiver obj2) throws ClassCastException {
+    public void use(Usable obj1, Receiver obj2) throws ClassCastException, NullPointerException {
         obj1.use(obj2);
     }
 
-    public void look(Interaction l) {
-        l.print();
-    }
 
 }

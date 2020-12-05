@@ -11,11 +11,6 @@ public class Inventory extends Command{
 	}
 
 	@Override
-	public boolean argOk(List<String> argument) {
-		return argument.size() == Inventory.NB_ARG;
-	}
-
-	@Override
 	public void launchCommand(List<String> argument) {
 		this.getHero().printInventory();
 	}

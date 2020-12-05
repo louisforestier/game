@@ -43,6 +43,7 @@ public class DoorWithLock extends Door implements Lockable {
         if (this.key == key) {
             this.isLocked = false;
             this.changeMirrorDoor();
+            System.out.println("You unlock the door using the " + key.getName() + ".");
         } else {
             System.out.println("Wrong key.");
         }
@@ -54,6 +55,7 @@ public class DoorWithLock extends Door implements Lockable {
         if (this.key == key) {
             this.isLocked = true;
             this.changeMirrorDoor();
+            System.out.println("You lock the door using the " + key.getName() + ".");
         } else {
             System.out.println("Wrong key.");
         }
@@ -63,7 +65,7 @@ public class DoorWithLock extends Door implements Lockable {
     @Override
     public Place cross() {
         if (this.isLocked) {
-            System.out.println("The door is locked, please use a key.");
+            System.out.println("This door is locked, maybe you could use something to unlock it.");
             return this.getEntrance();
         } else {
             return this.getExit();

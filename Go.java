@@ -12,30 +12,17 @@ public class Go extends Command {
     }
 
 
-    @Override
-    public boolean argOk(List<String> argument) {
-        boolean result;
-        String param;
-        if (argument.size() != Go.NB_ARG) {
-            result = false;
-        } else {
-            param = argument.get(0);
-            if (this.getWorld().isInWorld(param)) {
-                result = this.getHero().getPlace().getInteractions().containsKey(param);
-            } else result = false;
-        }
-        return result;
-    }
-
-    public Door convertStringToDoor(String name) {
+    public Door convertStringToDoor(String name) throws  ClassCastException{
         Place p = this.getHero().getPlace();
         return (Door) p.getInteractions().get(name);
     }
 
     @Override
-    public void launchCommand(List<String> argument) {
-        Door door = this.convertStringToDoor(argument.get(0));
-        this.getHero().go(door);
+    public void launchCommand(List<String> argument) throws ClassCastException, NullPointerException , InvalidArgumentNumberException{
+        if (argument.size() == Go.NB_ARG) {
+            Door door = this.convertStringToDoor(argument.get(0));
+            this.getHero().go(door);
+        } else throw new InvalidArgumentNumberException();
     }
 
 

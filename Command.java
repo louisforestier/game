@@ -25,8 +25,6 @@ public abstract class Command {
 		return game;
 	}
 
-	public abstract boolean argOk(List<String> argument);
-	
 	public abstract void launchCommand(List<String> argument);
 
 }

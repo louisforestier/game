@@ -46,6 +46,6 @@ public class Door extends Interaction {
     @Override
     public void print() {
         super.print();
-        System.out.println("It seems to lead to the" + this.getExit().getName() + ".");
+        System.out.println("It seems to lead to the " + this.getExit().getName() + ".");
     }
 }

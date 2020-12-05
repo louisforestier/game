@@ -13,25 +13,12 @@ public class Look extends Command{
 	}
 
 	@Override
-	public boolean argOk(List<String> argument) {
-		boolean result = false;
-		if (argument.size() == Look.NB_ARG_MIN ){
-			result = true;
-		} else if (argument.size() == Look.NB_ARG_MAX){
-			result = this.getHero().getPlace().getInteractions().containsKey(argument.get(NB_ARG_MIN));
-		}
-		else
-			result = false;
-		return result;
-	}
-
-	@Override
-	public void launchCommand(List<String> argument) {
+	public void launchCommand(List<String> argument) throws NullPointerException, InvalidArgumentNumberException{
 		if (argument.size() == Look.NB_ARG_MIN ){
 			this.getHero().look();
 		} else if (argument.size() == Look.NB_ARG_MAX){
 			this.getHero().look(this.getHero().getPlace().getInteractions().get(argument.get(0)));
-		}
+		} else throw new InvalidArgumentNumberException();
 		
 	}
 

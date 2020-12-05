@@ -10,31 +10,18 @@ public class Take extends Command {
         super(world, hero, game);
     }
 
-    public Item stringToItemInPlace(String name) {
+    public Item stringToItemInPlace(String name) throws ClassCastException {
         return (Item) this.getHero().getPlace().getInteractions().get(name);
     }
 
     @Override
-    public boolean argOk(List<String> argument) {
-        boolean result = false;
+    public void launchCommand(List<String> argument) throws InvalidArgumentNumberException, NullPointerException, ClassCastException {
         if (argument.size() == NB_ARG) {
-            if (this.getHero().getPlace().isInPlace(argument.get(0))) {
-                if (this.getHero().getPlace().getInteractions().get(argument.get(0)) instanceof Item){
-                    result = this.stringToItemInPlace(argument.get(0)).isTakable();
-                    System.out.println("You have a new item in your inventory.");
-                } else
-                    System.out.println("You can't take that !");
-            } else
-                System.out.println("There is no " + argument.get(0) + "in this place.");
+            this.getHero().take(this.stringToItemInPlace(argument.get(0)));
+            System.out.println("You add " + argument.get(0) + " to your inventory.");
+        }
 
-        } else
-            System.out.println("You should specify what you want to take.");
-        return result;
-    }
-
-    @Override
-    public void launchCommand(List<String> argument) {
-        this.getHero().take(this.stringToItemInPlace(argument.get(0)));
+        else throw new InvalidArgumentNumberException();
     }
 
 }
