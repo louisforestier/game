@@ -7,8 +7,8 @@ public class Take extends Command {
     public static final int NB_ARG_MIN = 1;
     public static final int NB_ARG_MAX = 2;
 
-    public Take(World world, Hero hero, Game game) {
-        super(world, hero, game);
+    public Take(Hero hero, Game game) {
+        super(hero, game);
     }
 
     public Item stringToItemInPlace(String name) throws ClassCastException {
@@ -34,14 +34,13 @@ public class Take extends Command {
         		this.getHero().takeFromChest(chest, i);
         		System.out.println("You add " + argument.get(1) + " to your inventory.");
         	}
-        }
-        else throw new InvalidArgumentNumberException();
+        } else throw new InvalidArgumentNumberException();
     }
 
 	@Override
 	public void help() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("take name_of_object");
+		System.out.println("take name_of_chest name_of_object");
 	}
 
 }

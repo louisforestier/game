@@ -9,8 +9,8 @@ public class Use extends Command {
 	private static final int NB_ARG_MIN = 1;
 
 
-	public Use(World world, Hero hero, Game game) {
-		super(world, hero, game);
+	public Use(Hero hero, Game game) {
+		super(hero, game);
 	}
 
 	public Map<String, Interaction> objectsInPlaceOfHero() {
@@ -53,8 +53,8 @@ public class Use extends Command {
 
 	@Override
 	public void help() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("use name_of_object");
+		System.out.println("use object_you_want_to_use object_on_which_you_use");
 	}
 
 }

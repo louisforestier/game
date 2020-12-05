@@ -8,8 +8,8 @@ public class Look extends Command{
 	private static final int NB_ARG_MIN = 0;
 
 
-	public Look(World world, Hero hero, Game game) {
-		super(world, hero, game);
+	public Look(Hero hero, Game game) {
+		super(hero, game);
 	}
 
 	@Override
@@ -24,8 +24,8 @@ public class Look extends Command{
 
 	@Override
 	public void help() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("look");
+		System.out.println("look name_of_object");
 	}
 
 

@@ -14,7 +14,7 @@ public class Game {
         this.hero = new Hero();
         this.world = new World();
         this.scanner = new Scanner(System.in);
-        this.interpreter = new Interpreter(this.world, this.hero, this);
+        this.interpreter = new Interpreter(this.hero, this);
     }
 
 
@@ -23,8 +23,8 @@ public class Game {
         System.out.println("go with a direction to move through a door to the next room in this direction, if it exists.");
         System.out.println("help (which you are using right now) to get the details of the commands.");
         System.out.println("look to get information about the room you are in.");
-        System.out.println("take object to put the object in your inventory.");
-        System.out.println("use object to use an object in your inventory.");
+        System.out.println("take object to put the object in your inventory, if you want to take an item from a chest, enter the name of the chest first.");
+        System.out.println("use object to use an object in your inventory, you can use one object on another.");
         System.out.println("inventory allows you to see the objects in our inventory.");
         System.out.println("");
     }

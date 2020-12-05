@@ -6,8 +6,8 @@ public class Quit extends Command{
 
 	private static final int NB_ARG = 0;
 
-	public Quit(World world, Hero hero, Game game) {
-		super(world, hero, game);
+	public Quit(Hero hero, Game game) {
+		super(hero, game);
 	}
 
 	@Override
@@ -19,8 +19,7 @@ public class Quit extends Command{
 
 	@Override
 	public void help() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("quit");
 	}
 
 	

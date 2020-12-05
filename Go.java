@@ -7,8 +7,8 @@ public class Go extends Command {
     private static final int NB_ARG = 1;
 
 
-    public Go(World world, Hero hero, Game game) {
-        super(world, hero, game);
+    public Go(Hero hero, Game game) {
+        super(hero, game);
     }
 
 
@@ -28,8 +28,7 @@ public class Go extends Command {
 
 	@Override
 	public void help() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("go name_of_location");	
 	}
 
 
