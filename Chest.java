@@ -8,7 +8,7 @@ public class Chest extends Item {
 	private Map<String, Item> content = new HashMap<>();
 	
 	public Chest(String name, String description) {
-		super(name, true, description);
+		super(name, false, description);
 	}	
 	
 	public Map<String, Item> getContent() {

@@ -26,4 +26,11 @@ public class Go extends Command {
     }
 
 
+	@Override
+	public void help() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 }

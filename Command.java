@@ -27,4 +27,5 @@ public abstract class Command {
 
 	public abstract void launchCommand(List<String> argument);
 
+	public abstract void help();
 }
