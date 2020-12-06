@@ -37,6 +37,20 @@ public class World {
         Door d3 = new DoorWithLock(key1, woodenDoorDesc + lockedDoor);
         Door d4 = new DoorWithLock(key1, woodenDoorDesc + lockedDoor);
 
+        List<String> playerChoice1 = new ArrayList<>();
+        List<String> dialogs1 = new ArrayList<>();
+
+        playerChoice1.add("Hello.");
+        playerChoice1.add("I need to find a key.");
+
+        dialogs1.add("Hello, my name is Michel the old man.");
+        dialogs1.add("You are looking for a key ? I think I saw one in the hall.");
+
+        Dialog dialog1 = new Dialog(playerChoice1,dialogs1);
+
+        Folk f1 = new Folk("old_man", "Just an old man", false, dialog1);
+        interactions2.put(f1.getName(), f1);
+
         interactions1.put(key1.getName(), key1);
         interactions1.put(chest1.getName(), chest1);
         interactions2.put(chest2.getName(), chest2);

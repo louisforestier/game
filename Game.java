@@ -10,13 +10,16 @@ public class Game {
     private Scanner scanner;
     private Interpreter interpreter;
 
-    public Game() {
+    public Game(Scanner input) {
         this.hero = new Hero();
         this.world = new World();
-        this.scanner = new Scanner(System.in);
+        this.scanner = input;
         this.interpreter = new Interpreter(this.hero, this);
     }
 
+    public Scanner getScanner() {
+        return scanner;
+    }
 
     public void help() {
         System.out.println("You can use the commands :");
@@ -65,7 +68,8 @@ public class Game {
     }
 
     public static void main(String[] args) {
-        Game g = new Game();
+        Scanner input = new Scanner(System.in);
+        Game g = new Game(input);
         g.init();
         g.runGame();
         g.ending();
