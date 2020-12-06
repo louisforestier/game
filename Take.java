@@ -4,8 +4,8 @@ import java.util.List;
 
 public class Take extends Command {
 
-    public static final int NB_ARG_MIN = 1;
-    public static final int NB_ARG_MAX = 2;
+    private static final int NB_ARG_MIN = 1;
+    private static final int NB_ARG_MAX = 2;
 
     public Take(Hero hero, Game game) {
         super(hero, game);
@@ -18,6 +18,10 @@ public class Take extends Command {
     public Chest stringToChestInPlace(String name) throws ClassCastException {
     	return (Chest) this.getHero().getPlace().getInteractions().get(name);
     }
+    
+    public Item stringToItemInChest(String name, Chest chest) throws ClassCastException {
+    	return (Item) chest.getContent().get(name);
+    }
 
     @Override
     public void launchCommand(List<String> argument) throws InvalidArgumentNumberException, NullPointerException, ClassCastException {
@@ -29,7 +33,7 @@ public class Take extends Command {
             } else System.out.println("You can't take this.");
         } else if (argument.size() == NB_ARG_MAX){
         	Chest chest = this.stringToChestInPlace(argument.get(0));
-        	Item i = this.stringToItemInPlace(argument.get(1));
+        	Item i = this.stringToItemInChest(argument.get(1), chest);
         	if (i.isTakable()) {
         		this.getHero().takeFromChest(chest, i);
         		System.out.println("You add " + argument.get(1) + " to your inventory.");

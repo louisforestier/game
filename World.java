@@ -21,11 +21,17 @@ public class World {
         Key key1 = new Key("small_key", keyDesc1);
         Key key2 = new Key("gold_key", keyDesc2);
         
-        String ChestDesc1 = "This looks like an old wooden chest. ";
-        String ChestDesc2 = "This looks like a big gold chest. ";
+        String chestDesc1 = "This looks like an old wooden chest. ";
+        String chestDesc2 = "This looks like a big gold chest. ";
         
-        Chest chest1 = new Chest("wooden_chest", ChestDesc1);
-        Chest chest2 = new ChestWithLock("golden_chest", ChestDesc1, key2);
+        Chest chest1 = new Chest("wooden_chest", chestDesc1);
+        Chest chest2 = new ChestWithLock("golden_chest", chestDesc2, key2);
+        
+        String bookDesc1 = "This looks like an old book. ";
+        
+        Book book1 = new Book("old_book", bookDesc1);
+        
+        chest1.getContent().put(book1.getName(), book1);
 
         String unlockedDoor = ", though it doesn't appear to be locked.";
         String lockedDoor = ", though it is definitely locked.";
