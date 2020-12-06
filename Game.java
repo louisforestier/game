@@ -40,6 +40,7 @@ public class Game {
         System.out.println("take object to put the object in your inventory, if you want to take an item from a chest, enter the name of the chest first.");
         System.out.println("use object to use an object in your inventory, you can use one object on another.");
         System.out.println("inventory allows you to see the objects in our inventory.");
+        System.out.println("talk to someone to get more information.");
         System.out.println("quit if you want to quit the game.");
         System.out.println("");
     }
