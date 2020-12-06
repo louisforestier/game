@@ -21,6 +21,17 @@ public class Game {
         return scanner;
     }
 
+    public void history(){
+        System.out.println("");
+        System.out.println("Hello traveler and welcome to Morlynn Castle.");
+        System.out.println("Your quest : find keys to get out and, maybe, got your hands on a great treasure.");
+        System.out.println("Not a big deal but beware!");
+        System.out.println("Monsters you've never seen are pacing up and down corridors.");
+        System.out.println("Good luck");
+        System.out.println("in Morlynn Castle");
+        System.out.println("...");
+    }
+    
     public void help() {
         System.out.println("You can use the commands :");
         System.out.println("go with a direction to move through a door to the next room in this direction, if it exists.");
@@ -29,6 +40,7 @@ public class Game {
         System.out.println("take object to put the object in your inventory, if you want to take an item from a chest, enter the name of the chest first.");
         System.out.println("use object to use an object in your inventory, you can use one object on another.");
         System.out.println("inventory allows you to see the objects in our inventory.");
+        System.out.println("quit if you want to quit the game.");
         System.out.println("");
     }
 
@@ -51,6 +63,7 @@ public class Game {
         while (!scanner.nextLine().equals("start") && scanner.hasNext()) {
             System.out.println("I didn't understand your command.");
         }
+        this.history();
         this.help();
         this.world.setStart(this.hero);
         this.hero.look();
@@ -64,7 +77,7 @@ public class Game {
     }
 
     public void ending() {
-        System.out.println("End of game.");
+        System.out.println("Thank you for playing to Morlynn Castle.");
     }
 
     public static void main(String[] args) {
