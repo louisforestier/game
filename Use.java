@@ -44,11 +44,13 @@ public class Use extends Command {
 
 	@Override
 	public void launchCommand(List<String> argument) throws ClassCastException, InvalidArgumentNumberException, NullPointerException {
-		if(argument.size() == Use.NB_ARG_MIN)
+		if(argument.size() == Use.NB_ARG_MIN) {
 			this.getHero().use(this.convertStringToUsable(argument.get(0)));
-		else if (argument.size() == Use.NB_ARG_MAX)
+			System.out.println("You have used " + argument.get(0) + " .");
+		} else if (argument.size() == Use.NB_ARG_MAX) {
 			this.getHero().use(this.convertStringToUsable(argument.get(0)), this.convertStringToReceiver(argument.get(1)));
-		else throw new InvalidArgumentNumberException();
+			System.out.println("You have used " + argument.get(0) + " on " + argument.get(1) + " .");
+		} else throw new InvalidArgumentNumberException();
 	}
 
 	@Override

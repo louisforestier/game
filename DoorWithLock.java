@@ -11,12 +11,10 @@ public class DoorWithLock extends Door implements Lockable {
         this.isLocked = true;
     }
 
-    /*
-    public Key printKeyForThisDoor() {
+    
+    public void printKeyForThisDoor() {
         System.out.println("This door can be unlocked with a" + this.key.getName() + ".");
-        return this.key;
     }
-     */
 
     public boolean getIsLocked() {
         return this.isLocked;
@@ -74,13 +72,26 @@ public class DoorWithLock extends Door implements Lockable {
 
     @Override
     public boolean receive(Usable u) throws ClassCastException{
-    	boolean result;
+    	if(u instanceof Key) {
+    		return this.receiveForKey((Key) u);
+    	} else if (u instanceof Book){
+    		this.receiveForBook((Book) u);
+    		return true;
+    	} else return false;
+    }
+
+	public void receiveForBook(Book b) {
+    	this.printKeyForThisDoor();
+	}
+    
+	public boolean receiveForKey(Key k) {
+		boolean result;
     	if (this.isLocked) {
-    		result = this.unlock((Key) u);
+    		result = this.unlock(k);
     	} else {
-    		result = this.lock((Key) u);
+    		result = this.lock(k);
     	}
     	return result;
-    }
+	}
 
 }

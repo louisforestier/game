@@ -32,7 +32,7 @@ public class Chest extends Item {
 	public void printContent() {
 		System.out.println("There are :");
 		if (!(this.content.isEmpty()))
-			this.content.forEach((k, v) -> {v.print();});
+			this.content.forEach((k, v) -> {System.out.println(k);});
 		else {
 			System.out.println("nothing J.S.");
 		}
