@@ -21,23 +21,28 @@ public class Interpreter {
         this.commands.put("inventory", inventory);
         Command help = new Help(hero, game, this.commands);
         this.commands.put("help", help);
+        Command talk = new Talk(hero, game);
+        this.commands.put("talk", talk);
     }
 
     public void interpret(String input) {
         String[] parsedInput = input.split(" ");
         List<String> arguments = new LinkedList<>(Arrays.asList(parsedInput.clone()));
-        String command = arguments.get(0);
-        arguments.remove(0);
-        if (commands.containsKey(command)) {
-            try {
-                commands.get(command).launchCommand(arguments);
-            } catch (InvalidArgumentNumberException e) {
-                System.out.println("There is too few or too many arguments for this command.");
-            } catch (NullPointerException e) {
-                System.out.println("There is no " + arguments.get(0) + " around you.");
-            } catch (ClassCastException e){
-                System.out.println("This is not a valid argument for this command.");
-            }
-        } else System.out.println("I didn't understand that.");
+        if (arguments.size() != 0) {                //sinon erreur possible quand on entre juste un espace
+            String command = arguments.get(0);
+            arguments.remove(0);
+            if (commands.containsKey(command)) {
+                try {
+                    commands.get(command).launchCommand(arguments);
+                } catch (InvalidArgumentNumberException e) {
+                    System.out.println("There is too few or too many arguments for this command.");
+                } catch (NullPointerException e) {
+                    System.out.println("There is no " + arguments.get(0) + " around you.");
+                } catch (ClassCastException e) {
+                    System.out.println("This is not a valid argument for this command.");
+                }
+            } else System.out.println("I didn't understand that.");
+        }
     }
+
 }

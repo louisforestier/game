@@ -1,6 +1,8 @@
 package game;
 
-public class Hero extends Character {
+import java.util.Scanner;
+
+public class Hero extends Character implements Talkable{
 
     private static final String NAME = "hero";
     private static final String DESCRIPTION = "You never watched a mirror before ?";
@@ -40,5 +42,8 @@ public class Hero extends Character {
         obj1.use(obj2);
     }
 
-
+    @Override
+    public void talk(Talkable t, Scanner input) {
+        t.talk(this, input);
+    }
 }
