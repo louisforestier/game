@@ -1,6 +1,6 @@
 package game;
 
-public class ChestWithLock extends Chest implements Lockable{
+public class ChestWithLock extends Container implements Lockable{
 	
 	private boolean isLocked;
     private Key key;
@@ -12,27 +12,24 @@ public class ChestWithLock extends Chest implements Lockable{
 	}
 
 	@Override
-    public boolean receive(Usable u) throws ClassCastException{
+    public void receive(Usable u) throws ClassCastException{
     	if(u instanceof Key) {
-    		return this.receiveForKey((Key) u);
-    	} else if (u instanceof Book){
-    		this.receiveForBook((Book) u);
-    		return true;
-    	} else return false;
+    		this.receiveForKey((Key) u);
+    	} else {
+    		this.receiveForBook((Book) u);	
+    	} 
     }
 
 	public void receiveForBook(Book b) {
     	this.printKeyForThisChest();
 	}
     
-	public boolean receiveForKey(Key k) {
-		boolean result;
+	public void receiveForKey(Key k) {
     	if (this.isLocked) {
-    		result = this.unlock(k);
+    		this.unlock(k);
     	} else {
-    		result = this.lock(k);
+    		this.lock(k);
     	}
-    	return result;
 	}
 
 	@Override

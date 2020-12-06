@@ -7,19 +7,19 @@ public class Interpreter {
     private Map<String, Command> commands = new HashMap<>();
 
     public Interpreter(Hero hero, Game game) {
-        Command go = new Go(hero, game);
+        Command go = new Go(hero);
         this.commands.put("go", go);
-        Command use = new Use(hero, game);
+        Command use = new Use(hero);
         this.commands.put("use", use);
         Command look = new Look(hero, game);
         this.commands.put("look", look);
         Command take = new Take(hero, game);
         this.commands.put("take", take);
-        Command quit = new Quit(hero, game);
+        Command quit = new Quit(game);
         this.commands.put("quit", quit);
-        Command inventory = new Inventory(hero, game);
+        Command inventory = new Inventory(hero);
         this.commands.put("inventory", inventory);
-        Command help = new Help(hero, game, this.commands);
+        Command help = new Help(game, commands);
         this.commands.put("help", help);
         Command talk = new Talk(hero, game);
         this.commands.put("talk", talk);

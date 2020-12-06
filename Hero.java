@@ -29,7 +29,7 @@ public class Hero extends Character implements Talkable{
         this.getPlace().takeOut(i);
     }
     
-    public void takeFromChest(Chest c, Item i) throws NullPointerException {
+    public void takeFromChest(Container c, Item i) throws NullPointerException {
     	this.getInventory().put(i.getName(), i);
     	c.supprObj(i.getName());
     }

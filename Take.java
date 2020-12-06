@@ -6,20 +6,23 @@ public class Take extends Command {
 
     private static final int NB_ARG_MIN = 1;
     private static final int NB_ARG_MAX = 2;
+    
+    private static Hero hero;
 
     public Take(Hero hero, Game game) {
-        super(hero, game);
+        super();
+        Take.hero = hero;
     }
 
     public Item stringToItemInPlace(String name) throws ClassCastException {
-        return (Item) this.getHero().getPlace().getInteractions().get(name);
+        return (Item) hero.getPlace().getInteractions().get(name);
     }
     
-    public Chest stringToChestInPlace(String name) throws ClassCastException {
-    	return (Chest) this.getHero().getPlace().getInteractions().get(name);
+    public Container stringToChestInPlace(String name) throws ClassCastException {
+    	return (Container) hero.getPlace().getInteractions().get(name);
     }
     
-    public Item stringToItemInChest(String name, Chest chest) throws ClassCastException {
+    public Item stringToItemInChest(String name, Container chest) throws ClassCastException {
     	return (Item) chest.getContent().get(name);
     }
 
@@ -28,14 +31,14 @@ public class Take extends Command {
         if (argument.size() == NB_ARG_MIN) {
             Item i = this.stringToItemInPlace(argument.get(0));
             if (i.isTakable()) {
-                this.getHero().take(i);
+                hero.take(i);
                 System.out.println("You add " + argument.get(0) + " to your inventory.");
             } else System.out.println("You can't take this.");
         } else if (argument.size() == NB_ARG_MAX){
-        	Chest chest = this.stringToChestInPlace(argument.get(0));
+        	Container chest = this.stringToChestInPlace(argument.get(0));
         	Item i = this.stringToItemInChest(argument.get(1), chest);
         	if (i.isTakable()) {
-        		this.getHero().takeFromChest(chest, i);
+        		hero.takeFromChest(chest, i);
         		System.out.println("You add " + argument.get(1) + " to your inventory.");
         	}
         } else throw new InvalidArgumentNumberException();

@@ -24,14 +24,16 @@ public class World {
         String chestDesc1 = "This looks like an old wooden chest. ";
         String chestDesc2 = "This looks like a big gold chest. ";
         
-        Chest chest1 = new Chest("wooden_chest", chestDesc1);
-        Chest chest2 = new ChestWithLock("golden_chest", chestDesc2, key2);
+        Container chest1 = new Container("wooden_chest", chestDesc1);
+        ChestWithLock chest2 = new ChestWithLock("golden_chest", chestDesc2, key2);
         
-        String bookDesc1 = "This looks like an old book. ";
+        String scrollDesc1 = "This is an old tattered scroll. ";
         
-        Book book1 = new Book("old_book", bookDesc1);
+        String scrollContenu1 = "This scroll allows you to know the key to a door.";
         
-        chest1.getContent().put(book1.getName(), book1);
+        Scroll scroll1 = new Scroll("knock_scroll", scrollDesc1, scrollContenu1);
+        
+        chest1.getContent().put(scroll1.getName(), scroll1);
 
         String unlockedDoor = ", though it doesn't appear to be locked.";
         String lockedDoor = ", though it is definitely locked.";
@@ -40,8 +42,8 @@ public class World {
 
         Door d1 = new Door(woodenDoorDesc + unlockedDoor);
         Door d2 = new Door(ironDoorDesc + unlockedDoor);
-        Door d3 = new DoorWithLock(key1, woodenDoorDesc + lockedDoor);
-        Door d4 = new DoorWithLock(key1, woodenDoorDesc + lockedDoor);
+        DoorWithLock d3 = new DoorWithLock(key1, woodenDoorDesc + lockedDoor);
+        DoorWithLock d4 = new DoorWithLock(key1, woodenDoorDesc + lockedDoor);
 
         List<String> playerChoice1 = new ArrayList<>();
         List<String> dialogs1 = new ArrayList<>();

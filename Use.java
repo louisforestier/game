@@ -8,17 +8,19 @@ public class Use extends Command {
 	private static final int NB_ARG_MAX = 2;
 	private static final int NB_ARG_MIN = 1;
 
+	private static Hero hero;
 
-	public Use(Hero hero, Game game) {
-		super(hero, game);
+	public Use(Hero hero) {
+		super();
+		Use.hero = hero;
 	}
 
 	public Map<String, Interaction> objectsInPlaceOfHero() {
-		return this.getHero().getPlace().getInteractions();
+		return hero.getPlace().getInteractions();
 	}
 
 	public Place getPlaceOfHero() {
-		return this.getHero().getPlace();
+		return hero.getPlace();
 	}
 
 	public Usable convertStringToUsable(String name) throws ClassCastException{
@@ -26,7 +28,7 @@ public class Use extends Command {
 		if (this.getPlaceOfHero().isInPlace(name)) {
 			u = (Usable) this.objectsInPlaceOfHero().get(name);
 		} else {
-			u = (Usable) this.getHero().getInventory().get(name);
+			u = (Usable) hero.getInventory().get(name);
 		}
 		return u;
 	}
@@ -37,7 +39,7 @@ public class Use extends Command {
 		if (this.getPlaceOfHero().isInPlace(name)) {
 			r = (Receiver) this.objectsInPlaceOfHero().get(name);
 		} else {
-			r = (Receiver) this.getHero().getInventory().get(name);
+			r = (Receiver) hero.getInventory().get(name);
 		}
 		return r;
 	}
@@ -45,10 +47,10 @@ public class Use extends Command {
 	@Override
 	public void launchCommand(List<String> argument) throws ClassCastException, InvalidArgumentNumberException, NullPointerException {
 		if(argument.size() == Use.NB_ARG_MIN) {
-			this.getHero().use(this.convertStringToUsable(argument.get(0)));
+			hero.use(this.convertStringToUsable(argument.get(0)));
 			System.out.println("You have used " + argument.get(0) + " .");
 		} else if (argument.size() == Use.NB_ARG_MAX) {
-			this.getHero().use(this.convertStringToUsable(argument.get(0)), this.convertStringToReceiver(argument.get(1)));
+			hero.use(this.convertStringToUsable(argument.get(0)), this.convertStringToReceiver(argument.get(1)));
 			System.out.println("You have used " + argument.get(0) + " on " + argument.get(1) + " .");
 		} else throw new InvalidArgumentNumberException();
 	}

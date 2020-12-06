@@ -6,18 +6,21 @@ public class Inventory extends Command{
 
 	private static final int NB_ARG_MAX = 1;
 	private static final int NB_ARG_MIN = 0;
+	
+	private static Hero hero;
 
 
-	public Inventory(Hero hero, Game game) {
-		super(hero, game);
+	public Inventory(Hero hero) {
+		super();
+		Inventory.hero = hero;
 	}
 
 	@Override
 	public void launchCommand(List<String> argument) throws InvalidArgumentNumberException, NullPointerException{
 		if (argument.size() == Inventory.NB_ARG_MIN ){
-			this.getHero().printInventory();
+			hero.printInventory();
 		} else if (argument.size() == Inventory.NB_ARG_MAX){
-			this.getHero().getInventory().get(argument.get(0)).print();
+			hero.getInventory().get(argument.get(0)).print();
 		} else throw new InvalidArgumentNumberException();
 		
 	}

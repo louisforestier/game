@@ -3,11 +3,11 @@ package game;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Chest extends Item {
+public class Container extends Item {
 	
 	private Map<String, Item> content = new HashMap<>();
 	
-	public Chest(String name, String description) {
+	public Container(String name, String description) {
 		super(name, false, description);
 	}	
 	

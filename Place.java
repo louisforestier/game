@@ -37,11 +37,6 @@ public class Place extends Interaction {
     }
 
     @Override
-    //en fait j'hésite à faire un print de chaque interaction
-    //le problème avec la description fixe dans laquelle tu
-    // mets aussi les characters et items c'est que si tu prends
-    // un objet ou retire un personnag, il y est toujours
-    // quand tu fais look.
     public void print() {
         super.print();
         System.out.println("In this place, you see :");

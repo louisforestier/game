@@ -7,17 +7,19 @@ public class Look extends Command{
 	private static final int NB_ARG_MAX = 1;
 	private static final int NB_ARG_MIN = 0;
 
-
+	private static Hero hero;
+	
 	public Look(Hero hero, Game game) {
-		super(hero, game);
+		super();
+		Look.hero = hero;
 	}
 
 	@Override
 	public void launchCommand(List<String> argument) throws NullPointerException, InvalidArgumentNumberException{
 		if (argument.size() == Look.NB_ARG_MIN ){
-			this.getHero().look();
+			hero.look();
 		} else if (argument.size() == Look.NB_ARG_MAX){
-			this.getHero().look(this.getHero().getPlace().getInteractions().get(argument.get(0)));
+			hero.look(hero.getPlace().getInteractions().get(argument.get(0)));
 		} else throw new InvalidArgumentNumberException();
 		
 	}

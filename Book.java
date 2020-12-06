@@ -1,23 +1,22 @@
 package game;
 
 public class Book extends Item implements Usable {
+	
+	private String content;
 
-	public Book(String name, String description) {
+	public Book(String name, String description, String content) {
 		super(name, true, description);
+		this.content = content;
 	}
 
 	@Override
 	public void use() {
-		System.out.println("You read that this book should be used on a door or a chest.");	
+		System.out.println(this.content);	
 	}
 
 	@Override
 	public void use(Receiver obj) {
-		if (obj instanceof Lockable) {
-            obj.receive(this);
-        } else {
-            System.out.println("You can't use this with this object.");
-        }
+		System.out.println("You cannot use this item on another.");
 	}
 	
 }

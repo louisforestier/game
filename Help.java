@@ -10,16 +10,18 @@ public class Help extends Command{
 	private static final int NB_ARG_MAX = 1;
 	
 	private static Map<String, Command> commands = new HashMap<>(); 
+	private static Game game;
 
-	public Help(Hero hero, Game game, Map<String, Command> commands) {
-		super(hero, game);
+	public Help(Game game, Map<String, Command> commands) {
+		super();
 		Help.commands = commands;
+		Help.game = game;
 	}
 
 	@Override
 	public void launchCommand(List<String> argument) throws InvalidArgumentNumberException, ClassCastException {
 		if (argument.size() == NB_ARG_MIN) {
-			this.getGame().help();
+			game.help();
 		} else if(argument.size() == NB_ARG_MAX) {
 			Command c = this.stringToCommand(argument.get(0));
 			c.help();
