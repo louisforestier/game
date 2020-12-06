@@ -57,9 +57,9 @@ public class ChestWithLock extends Container implements Lockable{
 		if(!this.isLocked) {
 			System.out.println("There are :");
 			if (!(this.getContent().isEmpty())) {
-				this.getContent().forEach((k, v) -> {v.print();});
+				this.getContent().forEach((k, v) -> {System.out.println(k);});
 			} else {
-				System.out.println("nothing J.S.");
+				System.out.println("really nothing.");
 			}
 		} else {
 			System.out.println("This chest is locked, please unlock it to look this content.");
