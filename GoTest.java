@@ -59,7 +59,7 @@ public class GoTest {
 	
 	@Test
     public void convertStringToDoor(){
-        //assertThrows(ClassCastException.class, go.convertStringToDoor("d1"));
+        assertThrows(ClassCastException.class, () -> go.convertStringToDoor(hero.getName()));
         }
 
     @Test
