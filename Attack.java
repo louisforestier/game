@@ -45,7 +45,7 @@ public class Attack extends Command {
                     }
                 } else hero.attack(a);
             } else {
-                System.out.println("You're want to hurt yourself ?");
+                System.out.println("You want to hurt yourself ?");
                 System.out.println("I mean, I'm not judging or anything but that's pretty messed up.");
             }
 
