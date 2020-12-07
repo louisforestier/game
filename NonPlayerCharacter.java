@@ -16,10 +16,4 @@ public class NonPlayerCharacter extends Character {
         isHostile = hostile;
     }
 
-    @Override
-    public void isAttacked(int attackRoll ,int damageRoll) {
-        super.isAttacked(attackRoll, damageRoll);
-
-    }
-
 }
