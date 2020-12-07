@@ -34,7 +34,8 @@ public class Interpreter {
         this.commands.putAll(commands);
     }
 
-    public void interpret(String input) {
+    public boolean interpret(String input) {
+        boolean executed_command = true;
         String[] parsedInput = input.split(" ");
         List<String> arguments = new LinkedList<>(Arrays.asList(parsedInput.clone()));
         if (arguments.size() != 0) {                //sinon erreur possible quand on entre juste un espace
@@ -45,13 +46,20 @@ public class Interpreter {
                     commands.get(command).launchCommand(arguments);
                 } catch (InvalidArgumentNumberException e) {
                     System.out.println("There is too few or too many arguments for this command.");
+                    executed_command = false;
                 } catch (NullPointerException e) {
                     System.out.println("There is no " + arguments.get(0) + " around you.");
+                    executed_command = false;
                 } catch (ClassCastException e) {
                     System.out.println("This is not a valid argument for this command.");
+                    executed_command = false;
                 }
-            } else System.out.println("I didn't understand that.");
+            } else {
+                System.out.println("I didn't understand that.");
+                executed_command = false;
+            }
         }
+        return executed_command;
     }
 
 }

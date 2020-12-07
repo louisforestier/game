@@ -12,10 +12,10 @@ public class Folk extends NonPlayerCharacter implements Talkable {
     }
 
     @Override
-    public void talk(Talkable t, Scanner input) {
+    public void talk(Scanner input) {
         if (this.isAlive()) {
             if (!this.isHostile())
-                this.dialog.startDialog(t, this, input);
+                this.dialog.startDialog(this, input);
             else System.out.println("This one doesn't want to talk to you.");
         } else {
             System.out.println("Now you're talking to dead people.");

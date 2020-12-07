@@ -15,18 +15,9 @@ public class Weapon extends Item implements Equipable{
         return this.attackPower;
     }
 
-    public boolean isEquiped() {
-        return this.equiped;
-    }
-
-    public void switchEquiped(){
-        this.equiped = !this.equiped;
-    }
 
     @Override
     public void equip(Character character) {
-        character.setWeapon(this);
-        this.equiped = true;
-
+        character.equipWeapon(this);
     }
 }

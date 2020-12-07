@@ -142,10 +142,9 @@ public abstract class Character extends Interaction implements Attackable, Attac
 
     public void equipArmor(Armor armor) {
         if (this.armor != null){
-            this.armor.switchEquiped();
             this.inventory.put(this.armor.getName(), this.armor);
         }
-        armor.equip(this);
+        this.setArmor(armor);
         this.inventory.remove(armor.getName());
     }
 
@@ -159,10 +158,9 @@ public abstract class Character extends Interaction implements Attackable, Attac
 
     public void equipWeapon(Weapon weapon) {
         if (this.weapon != null){
-            this.weapon.switchEquiped();
             this.inventory.put(this.weapon.getName(), this.weapon);
         }
-        weapon.equip(this);
+        this.setWeapon(weapon);
         this.inventory.remove(weapon.getName());
     }
 

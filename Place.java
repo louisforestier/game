@@ -7,6 +7,7 @@ public class Place extends Interaction {
     private final String name;
     private Map<String, Interaction> interactions = new HashMap<>();
     private final int ENEMY_DETECTION_THRESHOLD;
+    private Random dice = new Random();
 
 
     public Place(String name, String description, Map<String, Interaction> interactions, int enemy_detection) {
@@ -51,8 +52,7 @@ public class Place extends Interaction {
                         System.out.println("a door leading to the " + k);
                     } else if (!(k.equals("hero")))
                         System.out.println("a " + k);
-                }
-        );
+        });
     }
 
     public void takeOut(Item i) {
@@ -65,11 +65,24 @@ public class Place extends Interaction {
                     if (v instanceof NonPlayerCharacter && ((NonPlayerCharacter) v).isAlive() && ((NonPlayerCharacter) v).isHostile()) {
                         enemies.put(((Character) v).getName(), (Character) v);
                     }
-                }
-
-        );
+        });
         return enemies;
     }
+
+    public boolean randomEncoutner(){
+        boolean result = false;
+        if (this.getEnemiesInPlace().size() != 0) {
+            int randomEnemyDetection = this.dice.nextInt(100) + 1;
+            result = (randomEnemyDetection < this.ENEMY_DETECTION_THRESHOLD);
+        }
+        return result;
+    }
+
+    public String getAnEnemyName(){
+        return this.getEnemiesInPlace().keySet().stream().findFirst().get();
+    }
+
+
 }
 
 

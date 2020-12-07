@@ -9,7 +9,6 @@ public class Game {
     private World world;
     private Scanner scanner;
     private Interpreter interpreter;
-    private Random dice = new Random();
 
     public Game(Scanner input) {
         this.hero = new Hero();
@@ -21,7 +20,6 @@ public class Game {
     public Scanner getScanner() {
         return scanner;
     }
-
 
 
     public void history() {
@@ -68,27 +66,36 @@ public class Game {
             System.out.println("I didn't understand your command.");
         }
         this.history();
+        System.out.println("Type anything and press Enter to continue.");
+        scanner.nextLine();
         this.help();
+        System.out.println("Type anything and press Enter to continue.");
+        scanner.nextLine();
         this.world.setStart(this.hero);
         this.hero.look();
     }
 
+
     public void runGame() {
+        String input;
+        boolean executed_command;
         while (this.isRunning && this.hero.isAlive() && !this.hero.isGoalAchieved()) {
-            String input = this.scanner.nextLine();
-            if (this.hero.getPlace().getEnemiesInPlace().size() != 0){
-                int randomEnemyDetection = this.dice.nextInt(100) + 1;
-                if (randomEnemyDetection < this.hero.getPlace().getENEMY_DETECTION_THRESHOLD()){
-                    //attaque le "premier" ennemi dans la hashmap pour déclencher le combat
-                    this.interpreter.interpret("attack " + this.hero.getPlace().getEnemiesInPlace().keySet().stream().findFirst().get());
-                } else this.interpreter.interpret(input);
-            } else this.interpreter.interpret(input);
+            if (this.hero.getPlace().randomEncoutner()) {
+                //attaque le "premier" ennemi dans la hashmap pour déclencher le combat
+                input = ("attack " + this.hero.getPlace().getAnEnemyName());
+                this.interpreter.interpret(input);
+            } else {
+                do {
+                    input = this.scanner.nextLine();
+                    executed_command = this.interpreter.interpret(input);
+                } while (!executed_command);
+            }
         }
     }
 
     public void ending() {
-        if (this.hero.isAlive()){
-            if (this.hero.isGoalAchieved()){
+        if (this.hero.isAlive()) {
+            if (this.hero.isGoalAchieved()) {
                 System.out.println("You have completed the story !");
             }
         } else System.out.println("You died.");

@@ -17,9 +17,9 @@ public class Equip extends Command {
     }
 
     @Override
-    public void launchCommand(List<String> argument) throws InvalidArgumentNumberException, NullPointerException {
+    public void launchCommand(List<String> argument) throws InvalidArgumentNumberException, ClassCastException, NullPointerException {
         if (argument.size() == Equip.NB_ARG) {
-            stringtoEquipable(argument.get(0)).equip(hero);
+            this.hero.equip(stringtoEquipable(argument.get(0)));
             System.out.println("You equip " + argument.get(0));
         }
         else throw new InvalidArgumentNumberException();

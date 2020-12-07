@@ -43,7 +43,7 @@ public class Dialog {
         System.out.println(i + ". quit");
     }
 
-    public void startDialog(Talkable t, Folk folk, Scanner input) {
+    public void startDialog(Folk folk, Scanner input) {
         //le t qui correspond au joueur ne sert à rien mais avec plus de temps, on aurait pu implémenter
         //un système d'échange pour permettre au joueur d'acheter des objets aux personnages non joueurs.
         this.printOptions();

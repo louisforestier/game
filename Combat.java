@@ -34,8 +34,11 @@ public class Combat {
     }
 
     public void heroTurn(Scanner scanner) {
-        String input = scanner.nextLine();
-        this.combatInterpreter.interpret(input);
+        boolean executed_command;
+        do {
+            String input = scanner.nextLine();
+            executed_command = this.combatInterpreter.interpret(input);
+        } while (!executed_command);
     }
 
     public void enemyTurn(Hero hero, Character enemy) {
