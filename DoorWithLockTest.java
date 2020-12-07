@@ -3,7 +3,6 @@ package game;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -51,7 +50,6 @@ public class DoorWithLockTest {
     
     @Test
     public void changeMirrorDoor() {
-    	
     }
 
     @Test

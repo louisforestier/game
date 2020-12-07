@@ -73,6 +73,14 @@ public abstract class Character extends Interaction implements Attackable, Attac
         return this.place;
     }
 
+    public Armor getArmor() {
+        return armor;
+    }
+
+    public Weapon getWeapon() {
+        return weapon;
+    }
+
     public int getArmorClass() {
         return armorClass;
     }
