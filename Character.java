@@ -16,6 +16,8 @@ public abstract class Character extends Interaction implements Attackable, Attac
     private boolean alive = true;
     private int currentHealthPoints;
     private int maxHealthPoints;
+    private int armorClass = Character.DEFAULT_ARMOR_CLASS;
+    private int attackPower = Character.DEFAULT_ATTACK_POWER;
     private int attackBonus;
     private int damageBonus;
     private Armor armor = null;
@@ -71,6 +73,14 @@ public abstract class Character extends Interaction implements Attackable, Attac
         return this.place;
     }
 
+    public int getArmorClass() {
+        return armorClass;
+    }
+
+    public int getAttackPower() {
+        return attackPower;
+    }
+
     public void setPlace(Place p) {
         if (this.place != null)
             this.freePlace();
@@ -103,15 +113,10 @@ public abstract class Character extends Interaction implements Attackable, Attac
     }
 
     @Override
-    public void isAttacked(int roll, int damage) {
-        int armorClass;
-        if (this.armor != null){
-            armorClass = this.armor.getArmorClass();
-        } else armorClass = Character.DEFAULT_ARMOR_CLASS;
-
-        if (roll >= armorClass) {
+    public void isAttacked(int attackRoll, int damage) {
+        if (attackRoll >= this.armorClass) {
             this.currentHealthPoints -= damage;
-            System.out.println(" hit " + this.name + "." );
+            System.out.println(" hit " + this.name + ".");
             System.out.println(this.name + " takes " + damage + " points of damage.");
             if (this.currentHealthPoints <= 0) {
                 this.currentHealthPoints = 0;
@@ -124,43 +129,27 @@ public abstract class Character extends Interaction implements Attackable, Attac
     @Override
     public void attack(Attackable attackable) {
         int attackRoll = this.dice.nextInt(Character.MAX_DICE) + Character.MIN_DICE;
-        int damageRoll;
-        if (this.weapon != null){
-            damageRoll = this.dice.nextInt(this.weapon.getAttackPower()) + Character.MIN_DICE;
-        } else damageRoll = this.dice.nextInt(Character.DEFAULT_ATTACK_POWER) + Character.MIN_DICE;
+        int damageRoll = this.dice.nextInt(this.attackPower) + Character.MIN_DICE;
         System.out.print(this.name);
-        attackable.isAttacked(attackRoll + this.attackBonus, damageRoll + this.damageBonus );
-    }
-
-    public Armor getArmor() {
-        return armor;
-    }
-
-    public void setArmor(Armor armor) {
-        this.armor = armor;
+        attackable.isAttacked(attackRoll + this.attackBonus, damageRoll + this.damageBonus);
     }
 
     public void equipArmor(Armor armor) {
-        if (this.armor != null){
+        if (this.armor != null) {
             this.inventory.put(this.armor.getName(), this.armor);
         }
-        this.setArmor(armor);
+        this.armor = armor;
+        this.armorClass = armor.getArmorClass();
         this.inventory.remove(armor.getName());
     }
 
-    public Weapon getWeapon() {
-        return this.weapon;
-    }
-
-    public void setWeapon(Weapon weapon) {
-        this.weapon = weapon;
-    }
 
     public void equipWeapon(Weapon weapon) {
-        if (this.weapon != null){
+        if (this.weapon != null) {
             this.inventory.put(this.weapon.getName(), this.weapon);
         }
-        this.setWeapon(weapon);
+        this.weapon = weapon;
+        this.attackPower = weapon.getAttackPower();
         this.inventory.remove(weapon.getName());
     }
 
@@ -168,6 +157,6 @@ public abstract class Character extends Interaction implements Attackable, Attac
     public void print() {
         super.print();
         if (!this.alive)
-        System.out.println("But now he's dead.");
+            System.out.println("But now he's dead.");
     }
 }
