@@ -2,9 +2,14 @@ package game;
 
 public class GreatSword extends Weapon {
 
-	public GreatSword(String name, String description, int attackPower) {
-		super(name, description, attackPower);
-		// TODO Auto-generated constructor stub
+	private final static int DEFAULT_ATTACK_POWER = 12;
+
+	public GreatSword(String name, String description) {
+		super(name, description, GreatSword.DEFAULT_ATTACK_POWER);
+	}
+
+	public GreatSword(String name, String description, int attackPowerBonus) {
+		super(name, description, GreatSword.DEFAULT_ATTACK_POWER + attackPowerBonus);
 	}
 
 }
