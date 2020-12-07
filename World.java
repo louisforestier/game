@@ -109,7 +109,7 @@ public class World {
         chest2.getContent().put(sword.getName(), sword);
         chest2.getContent().put(scaleMail.getName(), scaleMail);
         interactions3.put(plateArmor.getName(), plateArmor);
-        interactions3.put(greatsword.getName(), scaleMail);
+        interactions3.put(greatsword.getName(), greatsword);
 
         //création des pieces
         Place p1 = new Place("hall", desc1, interactions1, 101);
