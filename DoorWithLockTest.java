@@ -3,13 +3,17 @@ package game;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 
 
 public class DoorWithLockTest {
@@ -21,12 +25,14 @@ public class DoorWithLockTest {
     private Map<String, Interaction> l2;
     private Key key1;
     private Key key2;
-    //quand autre objet, faire dans receiver test si usable pas key
+    private Scroll scroll;
+    
 
     @Before
     public void setUp() {
         key1 = new Key("key", "testkey1");
         key2 = new Key("wrongKey", "testkey2");
+        scroll = new Scroll("scroll", "one scroll", "this is magic");
         d1 = new DoorWithLock(key1, "testdoor1");
         d2 = new DoorWithLock(key1, "testdoor2");
         l1 = new HashMap<>();
@@ -37,16 +43,20 @@ public class DoorWithLockTest {
         p2 = new Place("end", "p2", l2,0);
         d1.setEntrance(p1);
         d1.setExit(p2);
+        d1.setMirrorDoor(d2);
         d2.setEntrance(p2);
         d2.setExit(p1);
+        d2.setMirrorDoor(d1);
+    }
+    
+    @Test
+    public void changeMirrorDoor() {
+    	
     }
 
-    /*
     @Test
-    public void printKeyForThisDoor() {
-        assertSame(key1, d1.printKeyForThisDoor());
+    public void switchLockedForMirrorDoor() {
     }
-     */
     
     @Test
     public void unlock1() {
@@ -56,6 +66,12 @@ public class DoorWithLockTest {
     @Test
     public void unlock2() {
         assertTrue(d1.unlock(key2));
+    }
+    
+    @Test
+    public void unlock3() {
+    	d1.unlock(key1);
+        assertFalse(d2.getIsLocked());
     }
 
     @Test
@@ -70,8 +86,8 @@ public class DoorWithLockTest {
 
     @Test
     public void lock3() {
-        d1.unlock(key1);
-        assertFalse(d1.lock(key2));
+        d1.lock(key1);
+        assertTrue(d2.getIsLocked());
     }
 
     @Test
@@ -84,15 +100,18 @@ public class DoorWithLockTest {
         d1.unlock(key1);
         assertSame(p2, d1.cross());
     }
-
+    
+    
     @Test
-    public void receive1() {
-        //assertFalse(d1.receive(key1));
+	public void receiveForKey() {
+    	d1.unlock(key1);
+    	assertFalse(d1.getIsLocked());
     }
 
     @Test
-    public void receive2() {
-        d1.unlock(key1);
-        //assertTrue(d1.receive(key1));
+    public void receive() {
+    	d2.receive(key1);
+    	assertFalse(d2.getIsLocked());
     }
+      
 }

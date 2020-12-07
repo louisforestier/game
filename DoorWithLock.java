@@ -84,11 +84,11 @@ public class DoorWithLock extends Door implements Lockable {
     	if(u instanceof Key) {
     		this.receiveForKey((Key) u);
     	} else {
-    		this.receiveForBook((Book) u);
+    		this.receiveForScroll((Scroll) u);
     	}
     }
 
-	public void receiveForBook(Book b) {
+	public void receiveForScroll(Scroll b) {
     	this.printKeyForThisDoor();
 	}
     

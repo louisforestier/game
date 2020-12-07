@@ -12,15 +12,12 @@ public class DoorTest {
 
     private Door d1;
     private Place p1;
-    private Place p2;
 
     @Before
     public void setUp(){
     	d1 = new Door("testdoor1");
         Map<String, Interaction> l1 = new HashMap<>();
-        Map<String, Interaction> l2 = new HashMap<>();
     	p1 = new Place("start", "p1", l1,0);
-    	p2 = new Place("end", "p2", l2,0);
     }
 
     @Test
@@ -41,8 +38,8 @@ public class DoorTest {
     
     @Test
     public void setExit() {
-    	d1.setExit(p2);
-    	assertSame(p2, d1.getExit());
+    	d1.setExit(p1);
+    	assertSame(p1, d1.getExit());
     }
 
     @Test
@@ -52,8 +49,8 @@ public class DoorTest {
     
     @Test
     public void cross2() {
-    	d1.setExit(p2);
-    	assertSame(p2, d1.getExit());
+    	d1.setExit(p1);
+    	assertSame(p1, d1.getExit());
     }
     
 }
