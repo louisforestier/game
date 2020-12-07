@@ -68,34 +68,35 @@ public class World {
 
         //choix des reponses du pnj
         dialogs1.add("Hello, my name is Michel the old man.");
-        dialogs1.add("You are looking for a key ? I think I saw one in the hall.");
+        dialogs1.add("You are looking for a key ? I think I saw one in the hall and another in the throne room.");
 
         //creation 
         Dialog dialog1 = new Dialog(playerChoice1,dialogs1);
 
         //creation d'un pnj
-        Folk f1 = new Folk("old_man", "Just an old man", false, dialog1, 3,1,1);
-        interactions2.put(f1.getName(), f1);
+        Commoner oldman = new Commoner("old_man", "Just an old man",dialog1);
+        interactions2.put(oldman.getName(), oldman);
 
-        NonPlayerCharacter guard = new NonPlayerCharacter("guard", "A dangerous guard, armed with a spike", true, 7,3,2);
+        Guard guard = new Guard("guard", "A dangerous guard, armed with a spike");
         interactions3.put(guard.getName(), guard);
 
         String leatherArmorDesc = "The breastplate and shoulder protectors of this armor are made of leather that has been stiffened \n" +
                 "by being boiled in oil. The rest of the armor is made of softer and more flexible materials.";
-        Armor leatherArmor = new Armor("leather_armor",leatherArmorDesc, 13);
+        LeatherArmor leatherArmor = new LeatherArmor("leather_armor", leatherArmorDesc);
+
 
         String scaleMailDesc = "This armor consists of a coat and leggings (and perhaps a separate skirt) of leather covered with \n" +
                 "overlapping pieces of metal, much like the scales of a fish. The suit includes gauntlets.";
-        Armor scaleMail = new Armor("scale_mail",scaleMailDesc, 15);
+        ScaleMail scaleMail = new ScaleMail("scale_mail", scaleMailDesc);
 
         String plateArmorDesc = "Plate consists of shaped, interlocking metal plates to cover the entire body. A suit of plate includes\n" +
                 "gauntlets, heavy leather boots, a visored helmet, and thick layers of padding underneath the armor.\n" +
                 "Buckles and straps distribute the weight over the body.";
-        Armor plateArmor = new Armor("plate_armor", plateArmorDesc, 18);
+        PlateArmor plateArmor = new PlateArmor("plate_armor", plateArmorDesc);
 
-        Weapon dagger = new Weapon("dagger", "iron dagger", 4 );
-        Weapon sword = new Weapon("sword", "iron sword", 6);
-        Weapon greatsword = new Weapon("greatsword", "iron greatsword", 12);
+        Dagger dagger = new Dagger("dagger", "iron dagger" );
+        Sword sword = new Sword("sword", "iron sword");
+        Greatsword greatsword = new Greatsword("greatsword", "iron greatsword");
 
 
         //ajout des objets (coffres, clefs) dans les pieces qui serviront d'interaction

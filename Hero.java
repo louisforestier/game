@@ -6,7 +6,7 @@ public class Hero extends Character implements Talkable{
 
     private static final String NAME = "hero";
     private static final String DESCRIPTION = "You never watched a mirror before ?";
-    private static final int STARTING_HP = 10;
+    private static final int STARTING_HP = 30;
     private static final int STARTING_ATT_BONUS = 5;
     private static final int STARTING_DMG_BONUS = 3;
     private boolean goalAchieved = false;
