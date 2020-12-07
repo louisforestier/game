@@ -131,6 +131,7 @@ public class World {
         interactions1.put(chest1.getName(), chest1);
         interactions2.put(chest2.getName(), chest2);
         interactions3.put(key2.getName(), key2);
+        interactions6.put(key3.getName(), key3);
 
         interactions1.put(dagger.getName(), dagger);
         interactions1.put(leatherArmor.getName(), leatherArmor);
