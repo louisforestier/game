@@ -1,11 +1,11 @@
 package game;
 
-public class ChestWithLock extends Container implements Lockable{
+public class ContainerWithLock extends Container implements Lockable{
 	
 	private boolean isLocked;
     private Key key;
 
-	public ChestWithLock(String name, String description, Key key) {
+	public ContainerWithLock(String name, String description, Key key) {
 		super(name, description);
 		this.key = key;
         this.isLocked = true;
