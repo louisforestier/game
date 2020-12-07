@@ -25,13 +25,15 @@ public class World {
 
         //description des clefs
         String keyDesc1 = "This looks like a small key, made of iron. ";
-        String keyDesc2 = "This is a big old gold key. Its shine has been tarnished by time.";
+        String keyDesc2 = "This is a big gold key. Its shine has been tarnished by time.";
         String keyDesc3 = "This looks like an heavy key, made of iron. ";
+        String keyDesc4 = "This is a big old key, made of iron. ";
 
         //création des clefs
         Key key1 = new Key("small_key", keyDesc1);
         Key key2 = new Key("gold_key", keyDesc2);
         Key key3 = new Key("heavy_key", keyDesc3);
+        Key key4 = new Key("big_key", keyDesc4);
         
         //description des coffres
         String chestDesc1 = "This looks like an old wooden chest. ";
@@ -39,7 +41,7 @@ public class World {
         
         //creation des coffres
         Container chest1 = new Container("wooden_chest", chestDesc1);
-        ContainerWithLock chest2 = new ContainerWithLock("golden_chest", chestDesc2, key2);
+        ContainerWithLock chest2 = new ContainerWithLock("golden_chest", chestDesc2, key4);
         
         //descriptions d'objets divers
         String goldDesc1 = "There are gold_coins.";
@@ -53,6 +55,7 @@ public class World {
         
         //ajout de contenus dans les coffres
         chest1.getContent().put(scroll1.getName(), scroll1);
+        chest1.getContent().put(key1.getName(), key1);
         chest2.getContent().put(gold1.getName(), gold1);
 
         //description des portes
@@ -87,25 +90,38 @@ public class World {
 
         //creation de listes pour l'interaction talk
         List<String> playerChoice1 = new ArrayList<>();
+        List<String> playerChoice2 = new ArrayList<>();
         List<String> dialogs1 = new ArrayList<>();
+        List<String> dialogs2 = new ArrayList<>();
 
         //choix des dialogues du joueur
         playerChoice1.add("Hello.");
         playerChoice1.add("I need to find a key.");
+        playerChoice2.add("Hello.");
+	    playerChoice2.add("I need to find exit.");
 
         //choix des reponses du pnj
         dialogs1.add("Hello, my name is Michel the old man.");
-        dialogs1.add("You are looking for a key ? I think I saw one in the hall and another in the throne room.");
+        dialogs1.add("You are looking for a key ? I think I saw one in a chest of the hall and another in the throne room.");
+        dialogs2.add("Hello, I am a servant.");
+        dialogs2.add("You want to find the exit, go see the king.");
 
         //creation 
         Dialog dialog1 = new Dialog(playerChoice1,dialogs1);
+        Dialog dialog2 = new Dialog(playerChoice2, dialogs2);
 
         //creation d'un pnj
         Commoner oldman = new Commoner("old_man", "Just an old man",dialog1);
-        interactions2.put(oldman.getName(), oldman);
+        interactions1.put(oldman.getName(), oldman);
+        
+        Commoner servant = new Commoner("servant", "A big servant, with red noze", dialog2);
+        interactions5.put(servant.getName(), servant);
 
-        Guard guard = new Guard("guard", "A dangerous guard, armed with a spike");
-        interactions3.put(guard.getName(), guard);
+        Guard guard1 = new Guard("guard", "A dangerous guard, armed with a spike");
+        interactions2.put(guard1.getName(), guard1);
+        
+        Guard guard2 = new Guard("guard", "A tall an dangerous guard, armed with a spike");
+        interactions4.put(guard2.getName(), guard2);
 
         String leatherArmorDesc = "The breastplate and shoulder protectors of this armor are made of leather that has been stiffened \n" +
                 "by being boiled in oil. The rest of the armor is made of softer and more flexible materials.";
@@ -115,6 +131,7 @@ public class World {
         String scaleMailDesc = "This armor consists of a coat and leggings (and perhaps a separate skirt) of leather covered with \n" +
                 "overlapping pieces of metal, much like the scales of a fish. The suit includes gauntlets.";
         ScaleMail scaleMail = new ScaleMail("scale_mail", scaleMailDesc);
+        chest2.getContent().put(scaleMail.getName(), scaleMail);
 
         String plateArmorDesc = "Plate consists of shaped, interlocking metal plates to cover the entire body. A suit of plate includes\n" +
                 "gauntlets, heavy leather boots, a visored helmet, and thick layers of padding underneath the armor.\n" +
@@ -123,22 +140,25 @@ public class World {
 
         Dagger dagger = new Dagger("dagger", "iron dagger" );
         Sword sword = new Sword("sword", "iron sword");
-        //Greatsword greatsword = new Greatsword("greatsword", "iron greatsword");
+        chest2.getContent().put(sword.getName(), sword);
+        
+        Greatsword greatsword = new Greatsword("greatsword", "iron greatsword");
 
 
         //ajout des objets (coffres, clefs) dans les pieces qui serviront d'interaction
-        interactions1.put(key1.getName(), key1);
         interactions1.put(chest1.getName(), chest1);
-        interactions2.put(chest2.getName(), chest2);
-        interactions3.put(key2.getName(), key2);
-        interactions6.put(key3.getName(), key3);
-
         interactions1.put(dagger.getName(), dagger);
         interactions1.put(leatherArmor.getName(), leatherArmor);
-        chest2.getContent().put(sword.getName(), sword);
-        chest2.getContent().put(scaleMail.getName(), scaleMail);
-        interactions3.put(plateArmor.getName(), plateArmor);
-        //interactions3.put(greatsword.getName(), greatsword);
+        
+        interactions2.put(plateArmor.getName(), plateArmor);
+        interactions2.put(greatsword.getName(), greatsword);
+        
+        interactions3.put(key2.getName(), key2);
+        
+        interactions6.put(chest2.getName(), chest2);
+        interactions6.put(key3.getName(), key3);
+       
+        
         
         //coeficient d'attaque de chaque piece
         int coef1 = 50;
