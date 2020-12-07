@@ -27,10 +27,12 @@ public class Interpreter {
         this.commands.put("attack", attack);
         Command equip = new Equip(hero);
         this.commands.put("equip", equip);
+        Command stat = new Stat(hero);
+        this.commands.put("stat", stat);
 
     }
 
-    public Interpreter(Map<String,Command> commands){
+    public Interpreter(Map<String, Command> commands) {
         this.commands.putAll(commands);
     }
 

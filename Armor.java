@@ -18,6 +18,11 @@ public class Armor extends Item implements Equipable {
     @Override
     public void equip(Character character) {
         character.equipArmor(this);
+    }
 
+    @Override
+    public void print() {
+        super.print();
+        System.out.println("Armor class : " +  this.armorClass);
     }
 }
