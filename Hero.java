@@ -17,11 +17,7 @@ public class Hero extends Character {
     }
 
     public boolean isGoalAchieved() {
-        return goalAchieved;
-    }
-
-    public void setGoalAchieved(boolean goalAchieved) {
-        this.goalAchieved = goalAchieved;
+        return this.goalAchieved;
     }
 
     public Combat getOngoingCombat() {
@@ -35,6 +31,9 @@ public class Hero extends Character {
     public void go(Door door) throws NullPointerException{
         this.setPlace(door.cross());
         this.look();
+        if(this.getPlace().getName() == "exit") {
+        	this.goalAchieved = true;
+        }
     }
 
     public void look() {

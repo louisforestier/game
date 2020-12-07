@@ -13,7 +13,7 @@ public class World {
         String desc3 = "You are in the gallery.";
         String desc4 = "You are in the guard room.";
         String desc5 = "You are in the cellar.";
-        String desc6 = "You are in the throne room.";
+        String desc6 = "You are in the throne room, but the kind is not here.";
         String desc7 = "You are outside.";
 
         Map<String, Interaction> interactions1 = new HashMap<>();
@@ -123,7 +123,7 @@ public class World {
 
         Dagger dagger = new Dagger("dagger", "iron dagger" );
         Sword sword = new Sword("sword", "iron sword");
-        Greatsword greatsword = new Greatsword("greatsword", "iron greatsword");
+        //Greatsword greatsword = new Greatsword("greatsword", "iron greatsword");
 
 
         //ajout des objets (coffres, clefs) dans les pieces qui serviront d'interaction
@@ -137,7 +137,7 @@ public class World {
         chest2.getContent().put(sword.getName(), sword);
         chest2.getContent().put(scaleMail.getName(), scaleMail);
         interactions3.put(plateArmor.getName(), plateArmor);
-        interactions3.put(greatsword.getName(), greatsword);
+        //interactions3.put(greatsword.getName(), greatsword);
         
         //coeficient d'attaque de chaque piece
         int coef1 = 50;
