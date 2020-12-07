@@ -4,13 +4,20 @@ public class DoorWithLock extends Door implements Lockable {
 
     private boolean isLocked;
     private Key key;
+    private DoorWithLock mirrorDoor;
 
     public DoorWithLock(Key key, String description) {
         super(description);
         this.key = key;
         this.isLocked = true;
+        this.mirrorDoor = null;
     }
 
+    public void setMirrorDoor(Door mirrorDoor) {
+        if (mirrorDoor instanceof DoorWithLock) {
+            this.mirrorDoor = (DoorWithLock) mirrorDoor;
+        }
+    }
     
     public void printKeyForThisDoor() {
         System.out.println("This door can be unlocked with a" + this.key.getName() + ".");
@@ -21,10 +28,12 @@ public class DoorWithLock extends Door implements Lockable {
     }
 
     public boolean changeMirrorDoor() {
-        if (this.getMirrorDoor().getIsLocked() != this.isLocked) {
-            this.getMirrorDoor().switchLockedForMirrorDoor();
-        }
-        return this.getMirrorDoor().getIsLocked();
+    	if(this.mirrorDoor != null) {
+    		if (this.mirrorDoor.getIsLocked() != this.isLocked) {
+    			this.mirrorDoor.switchLockedForMirrorDoor();
+    		}
+    		return this.mirrorDoor.getIsLocked();
+    	} else return false;
     }
 
     public boolean switchLockedForMirrorDoor() {
