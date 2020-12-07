@@ -39,7 +39,7 @@ public class World {
         
         //creation des coffres
         Container chest1 = new Container("wooden_chest", chestDesc1);
-        ChestWithLock chest2 = new ChestWithLock("golden_chest", chestDesc2, key2);
+        ContainerWithLock chest2 = new ContainerWithLock("golden_chest", chestDesc2, key2);
         
         //descriptions d'objets divers
         String goldDesc1 = "There are gold_coins.";
