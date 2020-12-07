@@ -18,8 +18,10 @@ public class Equip extends Command {
 
     @Override
     public void launchCommand(List<String> argument) throws InvalidArgumentNumberException, NullPointerException {
-        if (argument.size() == Equip.NB_ARG)
+        if (argument.size() == Equip.NB_ARG) {
             stringtoEquipable(argument.get(0)).equip(hero);
+            System.out.println("You equip " + argument.get(0));
+        }
         else throw new InvalidArgumentNumberException();
     }
 
