@@ -9,6 +9,7 @@ public class Game {
     private World world;
     private Scanner scanner;
     private Interpreter interpreter;
+    private Random dice = new Random();
 
     public Game(Scanner input) {
         this.hero = new Hero();
@@ -21,7 +22,9 @@ public class Game {
         return scanner;
     }
 
-    public void history(){
+
+
+    public void history() {
         System.out.println("");
         System.out.println("Hello traveler and welcome to Morlynn Castle.");
         System.out.println("Your quest : find keys to get out and, maybe, got your hands on a great treasure.");
@@ -31,7 +34,7 @@ public class Game {
         System.out.println("in Morlynn Castle");
         System.out.println("...");
     }
-    
+
     public void help() {
         System.out.println("You can use the commands :");
         System.out.println("go with a direction to move through a door to the next room in this direction, if it exists.");
@@ -71,14 +74,25 @@ public class Game {
     }
 
     public void runGame() {
-        while (this.isRunning) {
+        while (this.isRunning && this.hero.isAlive() && !this.hero.isGoalAchieved()) {
             String input = this.scanner.nextLine();
-            this.interpreter.interpret(input);
+            if (this.hero.getPlace().getEnemiesInPlace().size() != 0){
+                int randomEnemyDetection = this.dice.nextInt(100) + 1;
+                if (randomEnemyDetection < this.hero.getPlace().getENEMY_DETECTION_THRESHOLD()){
+                    //attaque le "premier" ennemi dans la hashmap pour déclencher le combat
+                    this.interpreter.interpret("attack " + this.hero.getPlace().getEnemiesInPlace().keySet().stream().findFirst().get());
+                } else this.interpreter.interpret(input);
+            } else this.interpreter.interpret(input);
         }
     }
 
     public void ending() {
-        System.out.println("Thank you for playing to Morlynn Castle.");
+        if (this.hero.isAlive()){
+            if (this.hero.isGoalAchieved()){
+                System.out.println("You have completed the story !");
+            }
+        } else System.out.println("You died.");
+        System.out.println("Thank you for playing Morlynn Castle.");
     }
 
     public static void main(String[] args) {

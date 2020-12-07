@@ -85,7 +85,7 @@ public class ChestWithLock extends Container implements Lockable{
 	}
 	
 	public void printKeyForThisChest() {
-        System.out.println("This door can be unlocked with a" + this.key.getName() + ".");
+        System.out.println("This chest can be unlocked with a " + this.key.getName() + ".");
     }
 	
 }

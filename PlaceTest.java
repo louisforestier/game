@@ -19,8 +19,8 @@ public class PlaceTest {
     	d1 = new Door("testdoor1");
         Map<String, Interaction> l1 = new HashMap<>();
         Map<String, Interaction> l2 = new HashMap<>();
-    	p1 = new Place("start", "p1", l1);
-    	p2 = new Place("end", "p2", l2);
+    	p1 = new Place("start", "p1", l1,0);
+    	p2 = new Place("end", "p2", l2,0);
     }
 
     @Test

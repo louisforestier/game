@@ -19,7 +19,7 @@ public class Dialog {
         this.playerChoices.add(dialog);
     }
 
-    public int getPLayerChoice(Scanner input) {
+    public int getPlayerChoice(Scanner input) {
         int choice = -1;
         System.out.println("Please input a number corresponding to the desired dialog.");
         while (choice < 1 || choice > this.playerChoices.size() + 1) {
@@ -44,8 +44,10 @@ public class Dialog {
     }
 
     public void startDialog(Talkable t, Folk folk, Scanner input) {
+        //le t qui correspond au joueur ne sert à rien mais avec plus de temps, on aurait pu implémenter
+        //un système d'échange pour permettre au joueur d'acheter des objets aux personnages non joueurs.
         this.printOptions();
-        int choice = this.getPLayerChoice(input) - 1;
+        int choice = this.getPlayerChoice(input) - 1;
         while (choice != this.playerChoices.size()) {
             System.out.println(this.Dialogs.get(choice));
             try {
@@ -56,7 +58,7 @@ public class Dialog {
                 Thread.currentThread().interrupt();
             }
             this.printOptions();
-            choice = this.getPLayerChoice(input) - 1;
+            choice = this.getPlayerChoice(input) - 1;
         }
         System.out.println("You say goodbye to " + folk.getName());
     }

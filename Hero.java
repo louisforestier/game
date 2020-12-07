@@ -6,9 +6,30 @@ public class Hero extends Character implements Talkable{
 
     private static final String NAME = "hero";
     private static final String DESCRIPTION = "You never watched a mirror before ?";
+    private static final int STARTING_HP = 10;
+    private static final int STARTING_ATT_BONUS = 5;
+    private static final int STARTING_DMG_BONUS = 3;
+    private boolean goalAchieved = false;
+    private Combat ongoingCombat = null;
 
     public Hero() {
-        super(Hero.NAME, Hero.DESCRIPTION);
+        super(Hero.NAME, Hero.DESCRIPTION,Hero.STARTING_HP, Hero.STARTING_ATT_BONUS, Hero.STARTING_DMG_BONUS);
+    }
+
+    public boolean isGoalAchieved() {
+        return goalAchieved;
+    }
+
+    public void setGoalAchieved(boolean goalAchieved) {
+        this.goalAchieved = goalAchieved;
+    }
+
+    public Combat getOngoingCombat() {
+        return ongoingCombat;
+    }
+
+    public void setOngoingCombat(Combat ongoingCombat) {
+        this.ongoingCombat = ongoingCombat;
     }
 
     public void go(Door door) throws NullPointerException{
@@ -46,4 +67,6 @@ public class Hero extends Character implements Talkable{
     public void talk(Talkable t, Scanner input) {
         t.talk(this, input);
     }
+
+
 }

@@ -33,8 +33,8 @@ public class DoorWithLockTest {
         l2 = new HashMap<>();
         l1.put("end", d1);
         l2.put("start", d2);
-        p1 = new Place("start", "p1", l1);
-        p2 = new Place("end", "p2", l2);
+        p1 = new Place("start", "p1", l1,0);
+        p2 = new Place("end", "p2", l2,0);
         d1.setEntrance(p1);
         d1.setExit(p2);
         d2.setEntrance(p2);

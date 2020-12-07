@@ -23,6 +23,15 @@ public class Interpreter {
         this.commands.put("help", help);
         Command talk = new Talk(hero, game);
         this.commands.put("talk", talk);
+        Command attack = new Attack(hero, game);
+        this.commands.put("attack", attack);
+        Command equip = new Equip(hero);
+        this.commands.put("equip", equip);
+
+    }
+
+    public Interpreter(Map<String,Command> commands){
+        this.commands.putAll(commands);
     }
 
     public void interpret(String input) {

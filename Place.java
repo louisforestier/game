@@ -6,12 +6,14 @@ public class Place extends Interaction {
 
     private final String name;
     private Map<String, Interaction> interactions = new HashMap<>();
+    private final int ENEMY_DETECTION_THRESHOLD;
 
 
-    public Place(String name, String description, Map<String, Interaction> interactions) {
+    public Place(String name, String description, Map<String, Interaction> interactions, int enemy_detection) {
         super(description);
         this.name = name;
-        if (interactions != null){
+        this.ENEMY_DETECTION_THRESHOLD = enemy_detection;
+        if (interactions != null) {
             this.interactions.putAll(interactions);
         }
     }
@@ -22,6 +24,10 @@ public class Place extends Interaction {
 
     public String getName() {
         return this.name;
+    }
+
+    public int getENEMY_DETECTION_THRESHOLD() {
+        return ENEMY_DETECTION_THRESHOLD;
     }
 
     public void addCharacter(String name, Character c) {
@@ -51,6 +57,18 @@ public class Place extends Interaction {
 
     public void takeOut(Item i) {
         this.interactions.remove(i.getName());
+    }
+
+    public Map<String, Character> getEnemiesInPlace() {
+        Map<String, Character> enemies = new HashMap<>();
+        this.interactions.forEach((k, v) -> {
+                    if (v instanceof NonPlayerCharacter && ((NonPlayerCharacter) v).isAlive() && ((NonPlayerCharacter) v).isHostile()) {
+                        enemies.put(((Character) v).getName(), (Character) v);
+                    }
+                }
+
+        );
+        return enemies;
     }
 }
 

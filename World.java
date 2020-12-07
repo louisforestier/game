@@ -38,9 +38,9 @@ public class World {
         
         String scrollDesc1 = "This is an old tattered scroll. ";
         
-        String scrollContenu1 = "This scroll allows you to know the key to a door.";
+        String scrollContent1 = "This scroll allows you to know the key to a door.";
         
-        Scroll scroll1 = new Scroll("knock_scroll", scrollDesc1, scrollContenu1);
+        Scroll scroll1 = new Scroll("knock_scroll", scrollDesc1, scrollContent1);
         
         //ajout de contenus dans les coffres
         chest1.getContent().put(scroll1.getName(), scroll1);
@@ -74,8 +74,29 @@ public class World {
         Dialog dialog1 = new Dialog(playerChoice1,dialogs1);
 
         //creation d'un pnj
-        Folk f1 = new Folk("old_man", "Just an old man", false, dialog1);
+        Folk f1 = new Folk("old_man", "Just an old man", false, dialog1, 3,1,1);
         interactions2.put(f1.getName(), f1);
+
+        NonPlayerCharacter guard = new NonPlayerCharacter("guard", "A dangerous guard, armed with a spike", true, 7,3,2);
+        interactions3.put(guard.getName(), guard);
+
+        String leatherArmorDesc = "The breastplate and shoulder protectors of this armor are made of leather that has been stiffened \n" +
+                "by being boiled in oil. The rest of the armor is made of softer and more flexible materials.";
+        Armor leatherArmor = new Armor("leather_armor",leatherArmorDesc, 13);
+
+        String scaleMailDesc = "This armor consists of a coat and leggings (and perhaps a separate skirt) of leather covered with \n" +
+                "overlapping pieces of metal, much like the scales of a fish. The suit includes gauntlets.";
+        Armor scaleMail = new Armor("scale_mail",scaleMailDesc, 15);
+
+        String plateArmorDesc = "Plate consists of shaped, interlocking metal plates to cover the entire body. A suit of plate includes\n" +
+                "gauntlets, heavy leather boots, a visored helmet, and thick layers of padding underneath the armor.\n" +
+                "Buckles and straps distribute the weight over the body.";
+        Armor plateArmor = new Armor("plate_armor", plateArmorDesc, 18);
+
+        Weapon dagger = new Weapon("dagger", "iron dagger", 4 );
+        Weapon sword = new Weapon("sword", "iron sword", 6);
+        Weapon greatsword = new Weapon("greatsword", "iron greatsword", 12);
+
 
         //ajout des objets (coffres, clefs) dans les pieces qui serviront d'interaction
         interactions1.put(key1.getName(), key1);
@@ -83,10 +104,17 @@ public class World {
         interactions2.put(chest2.getName(), chest2);
         interactions3.put(key2.getName(), key2);
 
+        interactions1.put(dagger.getName(), dagger);
+        interactions1.put(leatherArmor.getName(), leatherArmor);
+        chest2.getContent().put(sword.getName(), sword);
+        chest2.getContent().put(scaleMail.getName(), scaleMail);
+        interactions3.put(plateArmor.getName(), plateArmor);
+        interactions3.put(scaleMail.getName(), scaleMail);
+
         //création des pieces
-        Place p1 = new Place("hall", desc1, interactions1);
-        Place p2 = new Place("guard_room", desc2, interactions2);
-        Place p3 = new Place("throne_room", desc3, interactions3);
+        Place p1 = new Place("hall", desc1, interactions1, 101);
+        Place p2 = new Place("guard_room", desc2, interactions2, 10);
+        Place p3 = new Place("throne_room", desc3, interactions3,20);
 
         //creation des entrees-sorties des portes
         d1.setEntrance(p1);
