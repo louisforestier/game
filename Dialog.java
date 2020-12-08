@@ -44,8 +44,6 @@ public class Dialog {
     }
 
     public void startDialog(Folk folk, Scanner input) {
-        //le t qui correspond au joueur ne sert à rien mais avec plus de temps, on aurait pu implémenter
-        //un système d'échange pour permettre au joueur d'acheter des objets aux personnages non joueurs.
         this.printOptions();
         int choice = this.getPlayerChoice(input) - 1;
         while (choice != this.playerChoices.size()) {

@@ -1,7 +1,7 @@
 package game;
 
 public class Key extends Item implements Usable {
-    
+
     public Key(String name, String description) {
         super(name, true, description);
     }
@@ -12,12 +12,7 @@ public class Key extends Item implements Usable {
     }
 
     @Override
-    public void use(Receiver obj) throws ClassCastException {
-        if (obj instanceof Lockable) {
-            obj.receive(this);
-        } else {
-            System.out.println("You can't use this with this object.");
-        }
-
+    public void use(Receiver obj) throws ClassCastException, NullPointerException {
+        obj.receive(this);
     }
 }
