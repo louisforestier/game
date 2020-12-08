@@ -10,6 +10,10 @@ public class ContainerWithLock extends Container implements Lockable{
 		this.key = key;
         this.isLocked = true;
 	}
+	
+	public boolean getIsLocked() {
+		return this.isLocked;
+	}
 
 	@Override
     public void receive(Usable u) throws ClassCastException{

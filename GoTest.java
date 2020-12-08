@@ -56,12 +56,12 @@ public class GoTest {
 	
 	@Test
 	public void convertStringToDoor2() {
-		assertDoesNotThrow(() -> go.convertStringToDoor(d1.getExit().getName()));
+		assertDoesNotThrow(() -> go.convertStringToDoor("p2"));
 	}
 	
 	@Test
 	public void convertStringToDoor3() {
-		assertDoesNotThrow(() -> go.convertStringToDoor(d3.getExit().getName()));
+		assertDoesNotThrow(() -> go.convertStringToDoor("p3"));
 	}
 
     @Test
@@ -69,4 +69,20 @@ public class GoTest {
         List<String> arguments = new LinkedList<>(); 
     	assertThrows(InvalidArgumentNumberException.class, () -> go.launchCommand(arguments));
     }
+    
+    @Test
+	public void launchCommand2() {
+		List<String> arguments = new LinkedList<>(); 
+		arguments.add("arg1");
+		arguments.add("arg2");
+		assertThrows(InvalidArgumentNumberException.class, () -> go.launchCommand(arguments));
+	}
+
+    
+	@Test
+	public void launchCommand4() {
+		List<String> arguments = new LinkedList<>(); 
+		arguments.add("arg1");
+		assertThrows(NullPointerException.class, () -> go.launchCommand(arguments));
+	}
 }
