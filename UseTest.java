@@ -3,10 +3,8 @@ package game;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
@@ -63,10 +61,23 @@ public class UseTest {
     }
 
     @Test
-    // test boite blanche ?
+    // test boite blanche
     public void convertStringToUsable2() {
         assertThrows(ClassCastException.class, () -> use.convertStringToUsable(hero.getName()));
     }
+
+    @Test
+    // test boite blanche
+    public void convertStringToUsable3() {
+        assertDoesNotThrow(() -> use.convertStringToUsable("arg"));
+    }
+
+    @Test
+    // test boite blanche ou noire ?
+    public void convertStringToUsable4() {
+        assertSame(null, use.convertStringToUsable("arg"));
+    }
+
 
     @Test
     //test boite noire
@@ -78,6 +89,12 @@ public class UseTest {
     //test boite blanche
     public void convertStringToReceiver2() {
         assertThrows(ClassCastException.class, () -> use.convertStringToReceiver(d1.getExit().getName()));
+    }
+
+    @Test
+    //test boite blanche
+    public void convertStringToReceiver3() {
+        assertDoesNotThrow(() -> use.convertStringToReceiver("arg"));
     }
 
     @Test

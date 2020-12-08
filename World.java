@@ -117,10 +117,10 @@ public class World {
         Commoner servant = new Commoner("servant", "A big servant, with red noze", dialog2);
         interactions5.put(servant.getName(), servant);
 
-        Guard guard1 = new Guard("guard", "A dangerous guard, armed with a spike");
+        Guard guard1 = new Guard("guard1", "A dangerous guard, armed with a spike");
         interactions2.put(guard1.getName(), guard1);
         
-        Guard guard2 = new Guard("guard", "A tall an dangerous guard, armed with a spike");
+        Guard guard2 = new Guard("guard2", "A tall an dangerous guard, armed with a spike");
         interactions4.put(guard2.getName(), guard2);
 
         String leatherArmorDesc = "The breastplate and shoulder protectors of this armor are made of leather that has been stiffened \n" +

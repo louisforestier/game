@@ -13,7 +13,7 @@ public class Interpreter {
         this.commands.put("use", use);
         Command look = new Look(hero);
         this.commands.put("look", look);
-        Command take = new Take(hero, game);
+        Command take = new Take(hero);
         this.commands.put("take", take);
         Command quit = new Quit(game);
         this.commands.put("quit", quit);
@@ -21,9 +21,9 @@ public class Interpreter {
         this.commands.put("inventory", inventory);
         Command help = new Help(game,commands);
         this.commands.put("help", help);
-        Command talk = new Talk(hero, game);
+        Command talk = new Talk(hero, game.getScanner());
         this.commands.put("talk", talk);
-        Command attack = new Attack(hero, game);
+        Command attack = new Attack(hero, game.getScanner());
         this.commands.put("attack", attack);
         Command equip = new Equip(hero);
         this.commands.put("equip", equip);

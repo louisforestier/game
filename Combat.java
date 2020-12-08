@@ -10,15 +10,17 @@ public class Combat {
     private final Map<String, Character> enemies = new HashMap<>();
     private Interpreter combatInterpreter;
     private boolean running = true;
+    private Scanner scanner;
 
-    public Combat(Hero hero, Map<String, Character> enemies, Game game) {
-        Command attack = new Attack(hero, game);
+    public Combat(Hero hero, Map<String, Character> enemies, Scanner input) {
+        Command attack = new Attack(hero,input);
         Command flee = new Flee(hero);
         Map<String, Command> commands = new HashMap<>();
         commands.put("attack", attack);
         commands.put("flee", flee);
         this.combatInterpreter = new Interpreter(commands);
         this.enemies.putAll(enemies);
+        scanner = input;
     }
 
     public Map<String, Character> getEnemies() {
@@ -33,10 +35,10 @@ public class Combat {
         this.running = running;
     }
 
-    public void heroTurn(Scanner scanner) {
+    public void heroTurn() {
         boolean executed_command;
         do {
-            String input = scanner.nextLine();
+            String input = this.scanner.nextLine();
             executed_command = this.combatInterpreter.interpret(input);
         } while (!executed_command);
     }
@@ -46,8 +48,8 @@ public class Combat {
             enemy.attack(hero);
     }
 
-    private void combatTurn(Hero hero, Scanner scanner) {
-        this.heroTurn(scanner);
+    private void combatTurn(Hero hero) {
+        this.heroTurn();
         this.enemies.forEach((k, v) -> this.enemyTurn(hero, v));
     }
 
@@ -66,14 +68,15 @@ public class Combat {
         return hero.isAlive() && enemiesStillAlive.get();
     }
 
-    public void runCombat(Hero hero, Scanner scanner) {
+    public void runCombat(Hero hero) {
         System.out.println("Start of combat");
         while (this.running) {
             this.printCombatInfo(hero);
-            this.combatTurn(hero, scanner);
+            this.combatTurn(hero);
             this.running = this.running && this.endCombat(hero);
         }
         System.out.println("End of combat");
+        hero.setOngoingCombat(null);
     }
 
 

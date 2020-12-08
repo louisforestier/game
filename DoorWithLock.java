@@ -23,7 +23,7 @@ public class DoorWithLock extends Door implements Lockable {
     }
     
     public void printKeyForThisDoor() {
-        System.out.println("This door can be unlocked with a" + this.key.getName() + ".");
+        System.out.println("This door can be unlocked with a " + this.key.getName() + ".");
     }
 
     public boolean getIsLocked() {

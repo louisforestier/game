@@ -9,7 +9,7 @@ public class Take extends Command {
     
     private static Hero hero;
 
-    public Take(Hero hero, Game game) {
+    public Take(Hero hero) {
         super();
         Take.hero = hero;
     }

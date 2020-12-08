@@ -1,6 +1,7 @@
 package game;
 
 import java.util.List;
+import java.util.Scanner;
 
 
 public class Attack extends Command {
@@ -8,11 +9,11 @@ public class Attack extends Command {
     private static final int NB_ARG = 1;
 
     private Hero hero;
-    private Game game;
+    private Scanner scanner;
 
-    public Attack(Hero hero, Game game) {
+    public Attack(Hero hero, Scanner input) {
         this.hero = hero;
-        this.game = game;
+        this.scanner = input;
     }
 
     public Attackable stringToAttackableInPlace(String name) throws ClassCastException {
@@ -33,9 +34,9 @@ public class Attack extends Command {
                                 System.out.println("Hey ! What have I done to deserve this ?!");
                             }
                             ((NonPlayerCharacter) a).setHostile(true);
-                            Combat c = new Combat(this.hero, this.hero.getPlace().getEnemiesInPlace(), this.game);
+                            Combat c = new Combat(this.hero, this.hero.getPlace().getEnemiesInPlace(),this.scanner);
                             this.hero.setOngoingCombat(c);
-                            this.hero.getOngoingCombat().runCombat(this.hero, this.game.getScanner());
+                            this.hero.getOngoingCombat().runCombat(this.hero);
 
                         } else this.hero.attack(this.hero.getOngoingCombat().getEnemies().get(argument.get(0)));
                     } else {

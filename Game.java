@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Game {
 
-    private boolean isRunning = true;
+    private boolean running = true;
     private Hero hero;
     private World world;
     private Scanner scanner;
@@ -16,6 +16,8 @@ public class Game {
         this.scanner = input;
         this.interpreter = new Interpreter(this.hero, this);
     }
+
+
 
     public Scanner getScanner() {
         return scanner;
@@ -54,9 +56,10 @@ public class Game {
         System.out.println("Answer with yes or no.");
         switch (this.scanner.nextLine()) {
             case "yes":
-                this.isRunning = false;
+                this.running = false;
                 break;
             case "no":
+                System.out.println("You continue to play.");
                 break;
             default:
                 System.out.println("I didn't understand that.");
@@ -82,7 +85,7 @@ public class Game {
     public void runGame() {
         String input;
         boolean executed_command;
-        while (this.isRunning && this.hero.isAlive() && !this.hero.isGoalAchieved()) {
+        while (this.running && this.hero.isAlive() && !this.hero.isGoalAchieved()) {
             if (this.hero.getPlace().randomEncoutner()) {
                 //attaque le "premier" ennemi dans la hashmap pour déclencher le combat
                 input = ("attack " + this.hero.getPlace().getAnEnemyName());
