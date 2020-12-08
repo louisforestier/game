@@ -19,7 +19,7 @@ public class CharacterTest {
 
     @Before
     public void setUp() {
-        c1 = new NonPlayerCharacter("c1","",false,10,0,0);
+        c1 = new Guard("c1","");
         p1 = new Place("p1", "piece1", null, 100);
         p2 = new Place("p2", "piece2", null, 100);
         armor1 = new LeatherArmor("armor1" ,"" );
