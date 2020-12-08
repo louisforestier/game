@@ -11,7 +11,7 @@ public class Interpreter {
         this.commands.put("go", go);
         Command use = new Use(hero);
         this.commands.put("use", use);
-        Command look = new Look(hero, game);
+        Command look = new Look(hero);
         this.commands.put("look", look);
         Command take = new Take(hero, game);
         this.commands.put("take", take);
