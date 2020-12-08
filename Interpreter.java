@@ -29,6 +29,8 @@ public class Interpreter {
         this.commands.put("equip", equip);
         Command stat = new Stat(hero);
         this.commands.put("stat", stat);
+        Command flee = new Flee(hero);
+        this.commands.put("flee", flee);
 
     }
 

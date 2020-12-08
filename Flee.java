@@ -20,6 +20,6 @@ public class Flee extends Command{
 
     @Override
     public void help() {
-
+    	System.out.println("flee");
     }
 }

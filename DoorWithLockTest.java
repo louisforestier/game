@@ -4,15 +4,12 @@ package game;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
 
 
 public class DoorWithLockTest {
@@ -24,14 +21,11 @@ public class DoorWithLockTest {
     private Map<String, Interaction> l2;
     private Key key1;
     private Key key2;
-    private Scroll scroll;
-    
 
     @Before
     public void setUp() {
         key1 = new Key("key", "testkey1");
         key2 = new Key("wrongKey", "testkey2");
-        scroll = new Scroll("scroll", "one scroll", "this is magic");
         d1 = new DoorWithLock(key1, "testdoor1");
         d2 = new DoorWithLock(key1, "testdoor2");
         l1 = new HashMap<>();
@@ -49,11 +43,25 @@ public class DoorWithLockTest {
     }
     
     @Test
-    public void changeMirrorDoor() {
+    public void changeMirrorDoor1() {
+    	d1.setMirrorDoor(null);
+    	assertFalse(d1.changeMirrorDoor());
+    }
+    
+    @Test
+    public void changeMirrorDoor2() {
+    	assertTrue(d1.changeMirrorDoor());
+    }
+    
+    @Test
+    public void changeMirrorDoor3() {
+    	d1.unlock(key1);
+    	assertFalse(d1.changeMirrorDoor());
     }
 
     @Test
     public void switchLockedForMirrorDoor() {
+    	assertFalse(d1.switchLockedForMirrorDoor());
     }
     
     @Test

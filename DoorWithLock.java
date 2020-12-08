@@ -13,10 +13,8 @@ public class DoorWithLock extends Door implements Lockable {
         this.mirrorDoor = null;
     }
 
-    public void setMirrorDoor(Door mirrorDoor) {
-        if (mirrorDoor instanceof DoorWithLock) {
-            this.mirrorDoor = (DoorWithLock) mirrorDoor;
-        }
+    public void setMirrorDoor(DoorWithLock mirrorDoor) {
+    	this.mirrorDoor = mirrorDoor;   
     }
     
     public void printKeyForThisDoor() {
