@@ -9,7 +9,7 @@ public class Look extends Command{
 
 	private static Hero hero;
 	
-	public Look(Hero hero, Game game) {
+	public Look(Hero hero) {
 		super();
 		Look.hero = hero;
 	}

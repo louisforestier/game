@@ -10,7 +10,6 @@ import static org.junit.Assert.*;
 
 public class PlaceTest {
 
-	private Door d1;
     private Place p1;
     private Place p2;
     private Key key1;
@@ -20,7 +19,6 @@ public class PlaceTest {
 
     @Before
     public void setUp(){
-    	d1 = new Door("test_door1");
     	c1 = new Guard("c1", "test_c1");
     	c2 = new Guard("c2", "test_c2");
     	key1 = new Key("key1","test_key1");
