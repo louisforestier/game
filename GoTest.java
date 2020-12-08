@@ -21,9 +21,6 @@ public class GoTest {
 	private Place p1;
 	private Place p2;
 	private Place p3;
-	private Map<String, Interaction> l1;
-	private Map<String, Interaction> l2;
-	private Map<String, Interaction> l3;
 	private Door d1;
 	private DoorWithLock d2;
     private Key key1;
@@ -33,12 +30,9 @@ public class GoTest {
 		key1 = new Key("key", "testkey1");
 		d1 = new Door("is d1");
 		d2 = new DoorWithLock(key1, "testdoor1");
-		l1 = new HashMap<>();
-        l2 = new HashMap<>();
-        l3 = new HashMap<>();
-		p1 = new Place("p1", "is p1", l1, 0);
-		p2 = new Place("p2", "is p2", l2, 0);
-		p3 = new Place("p3", "is p3", l3, 0);
+		p1 = new Place("p1", "is p1", null, 0);
+		p2 = new Place("p2", "is p2", null, 0);
+		p3 = new Place("p3", "is p3", null, 0);
         d1.setEntrance(p1);
         d1.setExit(p2);
         d2.setEntrance(p1);
