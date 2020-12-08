@@ -1,9 +1,9 @@
 package game;
 
 import org.junit.Test;
+import org.junit.Before;
 import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class KeyTest {
     
@@ -20,12 +20,12 @@ public class KeyTest {
     }
 
     @Test
-    public String getName() {
+    public void getName() {
         assertEquals(k1.getName(), "key_one");
     }
 
     @Test
-    public boolean isTakable() {
+    public void isTakable() {
         assertTrue(k1.isTakable());
     }
     
@@ -34,12 +34,7 @@ public class KeyTest {
     }
     
     @Test
-    public void use_Receiver1() {
-        assertThrows(ClassCastException.class, () -> k1.use(d1));
-    }
-    
-    @Test
-    public void use_Receiver2() {
+    public void use_Receiver() {
         assertDoesNotThrow(() -> k1.use(r1));
     }
     
