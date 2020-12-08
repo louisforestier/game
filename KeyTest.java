@@ -5,6 +5,8 @@ import org.junit.Before;
 import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
+import org.junit.Before;
+
 public class KeyTest {
     
     private Key k1;

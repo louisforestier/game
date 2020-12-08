@@ -4,11 +4,21 @@ public class Door extends Interaction {
 
     private Place entrance;
     private Place exit;
+    private Door mirrorDoor;
 
     public Door(String description) {
         super(description);
         this.entrance = null;
         this.exit = null;
+        this.mirrorDoor = null;
+    }
+    
+    public void setMirrorDoor(Door mirrorDoor) {
+    	this.mirrorDoor = mirrorDoor;   
+    }
+    
+    public Door getMirrorDoor() {
+    	return this.mirrorDoor;
     }
 
     public void setEntrance(Place entrance) {

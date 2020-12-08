@@ -2,6 +2,7 @@ package game;
 
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 
@@ -15,6 +16,7 @@ import org.junit.Test;
 public class DoorWithLockTest {
     private DoorWithLock d1;
     private DoorWithLock d2;
+    private DoorWithLock d3;
     private Place p1;
     private Place p2;
     private Map<String, Interaction> l1;
@@ -28,6 +30,7 @@ public class DoorWithLockTest {
         key2 = new Key("wrongKey", "testkey2");
         d1 = new DoorWithLock(key1, "testdoor1");
         d2 = new DoorWithLock(key1, "testdoor2");
+        d3 = new DoorWithLock(key1, "testdoor3");
         l1 = new HashMap<>();
         l2 = new HashMap<>();
         l1.put("end", d1);
@@ -43,9 +46,24 @@ public class DoorWithLockTest {
     }
     
     @Test
+    public void setMirrorDoor() {
+    	d1.setMirrorDoor(d3);
+    	assertSame(d3, d1.getMirrorDoorForDoorWithLock());
+    }
+    
+    @Test
+    public void setMirrorDoor2() {
+    	assertNull(d3.getMirrorDoorForDoorWithLock());
+    }
+    
+    @Test
+    public void getMirrorDoorForDoorWithLock() {
+    	assertSame(d2, d1.getMirrorDoorForDoorWithLock());
+    }
+    
+    @Test
     public void changeMirrorDoor1() {
-    	d1.setMirrorDoor(null);
-    	assertFalse(d1.changeMirrorDoor());
+    	assertFalse(d3.changeMirrorDoor());
     }
     
     @Test
