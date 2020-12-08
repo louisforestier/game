@@ -162,9 +162,9 @@ public class World {
         
         //coeficient d'attaque de chaque piece
         int coef1 = 50;
-        int coef2 = 80;
+        int coef2 = 70;
         int coef3 = 10;
-        int coef4 = 90;
+        int coef4 = 70;
         int coef5 = 12;
         int coef6 = 60;
         int coef7 = 0;

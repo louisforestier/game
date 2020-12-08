@@ -27,7 +27,7 @@ public class Game {
         System.out.println("Hello traveler and welcome to Morlynn Castle.");
         System.out.println("Your quest : find keys to get out and, maybe, got your hands on a great treasure.");
         System.out.println("Not a big deal but beware!");
-        System.out.println("Monsters you've never seen are pacing up and down corridors.");
+        System.out.println("The guards will prevent you.");
         System.out.println("Good luck");
         System.out.println("in Morlynn Castle");
         System.out.println("...");
@@ -35,14 +35,17 @@ public class Game {
 
     public void help() {
         System.out.println("You can use the commands :");
-        System.out.println("go with a direction to move through a door to the next room in this direction, if it exists.");
-        System.out.println("help (which you are using right now) to get the details of the commands.");
-        System.out.println("look to get information about the room you are in.");
-        System.out.println("take object to put the object in your inventory, if you want to take an item from a chest, enter the name of the chest first.");
-        System.out.println("use object to use an object in your inventory, you can use one object on another.");
-        System.out.println("inventory allows you to see the objects in our inventory.");
-        System.out.println("talk to someone to get more information.");
-        System.out.println("quit if you want to quit the game.");
+        System.out.println("go : with a direction to move through a door to the next room in this direction, if it exists.");
+        System.out.println("help : (which you are using right now) to get the details of the commands, if you want a specific command specified after the help.");
+        System.out.println("look : to get information about the room you are in or an object.");
+        System.out.println("take : object to put the object in your inventory, if you want to take an item from a chest, enter the name of the chest first.");
+        System.out.println("use : object to use an object in your inventory, you can use one object on another.");
+        System.out.println("inventory : allows you to see the objects in our inventory, you can see a particular object.");
+        System.out.println("talk : to someone to get more information.");
+        System.out.println("quit : if you want to quit the game.");
+        System.out.println("attack : to someone.");
+        System.out.println("equip : an item if it is in your inventory.");
+        System.out.println("stat : gives the hero statistics.");
         System.out.println("");
     }
 

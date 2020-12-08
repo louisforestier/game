@@ -19,7 +19,7 @@ public class Interpreter {
         this.commands.put("quit", quit);
         Command inventory = new Inventory(hero);
         this.commands.put("inventory", inventory);
-        Command help = new Help(game, commands);
+        Command help = new Help(game,commands);
         this.commands.put("help", help);
         Command talk = new Talk(hero, game);
         this.commands.put("talk", talk);
@@ -29,9 +29,6 @@ public class Interpreter {
         this.commands.put("equip", equip);
         Command stat = new Stat(hero);
         this.commands.put("stat", stat);
-        Command flee = new Flee(hero);
-        this.commands.put("flee", flee);
-
     }
 
     public Interpreter(Map<String, Command> commands) {

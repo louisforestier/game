@@ -3,7 +3,7 @@ package game;
 public class Guard extends NonPlayerCharacter{
 
     private static boolean DEFAULT_HOSTILE = true;
-    private static int DEFAULT_HP = 7;
+    private static int DEFAULT_HP = 10;
     private static int DEFAULT_ATTACK_BONUS = 4;
     private static  int DEFAULT_DAMAGE_BONUS = 2;
 
