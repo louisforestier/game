@@ -13,7 +13,7 @@ public class Hero extends Character {
     private Combat ongoingCombat = null;
 
     public Hero() {
-        super(Hero.NAME, Hero.DESCRIPTION,Hero.STARTING_HP, Hero.STARTING_ATT_BONUS, Hero.STARTING_DMG_BONUS);
+        super(Hero.NAME, Hero.DESCRIPTION, Hero.STARTING_HP, Hero.STARTING_ATT_BONUS, Hero.STARTING_DMG_BONUS);
     }
 
     public boolean isGoalAchieved() {
@@ -28,12 +28,10 @@ public class Hero extends Character {
         this.ongoingCombat = ongoingCombat;
     }
 
-    public void go(Door door) throws NullPointerException{
+    public void go(Door door) throws NullPointerException {
         this.setPlace(door.cross());
         this.look();
-        if(this.getPlace().getName().equals("exit")) {
-        	this.goalAchieved = true;
-        }
+        this.goalAchieved = this.getPlace().getName().equals("exit");
     }
 
     public void look() {
@@ -48,10 +46,10 @@ public class Hero extends Character {
         this.getInventory().put(i.getName(), i);
         this.getPlace().takeOut(i);
     }
-    
+
     public void takeFromContainer(Container c, Item i) throws NullPointerException {
-    	this.getInventory().put(i.getName(), i);
-    	c.removeItem(i.getName());
+        this.getInventory().put(i.getName(), i);
+        c.removeItem(i.getName());
     }
 
     public void use(Usable object) throws NullPointerException {
@@ -66,7 +64,7 @@ public class Hero extends Character {
         t.talk(input);
     }
 
-    public void equip(Equipable equipable) throws  NullPointerException{
+    public void equip(Equipable equipable) throws NullPointerException {
         equipable.equip(this);
     }
 
