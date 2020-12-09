@@ -48,7 +48,7 @@ public class LookTest {
 	@Test
 	public void launchCommand4() {
 		List<String> arguments = new LinkedList<>(); 
-		arguments.add("gold");
+		arguments.add(gold.getName());
 		assertThrows(NullPointerException.class, () -> look.launchCommand(arguments));
 	}
 

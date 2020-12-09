@@ -18,11 +18,11 @@ public class Take extends Command {
         return (Item) hero.getPlace().getInteractions().get(name);
     }
     
-    public Container stringToChestInPlace(String name) throws ClassCastException {
+    public Container stringToContainerInPlace(String name) throws ClassCastException {
     	return (Container) hero.getPlace().getInteractions().get(name);
     }
     
-    public Item stringToItemInChest(String name, Container chest) {
+    public Item stringToItemInContainer(String name, Container chest) {
     	return chest.getContent().get(name);
     }
 
@@ -35,8 +35,8 @@ public class Take extends Command {
                 System.out.println("You add " + i.getName() + " to your inventory.");
             } else System.out.println("You can't take this.");
         } else if (argument.size() == NB_ARG_MAX){
-        	Container chest = this.stringToChestInPlace(argument.get(0));
-        	Item i = this.stringToItemInChest(argument.get(1), chest);
+        	Container chest = this.stringToContainerInPlace(argument.get(0));
+        	Item i = this.stringToItemInContainer(argument.get(1), chest);
         	if (i.isTakable()) {
         		hero.takeFromChest(chest, i);
         		System.out.println("You add " + i.getName() + " to your inventory.");
