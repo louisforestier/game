@@ -186,7 +186,7 @@ public class World {
         int coef4 = 70;
         int coef5 = 12;
         int coef6 = 60;
-        int coef7 = 0;
+        int coef7 = 100;
 
         //création des pieces
         Place hall = new Place("hall", desc1, interactionsH, coef1);
