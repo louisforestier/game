@@ -57,38 +57,38 @@ class TakeTest {
     @Test
         //test boite noire
     void stringToChestInPlace1() {
-        assertSame(container, take.stringToChestInPlace(container.getName()));
+        assertSame(container, take.stringToContainerInPlace(container.getName()));
     }
 
     @Test
         //test boite noire
     void stringToChestInPlace2() {
-        assertNull(take.stringToChestInPlace("arg"));
+        assertNull(take.stringToContainerInPlace("arg"));
     }
 
     @Test
         //test boite blanche ?
     void stringToChestInPlace3() {
-        assertThrows(ClassCastException.class, () -> take.stringToChestInPlace(key1.getName()));
+        assertThrows(ClassCastException.class, () -> take.stringToContainerInPlace(key1.getName()));
     }
 
     @Test
         //test boite blanche
     void stringToChestInPlace4() {
-        assertDoesNotThrow(() -> take.stringToChestInPlace(container.getName()));
+        assertDoesNotThrow(() -> take.stringToContainerInPlace(container.getName()));
     }
 
     @Test
         //test boite noire
     void stringToItemInChest1() {
-        assertSame(key2, take.stringToItemInChest(key2.getName(), container));
+        assertSame(key2, take.stringToItemInContainer(key2.getName(), container));
 
     }
 
     @Test
         //test boite noire
     void stringToItemInChest2() {
-        assertNull(take.stringToItemInChest(key1.getName(), container));
+        assertNull(take.stringToItemInContainer(key1.getName(), container));
     }
 
     @Test
