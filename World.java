@@ -16,12 +16,12 @@ public class World {
         String desc6 = "You are in the throne room, but the kind is not here.";
         String desc7 = "You are outside.";
 
-        Map<String, Interaction> interactions1 = new HashMap<>();
-        Map<String, Interaction> interactions2 = new HashMap<>();
-        Map<String, Interaction> interactions3 = new HashMap<>();
-        Map<String, Interaction> interactions4 = new HashMap<>();
-        Map<String, Interaction> interactions5 = new HashMap<>();
-        Map<String, Interaction> interactions6 = new HashMap<>();
+        Map<String, Interaction> interactionsH = new HashMap<>();
+        Map<String, Interaction> interactionsW = new HashMap<>();
+        Map<String, Interaction> interactionsG = new HashMap<>();
+        Map<String, Interaction> interactionsGr = new HashMap<>();
+        Map<String, Interaction> interactionsC = new HashMap<>();
+        Map<String, Interaction> interactionsT = new HashMap<>();
 
         //description des clefs
         String keyDesc1 = "This looks like a small key, made of iron. ";
@@ -67,61 +67,79 @@ public class World {
         String heavyDoorDesc = "This is an heavy wooden door";
 
         //creation des portes
-        Door d1 = new Door(woodenDoorDesc + unlockedDoor);
-        Door d2 = new Door(woodenDoorDesc + unlockedDoor);
+        Door dhg = new Door(woodenDoorDesc + unlockedDoor);
+        Door dgh = new Door(woodenDoorDesc + unlockedDoor);
         
-        DoorWithLock d3 = new DoorWithLock(key1, ironDoorDesc + lockedDoor);
-        DoorWithLock d4 = new DoorWithLock(key1, ironDoorDesc + lockedDoor);
+        DoorWithLock dhw = new DoorWithLock(key1, ironDoorDesc + lockedDoor);
+        DoorWithLock dwh = new DoorWithLock(key1, ironDoorDesc + lockedDoor);
         
-        DoorWithLock d5 = new DoorWithLock(key2, goldenDoorDesc + lockedDoor);
-        DoorWithLock d6 = new DoorWithLock(key2, goldenDoorDesc + lockedDoor);
+        DoorWithLock dgt = new DoorWithLock(key2, goldenDoorDesc + lockedDoor);
+        DoorWithLock dtg = new DoorWithLock(key2, goldenDoorDesc + lockedDoor);
         
-        Door d7 = new Door(woodenDoorDesc + unlockedDoor);
-        Door d8 = new Door(woodenDoorDesc + unlockedDoor);
+        Door dgc = new Door(woodenDoorDesc + unlockedDoor);
+        Door dcg = new Door(woodenDoorDesc + unlockedDoor);
         
-        DoorWithLock d9 = new DoorWithLock(key1, ironDoorDesc + lockedDoor);
-        DoorWithLock d10 = new DoorWithLock(key1, ironDoorDesc + lockedDoor);
+        DoorWithLock dwgr = new DoorWithLock(key1, ironDoorDesc + lockedDoor);
+        DoorWithLock dgrw = new DoorWithLock(key1, ironDoorDesc + lockedDoor);
         
-        Door d11 = new Door(woodenDoorDesc + unlockedDoor);
-        Door d12 = new Door(woodenDoorDesc + unlockedDoor);
+        Door dgrc = new Door(woodenDoorDesc + unlockedDoor);
+        Door dcgr = new Door(woodenDoorDesc + unlockedDoor);
         
-        DoorWithLock d13 = new DoorWithLock(key3, heavyDoorDesc + lockedDoor);
+        DoorWithLock de = new DoorWithLock(key3, heavyDoorDesc + lockedDoor);
         
 
         //creation de listes pour l'interaction talk
         List<String> playerChoice1 = new ArrayList<>();
         List<String> playerChoice2 = new ArrayList<>();
+        List<String> playerChoice3 = new ArrayList<>();
         List<String> dialogs1 = new ArrayList<>();
         List<String> dialogs2 = new ArrayList<>();
+        List<String> dialogs3 = new ArrayList<>();
 
         //choix des dialogues du joueur
         playerChoice1.add("Hello.");
         playerChoice1.add("I need to find a key.");
         playerChoice2.add("Hello.");
 	    playerChoice2.add("I need to find exit.");
+	    playerChoice3.add("Please to meet you, your majesty.");
+	    playerChoice3.add("I am an hero.");
+	    playerChoice3.add("I need to find exit.");
 
         //choix des reponses du pnj
         dialogs1.add("Hello, my name is Michel the old man.");
         dialogs1.add("You are looking for a key ? I think I saw one in a chest of the hall and another in the throne room.");
         dialogs2.add("Hello, I am a servant.");
         dialogs2.add("You want to find the exit, go see the king.");
+        dialogs3.add("Mmm...Who are you ? You killed my guards.");
+        dialogs3.add("What do you want from me ?");
+        dialogs3.add("You want to find the exit ! Ah ! Take this this key and go away.");
 
         //creation 
         Dialog dialog1 = new Dialog(playerChoice1,dialogs1);
         Dialog dialog2 = new Dialog(playerChoice2, dialogs2);
+        Dialog dialog3 = new Dialog(playerChoice3, dialogs3);
 
         //creation d'un pnj
         Commoner oldman = new Commoner("old_man", "Just an old man",dialog1);
-        interactions1.put(oldman.getName(), oldman);
+        interactionsH.put(oldman.getName(), oldman);
         
         Commoner servant = new Commoner("servant", "A big servant, with red noze", dialog2);
-        interactions5.put(servant.getName(), servant);
+        interactionsC.put(servant.getName(), servant);
+        
+        King king = new King("king", "He looks much richer than you, your deduction talents tell you he's the king.", dialog3);
+        interactionsT.put(king.getName(), king);
 
         Guard guard1 = new Guard("guard1", "A dangerous guard, armed with a spike");
-        interactions2.put(guard1.getName(), guard1);
+        interactionsW.put(guard1.getName(), guard1);
         
         Guard guard2 = new Guard("guard2", "A tall an dangerous guard, armed with a spike");
-        interactions4.put(guard2.getName(), guard2);
+        interactionsGr.put(guard2.getName(), guard2);
+        
+        Guard guard3 = new Guard("guard3", "A dangerous guard, armed with a spike");
+        interactionsT.put(guard3.getName(), guard3);
+        
+        Guard guard4 = new Guard("guard4", "A dangerous guard, armed with a spike");
+        interactionsT.put(guard4.getName(), guard4);
 
         String leatherArmorDesc = "The breastplate and shoulder protectors of this armor are made of leather that has been stiffened \n" +
                 "by being boiled in oil. The rest of the armor is made of softer and more flexible materials.";
@@ -146,19 +164,20 @@ public class World {
 
 
         //ajout des objets (coffres, clefs) dans les pieces qui serviront d'interaction
-        interactions1.put(chest1.getName(), chest1);
-        interactions1.put(dagger.getName(), dagger);
-        interactions1.put(leatherArmor.getName(), leatherArmor);
+        interactionsH.put(chest1.getName(), chest1);
+        interactionsH.put(dagger.getName(), dagger);
+        interactionsH.put(leatherArmor.getName(), leatherArmor);
         
-        interactions2.put(plateArmor.getName(), plateArmor);
-        interactions2.put(greatsword.getName(), greatsword);
+        interactionsW.put(plateArmor.getName(), plateArmor);
+        interactionsW.put(greatsword.getName(), greatsword);
         
-        interactions3.put(key2.getName(), key2);
+        interactionsC.put(key4.getName(), key4);
         
-        interactions6.put(chest2.getName(), chest2);
-        interactions6.put(key3.getName(), key3);
-       
+        interactionsG.put(key2.getName(), key2);
         
+        interactionsT.put(chest2.getName(), chest2);
+        interactionsT.put(key3.getName(), key3);
+   
         
         //coeficient d'attaque de chaque piece
         int coef1 = 50;
@@ -170,77 +189,78 @@ public class World {
         int coef7 = 0;
 
         //création des pieces
-        Place p1 = new Place("hall", desc1, interactions1, coef1);
-        Place p2 = new Place("weapon_room", desc2, interactions2, coef2);
-        Place p3 = new Place("gallery", desc3, interactions3, coef3);
-        Place p4 = new Place("guard_room", desc4, interactions4, coef4);
-        Place p5 = new Place("cellar", desc5, interactions5, coef5);
-        Place p6 = new Place("throne_room", desc6, interactions6,coef6);
-        Place p7 = new Place("exit", desc7, null, coef7);
+        Place hall = new Place("hall", desc1, interactionsH, coef1);
+        Place weaponroom = new Place("weapon_room", desc2, interactionsW, coef2);
+        Place gallery = new Place("gallery", desc3, interactionsG, coef3);
+        Place guardroom = new Place("guard_room", desc4, interactionsGr, coef4);
+        Place cellar = new Place("cellar", desc5, interactionsC, coef5);
+        Place throneroom = new Place("throne_room", desc6, interactionsT,coef6);
+        Place exit = new Place("exit", desc7, null, coef7);
         
         //creation des entrees-sorties des portes
-        d1.setEntrance(p1);
-        d1.setExit(p3);
-        d2.setEntrance(p3);
-        d2.setExit(p1);
+        dhg.setEntrance(hall);
+        dhg.setExit(gallery);
+        dgh.setEntrance(gallery);
+        dgh.setExit(hall);
 
-        d3.setEntrance(p1);
-        d3.setExit(p2);
-        d3.setMirrorDoor(d4);
-        d4.setEntrance(p2);
-        d4.setExit(p1);
-        d4.setMirrorDoor(d3);
+        dhw.setEntrance(hall);
+        dhw.setExit(weaponroom);
+        dhw.setMirrorDoor(dwh);
+        dwh.setEntrance(weaponroom);
+        dwh.setExit(hall);
+        dwh.setMirrorDoor(dhw);
         
-        d5.setEntrance(p3);
-        d5.setExit(p6);
-        d5.setMirrorDoor(d6);
-        d6.setEntrance(p6);
-        d6.setExit(p3);
-        d6.setMirrorDoor(d5);
+        dgt.setEntrance(gallery);
+        dgt.setExit(throneroom);
+        dgt.setMirrorDoor(dtg);
+        dtg.setEntrance(throneroom);
+        dtg.setExit(gallery);
+        dtg.setMirrorDoor(dgt);
         
-        d7.setEntrance(p3);
-        d7.setExit(p5);
-        d8.setEntrance(p5);
-        d8.setExit(p3);
+        dgc.setEntrance(gallery);
+        dgc.setExit(cellar);
+        dcg.setEntrance(cellar);
+        dcg.setExit(gallery);
         
-        d9.setEntrance(p2);
-        d9.setExit(p4);
-        d9.setMirrorDoor(d10);
-        d10.setEntrance(p4);
-        d10.setExit(p4);
-        d10.setMirrorDoor(d9);
+        dwgr.setEntrance(weaponroom);
+        dwgr.setExit(guardroom);
+        dwgr.setMirrorDoor(dgrw);
+        dgrw.setEntrance(guardroom);
+        dgrw.setExit(guardroom);
+        dgrw.setMirrorDoor(dwgr);
         
-        d11.setEntrance(p4);
-        d11.setExit(p5);
-        d12.setEntrance(p5);
-        d12.setExit(p4);
+        dgrc.setEntrance(guardroom);
+        dgrc.setExit(cellar);
+        dcgr.setEntrance(cellar);
+        dcgr.setExit(guardroom);
         
-        d13.setEntrance(p6);
-        d13.setExit(p7);
+        de.setEntrance(throneroom);
+        de.setExit(exit);
 
         //ajout des portes dans chaque piece
-        p1.getInteractions().put(d1.getExit().getName(), d1);
-        p1.getInteractions().put(d3.getExit().getName(), d3);
+        hall.getInteractions().put(dhg.getExit().getName(), dhg);
+        hall.getInteractions().put(dhw.getExit().getName(), dhw);
 
-        p2.getInteractions().put(d4.getExit().getName(), d4);
-        p2.getInteractions().put(d9.getExit().getName(), d9);
+        weaponroom.getInteractions().put(dwh.getExit().getName(), dwh);
+        weaponroom.getInteractions().put(dwgr.getExit().getName(), dwgr);
 
-        p3.getInteractions().put(d2.getExit().getName(), d2);
-        p3.getInteractions().put(d5.getExit().getName(), d5);
+        gallery.getInteractions().put(dgh.getExit().getName(), dgh);
+        gallery.getInteractions().put(dgt.getExit().getName(), dgt);
+        gallery.getInteractions().put(dgc.getExit().getName(), dgc);
         
-        p4.getInteractions().put(d10.getExit().getName(), d10);
-        p4.getInteractions().put(d11.getExit().getName(), d11);
+        guardroom.getInteractions().put(dgrw.getExit().getName(), dgrw);
+        guardroom.getInteractions().put(dgrc.getExit().getName(), dgrc);
         
-        p5.getInteractions().put(d12.getExit().getName(), d12);
-        p5.getInteractions().put(d8.getExit().getName(), d8);
+        cellar.getInteractions().put(dcgr.getExit().getName(), dcgr);
+        cellar.getInteractions().put(dcg.getExit().getName(), dcg);
         
-        p6.getInteractions().put(d6.getExit().getName(), d6);
-        p6.getInteractions().put(d13.getExit().getName(), d13);
+        throneroom.getInteractions().put(dtg.getExit().getName(), dtg);
+        throneroom.getInteractions().put(de.getExit().getName(), de);
 
         //ajout des pieces dans le monde
-        this.places.put(p1.getName(), p1);
-        this.places.put(p2.getName(), p2);
-        this.places.put(p3.getName(), p3);
+        this.places.put(hall.getName(), hall);
+        this.places.put(weaponroom.getName(), weaponroom);
+        this.places.put(gallery.getName(), gallery);
     }
 
     //
