@@ -22,6 +22,11 @@ public class Game {
     public Scanner getScanner() {
         return scanner;
     }
+    
+    //cette methode ne sert que pour les tests
+    public boolean getRunning() {
+    	return this.running;
+    }
 
 
     public void history() {
