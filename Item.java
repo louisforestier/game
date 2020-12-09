@@ -2,8 +2,8 @@ package game;
 
 public abstract class Item extends Interaction {
 
-    private String name;
-    private boolean takable;
+    private final String name;
+    private final boolean takable;
 
     public Item(String name, boolean takable, String description) {
         super(description);

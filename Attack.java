@@ -8,8 +8,8 @@ public class Attack extends Command {
 
     private static final int NB_ARG = 1;
 
-    private Hero hero;
-    private Scanner scanner;
+    private final Hero hero;
+    private final Scanner scanner;
 
     public Attack(Hero hero, Scanner input) {
         this.hero = hero;

@@ -3,7 +3,7 @@ package game;
 public class DoorWithLock extends Door implements Lockable {
 
     private boolean isLocked;
-    private Key key;
+    private final Key key;
 
     public DoorWithLock(Key key, String description) {
         super(description);
@@ -40,11 +40,7 @@ public class DoorWithLock extends Door implements Lockable {
     }
 
     public boolean switchLockedForMirrorDoor() {
-        if (this.isLocked) {
-            this.isLocked = false;
-        } else {
-            this.isLocked = true;
-        }
+        this.isLocked = !this.isLocked;
         return this.isLocked;
     }
 

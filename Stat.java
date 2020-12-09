@@ -6,7 +6,7 @@ public class Stat extends Command {
 
     private static final int NB_ARG = 0;
 
-    private Hero hero;
+    private final Hero hero;
 
     public Stat(Hero hero) {
         this.hero = hero;

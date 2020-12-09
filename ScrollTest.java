@@ -9,12 +9,11 @@ public class ScrollTest {
 	
 	private Scroll scroll;
 	private ContainerWithLock chest;
-	private Key key1;
-	
+
 	@Before
 	public void setUp() {
 		scroll = new Scroll("scroll", "is scroll", "testok");
-		key1 = new Key("key", "is key");
+		Key key1 = new Key("key", "is key");
 		chest = new ContainerWithLock("chest", "is chest", key1);
 	}
 	

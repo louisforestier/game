@@ -15,7 +15,6 @@ class TakeTest {
     private Key key1;
     private Key key2;
     private Container container;
-    private Place place;
 
     @BeforeEach
     void setUp() {
@@ -23,7 +22,7 @@ class TakeTest {
         key1 = new Key("key1", "test_key1");
         key2 = new Key("key2", "test_key2");
         container = new Container("container", "test_container");
-        place = new Place("place", "test_place", null, 0);
+        Place place = new Place("place", "test_place", null, 0);
         place.getInteractions().put(key1.getName(), key1);
         container.getContent().put(key2.getName(), key2);
         place.getInteractions().put(container.getName(), container);

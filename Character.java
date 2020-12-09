@@ -12,7 +12,7 @@ public abstract class Character extends Interaction implements Attackable, Attac
 
     private final String name;
     private Place place;
-    private Map<String, Item> inventory = new HashMap<>();
+    private final Map<String, Item> inventory = new HashMap<>();
     private boolean alive = true;
     private int currentHealthPoints;
     private int maxHealthPoints;
@@ -22,7 +22,7 @@ public abstract class Character extends Interaction implements Attackable, Attac
     private int damageBonus;
     private Armor armor = null;
     private Weapon weapon = null;
-    private Random dice = new Random();
+    private final Random dice = new Random();
 
     public Character(String name, String description, int maxHealthPoints, int attackBonus, int damageBonus) {
         super(description);
@@ -112,9 +112,7 @@ public abstract class Character extends Interaction implements Attackable, Attac
     public void printInventory() {
         System.out.println("You have :");
         if (!(this.inventory.isEmpty()))
-            this.inventory.forEach((k, v) -> {
-                System.out.println(k);
-            });
+            this.inventory.forEach((k, v) -> System.out.println(k));
         else {
             System.out.println("nothing J.S.");
         }

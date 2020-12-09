@@ -5,10 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -18,21 +16,18 @@ public class GoTest {
 	
 	private Go go;
 	private Hero hero;
-	private Place p1;
 	private Place p2;
-	private Place p3;
 	private Door d1;
 	private DoorWithLock d2;
-    private Key key1;
 
 	@Before
 	public void setUp() {
-		key1 = new Key("key", "testkey1");
+		Key key1 = new Key("key", "testkey1");
 		d1 = new Door("is d1");
 		d2 = new DoorWithLock(key1, "testdoor1");
-		p1 = new Place("p1", "is p1", null, 0);
+		Place p1 = new Place("p1", "is p1", null, 0);
 		p2 = new Place("p2", "is p2", null, 0);
-		p3 = new Place("p3", "is p3", null, 0);
+		Place p3 = new Place("p3", "is p3", null, 0);
         d1.setEntrance(p1);
         d1.setExit(p2);
         d2.setEntrance(p1);

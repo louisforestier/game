@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Interpreter {
 
-    private Map<String, Command> commands = new HashMap<>();
+    private final Map<String, Command> commands = new HashMap<>();
 
     public Interpreter(Hero hero, Game game) {
         Command go = new Go(hero);

@@ -4,7 +4,7 @@ import java.util.*;
 
 public class World {
 
-    private Map<String, Place> places = new HashMap<>();
+    private final Map<String, Place> places = new HashMap<>();
 
     public World() {
         //description des pieces

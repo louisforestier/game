@@ -3,7 +3,7 @@ package game;
 public class ContainerWithLock extends Container implements Lockable{
 	
 	private boolean isLocked;
-    private Key key;
+    private final Key key;
 
 	public ContainerWithLock(String name, String description, Key key) {
 		super(name, description);
@@ -61,7 +61,7 @@ public class ContainerWithLock extends Container implements Lockable{
 		if(!this.isLocked) {
 			System.out.println("There are :");
 			if (!(this.getContent().isEmpty())) {
-				this.getContent().forEach((k, v) -> {System.out.println(k);});
+				this.getContent().forEach((k, v) -> System.out.println(k));
 			} else {
 				System.out.println("really nothing.");
 			}

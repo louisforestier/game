@@ -12,10 +12,6 @@ class AttackTest {
     private Attack attack1;
     private Attack attack2;
     private Hero hero;
-    private Scanner scanner1;
-    private Scanner scanner2;
-    private Place p1;
-    private Dialog dialog;
     private Commoner commoner;
     private Guard guard;
     private Armor armor;
@@ -23,12 +19,12 @@ class AttackTest {
 
     @BeforeEach
     void setUp() {
-        scanner1 = new Scanner("flee");
-        scanner2 = new Scanner("attack guard\nflee");
+        Scanner scanner1 = new Scanner("flee");
+        Scanner scanner2 = new Scanner("attack guard\nflee");
         hero = new Hero();
-        p1 = new Place("p1", "test_p1", null, 0);
+        Place p1 = new Place("p1", "test_p1", null, 0);
         hero.setPlace(p1);
-        dialog = new Dialog(new ArrayList<>(), new ArrayList<>());
+        Dialog dialog = new Dialog(new ArrayList<>(), new ArrayList<>());
         commoner = new Commoner("commoner", "test_commoner", dialog);
         guard = new Guard("guard", "test_guard");
         armor = new LeatherArmor("armor", "test_armor");

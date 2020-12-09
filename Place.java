@@ -5,9 +5,9 @@ import java.util.*;
 public class Place extends Interaction {
 
     private final String name;
-    private Map<String, Interaction> interactions = new HashMap<>();
+    private final Map<String, Interaction> interactions = new HashMap<>();
     private final int ENEMY_DETECTION_THRESHOLD;
-    private Random dice = new Random();
+    private final Random dice = new Random();
 
 
     public Place(String name, String description, Map<String, Interaction> interactions, int enemy_detection) {

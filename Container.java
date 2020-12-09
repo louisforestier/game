@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Container extends Item {
 	
-	private Map<String, Item> content = new HashMap<>();
+	private final Map<String, Item> content = new HashMap<>();
 	
 	public Container(String name, String description) {
 		super(name, false, description);
@@ -32,7 +32,7 @@ public class Container extends Item {
 	public void printContent() {
 		System.out.println("There are :");
 		if (!(this.content.isEmpty()))
-			this.content.forEach((k, v) -> {System.out.println(k);});
+			this.content.forEach((k, v) -> System.out.println(k));
 		else {
 			System.out.println("nothing J.S.");
 		}

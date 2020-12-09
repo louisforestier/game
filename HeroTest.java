@@ -3,7 +3,6 @@ package game;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
@@ -17,10 +16,6 @@ public class HeroTest {
     private Hero hero;
     private Place p1;
     private Place p2;
-    private Place p3;
-    private Map<String, Interaction> l1;
-    private Map<String, Interaction> l2;
-    private Map<String, Interaction> l3;
     private Door d1;
     private DoorWithLock d2;
     private Door d3;
@@ -40,13 +35,13 @@ public class HeroTest {
         d3 = new Door("door with no entrance nor exit");
         chest = new Container("chest","chest_test");
         chest.getContent().put(key2.getName(), key2);
-        l1 = new HashMap<>();
+        Map<String, Interaction> l1 = new HashMap<>();
         l1.put("p2", d1);
         l1.put("p3", d2);
         l1.put(chest.getName(), chest);
         p1 = new Place("p1", "is p1", l1, 0);
         p2 = new Place("p2", "is p2", null, 0);
-        p3 = new Place("p3", "is p3", null, 0);
+        Place p3 = new Place("p3", "is p3", null, 0);
         d1.setEntrance(p1);
         d1.setExit(p2);
         d2.setEntrance(p1);

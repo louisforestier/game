@@ -11,15 +11,13 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class InventoryTest {
-	
-	private Hero hero;
+
 	private Inventory inventory;
-	private Book book;
-	
+
 	@Before
 	public void setUp(){
-		hero = new Hero();
-		book = new Book("book", "is book", "oui");
+		Hero hero = new Hero();
+		Book book = new Book("book", "is book", "oui");
 		hero.getInventory().put(book.getName(), book);
 		inventory = new Inventory(hero);
 	}

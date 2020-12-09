@@ -8,9 +8,9 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class Combat {
 
     private final Map<String, Character> enemies = new HashMap<>();
-    private Interpreter combatInterpreter;
+    private final Interpreter combatInterpreter;
     private boolean running = true;
-    private Scanner scanner;
+    private final Scanner scanner;
 
     public Combat(Hero hero, Map<String, Character> enemies, Scanner input) {
         this.combatInterpreter = new Interpreter(hero,input);
@@ -46,16 +46,12 @@ public class Combat {
 
     public void printCombatInfo(Hero hero) {
         System.out.println(hero.getName() + " - HP : " + hero.getCurrentHealthPoints() + "/" + hero.getMaxHealthPoints());
-        this.enemies.forEach((k, v) -> {
-            System.out.println(k + " - HP : " + v.getCurrentHealthPoints() + "/" + v.getMaxHealthPoints());
-        });
+        this.enemies.forEach((k, v) -> System.out.println(k + " - HP : " + v.getCurrentHealthPoints() + "/" + v.getMaxHealthPoints()));
     }
 
     public boolean endCombat(Hero hero) {
         AtomicBoolean enemiesStillAlive = new AtomicBoolean(false); //besoin d'un atomic boolean pour le foreach, aurait sinon pu utiliser  map.entrySet
-        this.enemies.forEach((k, v) -> {
-            enemiesStillAlive.set(enemiesStillAlive.get() || v.isAlive());
-        });
+        this.enemies.forEach((k, v) -> enemiesStillAlive.set(enemiesStillAlive.get() || v.isAlive()));
         return hero.isAlive() && enemiesStillAlive.get();
     }
 

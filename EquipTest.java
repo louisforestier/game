@@ -11,13 +11,12 @@ import static org.junit.jupiter.api.Assertions.*;
 class EquipTest {
 
     private Equip equip;
-    private Hero hero;
     private Key key;
     private Weapon weapon;
 
     @BeforeEach
     void setUp() {
-        hero = new Hero();
+        Hero hero = new Hero();
         key = new Key("key", "test_key");
         weapon = new Dagger("equipment", "test_equipment");
         hero.getInventory().put(weapon.getName(), weapon);

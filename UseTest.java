@@ -14,9 +14,6 @@ public class UseTest {
 
     private Use use;
     private Hero hero;
-    private Place p1;
-    private Place p2;
-    private Place p3;
     private Door d1;
     private DoorWithLock d2;
     private Key key1;
@@ -28,9 +25,9 @@ public class UseTest {
         key2 = new Key("key2", "testkey1");
         d1 = new Door("is d1");
         d2 = new DoorWithLock(key1, "testdoor1");
-        p1 = new Place("p1", "is p1", null, 0);
-        p2 = new Place("p2", "is p2", null, 0);
-        p3 = new Place("p3", "is p3", null, 0);
+        Place p1 = new Place("p1", "is p1", null, 0);
+        Place p2 = new Place("p2", "is p2", null, 0);
+        Place p3 = new Place("p3", "is p3", null, 0);
         d1.setEntrance(p1);
         d1.setExit(p2);
         d2.setEntrance(p1);

@@ -10,17 +10,14 @@ import static org.junit.jupiter.api.Assertions.*;
 class InterpreterTest {
 
     private Interpreter interpreter;
-    private Game game;
-    private Hero hero;
-    private Scanner scanner;
 
 
     @BeforeEach
     void setUp() {
-        scanner = new Scanner("");
-        game = new Game(scanner);
-        hero = new Hero();
-        interpreter = new Interpreter(hero,game);
+        Scanner scanner = new Scanner("");
+        Game game = new Game(scanner);
+        Hero hero = new Hero();
+        interpreter = new Interpreter(hero, game);
     }
 
 /*

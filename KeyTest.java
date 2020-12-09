@@ -9,14 +9,13 @@ public class KeyTest {
     
     private Key k1;
     private Receiver r1;
-    private Door d1;
-   
+
     @Before
     public void SetUp(){
         String name = "key_one";
         String description = "that's the key_one";
         k1 = new Key(name, description);
-        d1 = new Door("door");
+        Door d1 = new Door("door");
     }
 
     @Test
@@ -28,11 +27,7 @@ public class KeyTest {
     public void isTakable() {
         assertTrue(k1.isTakable());
     }
-    
-    @Test
-    public void use(){
-    }
-    
+
     @Test
     public void use_Receiver() {
         assertDoesNotThrow(() -> k1.use(r1));

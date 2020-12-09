@@ -16,8 +16,7 @@ class CombatTest {
     private Hero hero;
     private Character enemy1;
     private Character enemy2;
-    private Map<String, Character> enemies = new HashMap<>();
-    private Scanner input;
+    private final Map<String, Character> enemies = new HashMap<>();
 
 
     @BeforeEach
@@ -27,7 +26,7 @@ class CombatTest {
         enemy2 = new Guard("enemy2", "test_enemy2");
         enemies.put(enemy1.getName(), enemy1);
         enemies.put(enemy2.getName(), enemy2);
-        input = new Scanner("flee");
+        Scanner input = new Scanner("flee");
         combat = new Combat(hero, enemies, input);
         hero.setOngoingCombat(combat);
     }

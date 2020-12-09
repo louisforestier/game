@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Folk extends NonPlayerCharacter implements Talkable {
 
-    private Dialog dialog;
+    private final Dialog dialog;
 
     public Folk(String name, String description, boolean isHostile, Dialog dialog, int maxHealthPoints, int attackBonus, int damageBonus) {
         super(name, description, isHostile, maxHealthPoints, attackBonus, damageBonus);

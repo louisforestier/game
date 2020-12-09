@@ -14,20 +14,18 @@ class TalkTest {
 
     private Talk talk;
     private Hero hero;
-    private Scanner scanner;
     private Place p1;
-    private Dialog dialog;
     private Commoner commoner;
     private Guard guard;
 
 
     @BeforeEach
     void setUp() {
-        scanner = new Scanner("1");
+        Scanner scanner = new Scanner("1");
         hero = new Hero();
         p1 = new Place("p1", "test_p1", null, 0);
         hero.setPlace(p1);
-        dialog = new Dialog(new ArrayList<>(), new ArrayList<>());
+        Dialog dialog = new Dialog(new ArrayList<>(), new ArrayList<>());
         commoner = new Commoner("commoner", "test_commoner", dialog);
         guard = new Guard("guard", "test_guard");
         p1.getInteractions().put(commoner.getName(), commoner);

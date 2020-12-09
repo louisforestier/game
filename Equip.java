@@ -6,7 +6,7 @@ public class Equip extends Command {
 
     private static final int NB_ARG = 1;
 
-    private Hero hero;
+    private final Hero hero;
 
     public Equip(Hero hero) {
         this.hero = hero;

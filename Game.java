@@ -5,10 +5,10 @@ import java.util.*;
 public class Game {
 
     private boolean running = true;
-    private Hero hero;
-    private World world;
-    private Scanner scanner;
-    private Interpreter interpreter;
+    private final Hero hero;
+    private final World world;
+    private final Scanner scanner;
+    private final Interpreter interpreter;
 
     public Game(Scanner input) {
         this.hero = new Hero();

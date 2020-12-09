@@ -7,8 +7,8 @@ import java.util.concurrent.TimeUnit;
 
 public class Dialog {
 
-    private List<String> playerChoices = new ArrayList<>();
-    private List<String> Dialogs = new ArrayList<>();
+    private final List<String> playerChoices = new ArrayList<>();
+    private final List<String> Dialogs = new ArrayList<>();
 
     public Dialog(List<String> playerChoices, List<String> Dialogs) {
         this.playerChoices.addAll(playerChoices);

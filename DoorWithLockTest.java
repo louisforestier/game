@@ -19,8 +19,6 @@ public class DoorWithLockTest {
     private DoorWithLock d3;
     private Place p1;
     private Place p2;
-    private Map<String, Interaction> l1;
-    private Map<String, Interaction> l2;
     private Key key1;
     private Key key2;
 
@@ -31,8 +29,8 @@ public class DoorWithLockTest {
         d1 = new DoorWithLock(key1, "testdoor1");
         d2 = new DoorWithLock(key1, "testdoor2");
         d3 = new DoorWithLock(key1, "testdoor3");
-        l1 = new HashMap<>();
-        l2 = new HashMap<>();
+        Map<String, Interaction> l1 = new HashMap<>();
+        Map<String, Interaction> l2 = new HashMap<>();
         l1.put("end", d1);
         l2.put("start", d2);
         p1 = new Place("start", "p1", l1,0);

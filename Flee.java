@@ -6,7 +6,7 @@ public class Flee extends Command{
 
     private final static int NB_ARG = 0;
 
-    private Hero hero;
+    private final Hero hero;
 
     public Flee(Hero hero) {
         this.hero = hero;
