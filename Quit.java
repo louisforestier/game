@@ -6,17 +6,17 @@ public class Quit extends Command{
 
 	private static final int NB_ARG = 0;
 	
-	private static Game game;
+	private final Game game;
 
 	public Quit(Game game) {
 		super();
-		Quit.game = game;
+		this.game = game;
 	}
 
 	@Override
 	public void launchCommand(List<String> argument) throws InvalidArgumentNumberException {
 		if (argument.size() == Quit.NB_ARG)
-			game.quit();
+			this.game.quit();
 		else throw new InvalidArgumentNumberException();
 	}
 
