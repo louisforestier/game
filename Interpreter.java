@@ -31,8 +31,12 @@ public class Interpreter {
         this.commands.put("stat", stat);
     }
 
-    public Interpreter(Map<String, Command> commands) {
-        this.commands.putAll(commands);
+    public Interpreter(Hero hero, Scanner input) {
+        Command attack = new Attack(hero,input);
+        Command flee = new Flee(hero);
+        this.commands.put("attack", attack);
+        this.commands.put("flee", flee);
+
     }
 
     public boolean interpret(String input) {

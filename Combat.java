@@ -13,12 +13,7 @@ public class Combat {
     private Scanner scanner;
 
     public Combat(Hero hero, Map<String, Character> enemies, Scanner input) {
-        Command attack = new Attack(hero,input);
-        Command flee = new Flee(hero);
-        Map<String, Command> commands = new HashMap<>();
-        commands.put("attack", attack);
-        commands.put("flee", flee);
-        this.combatInterpreter = new Interpreter(commands);
+        this.combatInterpreter = new Interpreter(hero,input);
         this.enemies.putAll(enemies);
         scanner = input;
     }
@@ -39,7 +34,7 @@ public class Combat {
         } while (!executed_command);
     }
 
-    public void enemyTurn(Hero hero, Character enemy) {
+    private void enemyTurn(Hero hero, Character enemy) {
         if (enemy.isAlive())
             enemy.attack(hero);
     }
