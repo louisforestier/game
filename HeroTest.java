@@ -103,4 +103,11 @@ public class HeroTest {
         assertSame(weapon, hero.getWeapon());
         assertEquals(hero.getAttackPower(), weapon.getAttackPower());
     }
+
+    @Test
+    public void equip3() {
+        assertThrows(NullPointerException.class, () -> hero.equip(null));
+    }
+
+
 }

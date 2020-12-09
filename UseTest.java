@@ -73,9 +73,9 @@ public class UseTest {
     }
 
     @Test
-    // test boite blanche ou noire ?
+    // test boite noire ?
     public void convertStringToUsable4() {
-        assertSame(null, use.convertStringToUsable("arg"));
+        assertNull(use.convertStringToUsable("arg"));
     }
 
 

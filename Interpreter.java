@@ -53,7 +53,9 @@ public class Interpreter {
                     System.out.println("There is too few or too many arguments for this command.");
                     executed_command = false;
                 } catch (NullPointerException e) {
-                    System.out.println("There is no " + arguments.get(0) + " around you.");
+                    if (command.equals("help"))
+                        System.out.println("There is no command named " + arguments.get(0) + ".");
+                    else System.out.println("There is nothing named " + arguments.get(0) + " here.");
                     executed_command = false;
                 } catch (ClassCastException e) {
                     System.out.println("This is not a valid argument for this command.");
