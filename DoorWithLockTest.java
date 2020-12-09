@@ -1,16 +1,12 @@
 package game;
 
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class DoorWithLockTest {
@@ -22,7 +18,7 @@ public class DoorWithLockTest {
     private Key key1;
     private Key key2;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         key1 = new Key("key", "testkey1");
         key2 = new Key("wrongKey", "testkey2");

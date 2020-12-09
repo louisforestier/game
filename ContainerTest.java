@@ -1,15 +1,16 @@
 package game;
 
-import static org.junit.Assert.assertTrue;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Before;
-import org.junit.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ContainerTest {
 	private Container chest;
     private Book book;
 
-    @Before
+    @BeforeEach
     public void setUp(){
     	chest = new Container("chest", "is chest");
     	book = new Book("book", "is book", "oui");

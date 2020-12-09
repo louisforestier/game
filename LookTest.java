@@ -1,20 +1,19 @@
 package game;
 
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.LinkedList;
 import java.util.List;
-
-import org.junit.Before;
-import org.junit.Test;
 
 public class LookTest {
 
 	private Look look;
 	private Gold gold;
 	
-	@Before
+	@BeforeEach
 	public void setUp() {
 		Place p1 = new Place("p1", "is p1", null, 0);
 		Hero hero = new Hero();

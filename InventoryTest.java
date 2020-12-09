@@ -1,20 +1,20 @@
 package game;
 
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.LinkedList;
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 public class InventoryTest {
 
 	private Inventory inventory;
 
-	@Before
+	@BeforeEach
 	public void setUp(){
 		Hero hero = new Hero();
 		Book book = new Book("book", "is book", "oui");

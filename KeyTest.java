@@ -1,9 +1,9 @@
 package game;
 
-import org.junit.Test;
-import org.junit.Before;
-import static org.junit.Assert.*;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class KeyTest {
     
@@ -11,12 +11,12 @@ public class KeyTest {
     private Receiver r1;
 
    
-    @Before
+    @BeforeEach
     public void SetUp(){
         String name = "key_one";
         String description = "that's the key_one";
         k1 = new Key(name, description);
-        Door d1 = new Door("door");
+        r1 = new DoorWithLock(k1,"door");
     }
 
     @Test

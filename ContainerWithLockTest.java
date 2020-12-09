@@ -1,20 +1,16 @@
 package game;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ContainerWithLockTest {
 	private ContainerWithLock chest;
     private Book book;
     private Key key;
 
-    @Before
+    @BeforeEach
     public void setUp(){
     	key = new Key("key", "is key");
     	chest = new ContainerWithLock("chest", "is chest",key);

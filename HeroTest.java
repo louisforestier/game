@@ -1,15 +1,13 @@
 package game;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 import java.util.HashMap;
 import java.util.Map;
-
-import static org.junit.Assert.*;
 
 public class HeroTest {
 
@@ -26,7 +24,7 @@ public class HeroTest {
     private Weapon weapon;
 
 
-    @Before
+    @BeforeEach
     public void setUp() {
         key1 = new Key("key1", "testkey1");
         key2 = new Key("key2", "testkey2");

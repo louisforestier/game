@@ -1,19 +1,20 @@
 package game;
 
-import static org.junit.Assert.assertSame;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 
 import java.util.HashMap;
 import java.util.Map;
 
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class DoorTest {
 
     private Door d1;
     private Place p1;
 
-    @Before
+    @BeforeEach
     public void setUp(){
     	d1 = new Door("testdoor1");
         Map<String, Interaction> l1 = new HashMap<>();

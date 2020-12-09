@@ -1,9 +1,9 @@
 package game;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CharacterTest {
 
@@ -15,7 +15,7 @@ public class CharacterTest {
     private Weapon weapon1;
     private Weapon weapon2;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         c1 = new Guard("c1","");
         p1 = new Place("p1", "piece1", null, 100);

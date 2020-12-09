@@ -3,10 +3,10 @@ package game;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class PlaceTest {
 
@@ -17,7 +17,7 @@ public class PlaceTest {
     private Character c1;
     private Character c2;
 
-    @Before
+    @BeforeEach
     public void setUp(){
     	c1 = new Guard("c1", "test_c1");
     	c2 = new Guard("c2", "test_c2");

@@ -1,17 +1,15 @@
 package game;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 public class QuitTest {
 	
@@ -23,7 +21,7 @@ public class QuitTest {
 	private Scanner sc2;
 	private Scanner sc3;
 	
-	@Before
+	@BeforeEach
 	public void setUp() {
 		String reponse1 = "yes";
 		String reponse2 = "no";
@@ -36,7 +34,7 @@ public class QuitTest {
 		game3 = new Game(sc3);
 	}
 	
-	@After
+	@AfterEach
 	public void closeStream() {
 		sc1.close();
 		sc2.close();

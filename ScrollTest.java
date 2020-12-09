@@ -1,16 +1,15 @@
 package game;
 
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ScrollTest {
 	
 	private Scroll scroll;
 	private ContainerWithLock chest;
 
-	@Before
+	@BeforeEach
 	public void setUp() {
 		scroll = new Scroll("scroll", "is scroll", "testok");
 		Key key1 = new Key("key", "is key");

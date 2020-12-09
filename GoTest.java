@@ -1,16 +1,14 @@
 package game;
 
-import static org.junit.Assert.assertSame;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 import java.util.LinkedList;
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.*;
 
 public class GoTest {
 	
@@ -20,7 +18,7 @@ public class GoTest {
 	private Door d1;
 	private DoorWithLock d2;
 
-	@Before
+	@BeforeEach
 	public void setUp() {
 		Key key1 = new Key("key", "testkey1");
 		d1 = new Door("is d1");

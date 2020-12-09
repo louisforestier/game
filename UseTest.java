@@ -1,14 +1,13 @@
 package game;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.LinkedList;
 import java.util.List;
 
-import static org.junit.Assert.*;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class UseTest {
 
@@ -19,7 +18,7 @@ public class UseTest {
     private Key key1;
     private Key key2;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         key1 = new Key("key1", "testkey1");
         key2 = new Key("key2", "testkey1");
@@ -41,9 +40,9 @@ public class UseTest {
         use = new Use(hero);
     }
 
-    //pour la différence entre les tests boite blanche et boire noire,
+    //pour la différence entre les tests fonctionnels et structurels,
     //nous ne sommes pas sûrs du tout, le cours était assez rapide dessus,
-    //donc j'ai supposé que les tests boites noires étaient ceux faisait
+    //donc j'ai supposé que les tests boites noires étaient ceux qui faisait
     //que la méthode donnait un résultat cohérent, regardant la valeur de retour
     //ou le(s) attribut(s) modifié(s)
     //pour les tests boites blanches, j'ai compté les lancements d'erreurs
