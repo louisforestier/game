@@ -26,7 +26,7 @@ public class Combat {
         this.running = running;
     }
 
-    private void heroTurn() {
+    public void heroTurn() {
         boolean executed_command;
         do {
             String input = this.scanner.nextLine();
@@ -34,24 +34,24 @@ public class Combat {
         } while (!executed_command);
     }
 
-    private void enemyTurn(Hero hero, Character enemy) {
+    public void enemyTurn(Hero hero, Character enemy) {
         if (enemy.isAlive())
             enemy.attack(hero);
     }
 
-    private void combatTurn(Hero hero) {
+    public void combatTurn(Hero hero) {
         this.heroTurn();
         this.enemies.forEach((k, v) -> this.enemyTurn(hero, v));
     }
 
-    private void printCombatInfo(Hero hero) {
+    public void printCombatInfo(Hero hero) {
         System.out.println(hero.getName() + " - HP : " + hero.getCurrentHealthPoints() + "/" + hero.getMaxHealthPoints());
         this.enemies.forEach((k, v) -> {
             System.out.println(k + " - HP : " + v.getCurrentHealthPoints() + "/" + v.getMaxHealthPoints());
         });
     }
 
-    private boolean endCombat(Hero hero) {
+    public boolean endCombat(Hero hero) {
         AtomicBoolean enemiesStillAlive = new AtomicBoolean(false); //besoin d'un atomic boolean pour le foreach, aurait sinon pu utiliser  map.entrySet
         this.enemies.forEach((k, v) -> {
             enemiesStillAlive.set(enemiesStillAlive.get() || v.isAlive());

@@ -89,6 +89,7 @@ public class Game {
             if (this.hero.getPlace().randomEncoutner()) {
                 //attaque le "premier" ennemi dans la hashmap pour déclencher le combat
                 input = ("attack " + this.hero.getPlace().getAnEnemyName());
+                System.out.println("You're being attacked !");
                 this.interpreter.interpret(input);
             } else {
                 do {
