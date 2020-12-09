@@ -25,7 +25,7 @@ public class Game {
 
 
     public void history() {
-        System.out.println("");
+        System.out.println();
         System.out.println("Hello traveler and welcome to Morlynn Castle.");
         System.out.println("Your quest : find keys to get out and, maybe, got your hands on a great treasure.");
         System.out.println("Not a big deal but beware!");
@@ -48,7 +48,7 @@ public class Game {
         System.out.println("attack : to someone.");
         System.out.println("equip : an item if it is in your inventory.");
         System.out.println("stat : gives the hero statistics.");
-        System.out.println("");
+        System.out.println();
     }
 
     public void quit() {

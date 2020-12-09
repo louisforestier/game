@@ -22,8 +22,8 @@ public class Take extends Command {
     	return (Container) hero.getPlace().getInteractions().get(name);
     }
     
-    public Item stringToItemInChest(String name, Container chest) throws ClassCastException {
-    	return (Item) chest.getContent().get(name);
+    public Item stringToItemInChest(String name, Container chest) {
+    	return chest.getContent().get(name);
     }
 
     @Override

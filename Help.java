@@ -19,7 +19,7 @@ public class Help extends Command{
 	}
 
 	@Override
-	public void launchCommand(List<String> argument) throws InvalidArgumentNumberException, ClassCastException {
+	public void launchCommand(List<String> argument) throws InvalidArgumentNumberException, NullPointerException {
 		if (argument.size() == NB_ARG_MIN) {
 			game.help();
 		} else if(argument.size() == NB_ARG_MAX) {
@@ -34,7 +34,7 @@ public class Help extends Command{
 		System.out.println("help command");
 	}
 
-	public Command stringToCommand(String name) throws ClassCastException{
-		return (Command) commands.get(name);
+	public Command stringToCommand(String name) {
+		return commands.get(name);
 	}
 }

@@ -69,14 +69,14 @@ class AttackTest {
     void startCombat1() {
         attack1.startCombat(commoner);
         assertTrue(commoner.isHostile());
-        assertTrue(hero.getOngoingCombat() != null);
+        assertNotNull(hero.getOngoingCombat());
     }
 
     @Test
         //test boite noire
     void startCombat2() {
         attack1.startCombat(guard);
-        assertTrue(hero.getOngoingCombat() != null);
+        assertNotNull(hero.getOngoingCombat());
     }
 
 

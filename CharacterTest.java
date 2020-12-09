@@ -55,26 +55,26 @@ public class CharacterTest {
     @Test
     public void isAttacked1() {
         c1.isAttacked(9, 1);
-        assertFalse(c1.getCurrentHealthPoints() == c1.getMaxHealthPoints() - 1);
+        assertNotEquals(c1.getCurrentHealthPoints(), c1.getMaxHealthPoints() - 1);
     }
 
     @Test
     public void isAttacked2() {
         c1.isAttacked(11, 1);
-        assertTrue(c1.getCurrentHealthPoints() == c1.getMaxHealthPoints() - 1);
+        assertEquals(c1.getCurrentHealthPoints(), c1.getMaxHealthPoints() - 1);
     }
 
     @Test
     public void isAttacked3() {
         c1.isAttacked(11, 11);
-        assertTrue(c1.getCurrentHealthPoints() == 0);
+        assertEquals(0, c1.getCurrentHealthPoints());
         assertFalse(c1.isAlive());
     }
 
     @Test
     public void equipArmor1() {
         c1.equipArmor(armor1);
-        assertTrue(c1.getArmorClass() == armor1.getArmorClass());
+        assertEquals(c1.getArmorClass(), armor1.getArmorClass());
         assertSame(armor1, c1.getArmor());
     }
 
@@ -82,7 +82,7 @@ public class CharacterTest {
     public void equipArmor2() {
         c1.equipArmor(armor1);
         c1.equipArmor(armor2);
-        assertTrue(c1.getArmorClass() == armor2.getArmorClass());
+        assertEquals(c1.getArmorClass(), armor2.getArmorClass());
         assertSame(armor2,c1.getArmor());
         assertTrue(c1.getInventory().containsKey(armor1.getName()));
     }
@@ -90,7 +90,7 @@ public class CharacterTest {
     @Test
     public void equipWeapon1() {
         c1.equipWeapon(weapon1);
-        assertTrue(c1.getAttackPower() == weapon1.getAttackPower());
+        assertEquals(c1.getAttackPower(), weapon1.getAttackPower());
         assertSame(weapon1, c1.getWeapon());
     }
 
@@ -98,7 +98,7 @@ public class CharacterTest {
     public void equipWeapon2() {
         c1.equipWeapon(weapon1);
         c1.equipWeapon(weapon2);
-        assertTrue(c1.getAttackPower() == weapon2.getAttackPower());
+        assertEquals(c1.getAttackPower(), weapon2.getAttackPower());
         assertSame(weapon2, c1.getWeapon());
         assertTrue(c1.getInventory().containsKey(weapon1.getName()));
     }

@@ -94,13 +94,13 @@ public class HeroTest {
     public void equip1() {
         hero.equip(armor);
         assertSame(armor, hero.getArmor());
-        assertTrue(hero.getArmorClass() == armor.getArmorClass());
+        assertEquals(hero.getArmorClass(), armor.getArmorClass());
     }
 
     @Test
     public void equip2() {
         hero.equip(weapon);
         assertSame(weapon, hero.getWeapon());
-        assertTrue(hero.getAttackPower() == weapon.getAttackPower());
+        assertEquals(hero.getAttackPower(), weapon.getAttackPower());
     }
 }
