@@ -180,13 +180,13 @@ public class World {
    
         
         //coeficient d'attaque de chaque piece
-        int coef1 = 50;
+        int coef1 = 10;
         int coef2 = 70;
         int coef3 = 10;
         int coef4 = 70;
         int coef5 = 12;
-        int coef6 = 60;
-        int coef7 = 100;
+        int coef6 = 100;
+        int coef7 = 0;
 
         //création des pieces
         Place hall = new Place("hall", desc1, interactionsH, coef1);
