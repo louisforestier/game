@@ -49,9 +49,9 @@ public class Hero extends Character {
         this.getPlace().takeOut(i);
     }
     
-    public void takeFromChest(Container c, Item i) throws NullPointerException {
+    public void takeFromContainer(Container c, Item i) throws NullPointerException {
     	this.getInventory().put(i.getName(), i);
-    	c.supprObj(i.getName());
+    	c.removeItem(i.getName());
     }
 
     public void use(Usable object) throws NullPointerException {

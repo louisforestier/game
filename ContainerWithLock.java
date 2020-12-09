@@ -71,7 +71,7 @@ public class ContainerWithLock extends Container implements Lockable{
 	}
 	
 	@Override
-	public void supprObj(String name) {
+	public void removeItem(String name) {
 		if(!this.isLocked) {
 			this.getContent().remove(name);
 		} else {
@@ -80,7 +80,7 @@ public class ContainerWithLock extends Container implements Lockable{
 	}
 	
 	@Override
-	public void addObj(String name, Item object) {
+	public void addItem(String name, Item object) {
 		if(!this.isLocked) {
 			this.getContent().put(name, object);
 		} else {

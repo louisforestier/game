@@ -50,30 +50,30 @@ public class ContainerWithLockTest {
 	@Test
 	public void addObj1() {
 		chest.unlock(key);
-		chest.addObj("book", book);
+		chest.addItem("book", book);
 		assertNotNull(chest.getContent());
 	}
 	
 	@Test
 	public void addObj2() {
-		chest.addObj("book", book);
+		chest.addItem("book", book);
 		assertTrue(chest.getContent().isEmpty());
 	}
 	
 	@Test
 	public void supprObj1() {
 		chest.unlock(key);
-		chest.addObj("book", book);
-		chest.supprObj("book");
+		chest.addItem("book", book);
+		chest.removeItem("book");
 		assertTrue(chest.getContent().isEmpty());
 	}
 	
 	@Test
 	public void supprObj2() {
 		chest.unlock(key);
-		chest.addObj("book", book);
+		chest.addItem("book", book);
 		chest.lock(key);
-		chest.supprObj("book");
+		chest.removeItem("book");
 		assertNotNull(chest.getContent());
 	}
 	

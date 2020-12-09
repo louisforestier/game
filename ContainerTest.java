@@ -17,14 +17,14 @@ public class ContainerTest {
     
     @Test
     public void addObj() {
-    	chest.addObj("book", book);
+    	chest.addItem("book", book);
 		assertTrue(chest.getContent().containsKey("book"));
 	}
   
 	@Test
 	public void supprObj() {
-		chest.addObj("book", book);
-		chest.supprObj("book");
+		chest.addItem("book", book);
+		chest.removeItem("book");
 		assertTrue(chest.getContent().isEmpty());
 	}
 

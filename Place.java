@@ -48,10 +48,10 @@ public class Place extends Interaction {
         super.print();
         System.out.println("In this place, you see :");
         this.getInteractions().forEach((k, v) -> {
-                    if (v instanceof Door) {
-                        System.out.println("a door leading to the " + k);
-                    } else if (!(k.equals("hero")))
-                        System.out.println("a " + k);
+            if (v instanceof Door) {
+                System.out.println("a door leading to the " + k);
+            } else if (!(k.equals("hero")))
+                System.out.println("a " + k);
         });
     }
 
@@ -62,14 +62,14 @@ public class Place extends Interaction {
     public Map<String, Character> getEnemiesInPlace() {
         Map<String, Character> enemies = new HashMap<>();
         this.interactions.forEach((k, v) -> {
-        	if (v instanceof NonPlayerCharacter && ((NonPlayerCharacter) v).isAlive() && ((NonPlayerCharacter) v).isHostile()) {
-        		enemies.put(((Character) v).getName(), (Character) v);
-        	}
+            if (v instanceof NonPlayerCharacter && ((NonPlayerCharacter) v).isAlive() && ((NonPlayerCharacter) v).isHostile()) {
+                enemies.put(((Character) v).getName(), (Character) v);
+            }
         });
         return enemies;
     }
 
-    public boolean randomEncoutner(){
+    public boolean randomEncoutner() {
         boolean result = false;
         if (this.getEnemiesInPlace().size() != 0) {
             int randomEnemyDetection = this.dice.nextInt(100) + 1;
@@ -78,7 +78,7 @@ public class Place extends Interaction {
         return result;
     }
 
-    public String getAnEnemyName(){
+    public String getAnEnemyName() {
         return this.getEnemiesInPlace().keySet().stream().findFirst().get();
     }
 

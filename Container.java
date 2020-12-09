@@ -15,11 +15,11 @@ public class Container extends Item {
 		return this.content;
 	}
 	
-	public void supprObj(String name) {
+	public void removeItem(String name) {
 		this.content.remove(name);
 	}
 	
-	public void addObj(String name, Item object) {
+	public void addItem(String name, Item object) {
 		this.content.put(name, object);
 	}
 	

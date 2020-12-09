@@ -38,7 +38,7 @@ public class Take extends Command {
         	Container chest = this.stringToContainerInPlace(argument.get(0));
         	Item i = this.stringToItemInContainer(argument.get(1), chest);
         	if (i.isTakable()) {
-        		hero.takeFromChest(chest, i);
+        		hero.takeFromContainer(chest, i);
         		System.out.println("You add " + i.getName() + " to your inventory.");
         	}
         } else throw new InvalidArgumentNumberException();

@@ -79,7 +79,7 @@ public class HeroTest {
 
     @Test
     public void takeFromChest() {
-        hero.takeFromChest(chest,key2);
+        hero.takeFromContainer(chest,key2);
         assertSame(key2, hero.getInventory().get(key2.getName()));
         assertFalse(chest.getContent().containsKey(key2.getName()));
     }
