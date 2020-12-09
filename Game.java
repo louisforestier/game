@@ -31,12 +31,16 @@ public class Game {
 
     public void history() {
         System.out.println();
-        System.out.println("Hello traveler and welcome to Morlynn Castle.");
-        System.out.println("Your quest : find keys to get out and, maybe, got your hands on a great treasure.");
-        System.out.println("Not a big deal but beware!");
-        System.out.println("The guards will prevent you.");
-        System.out.println("Good luck");
-        System.out.println("in Morlynn Castle");
+        System.out.println("Hello hero and welcome to Morlynn Castle.");
+        System.out.println("No time for pleasantries.");
+        System.out.println("The military are carrying out a coup d'état and have taken the king hostage just now.");
+        System.out.println("Your mission, should you choose to accept it, is to kill the guards in the throne room to save the king and exit the castle.");
+        System.out.println("I bet the king knows just the way out, because the main entrance has closed just behind you.");
+        System.out.println("You managed to sneak into the castle through this one, but in order not to attract attention you don't carry any weapons or armour.");
+        System.out.println("You will have to equip yourself by finding what you can in the castle. ");
+        System.out.println("Some of the doors will be locked, luckily you can find a way to open them, keys should do the trick.");
+        System.out.println("Be careful, the guards might attack you.");
+        System.out.println("Good luck, you might need it. ");
         System.out.println("...");
     }
 
