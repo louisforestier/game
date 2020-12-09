@@ -12,6 +12,7 @@ import org.junit.Test;
 public class LookTest {
 
 	private Look look;
+	private Gold gold;
 	
 	@Before
 	public void setUp() {
@@ -19,7 +20,7 @@ public class LookTest {
 		Hero hero = new Hero();
 		Book book = new Book("book", "is book", "oui");
 		p1.getInteractions().put("book", book);
-		Gold gold = new Gold("gold", "is gold");
+		gold = new Gold("gold", "is gold");
 		look = new Look(hero);
 		hero.setPlace(p1);
 	}
