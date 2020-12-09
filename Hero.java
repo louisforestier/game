@@ -31,7 +31,7 @@ public class Hero extends Character {
     public void go(Door door) throws NullPointerException{
         this.setPlace(door.cross());
         this.look();
-        if(this.getPlace().getName() == "exit") {
+        if(this.getPlace().getName().equals("exit")) {
         	this.goalAchieved = true;
         }
     }

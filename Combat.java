@@ -27,15 +27,11 @@ public class Combat {
         return this.enemies;
     }
 
-    public boolean isRunning() {
-        return running;
-    }
-
     public void setRunning(boolean running) {
         this.running = running;
     }
 
-    public void heroTurn() {
+    private void heroTurn() {
         boolean executed_command;
         do {
             String input = this.scanner.nextLine();
@@ -60,7 +56,7 @@ public class Combat {
         });
     }
 
-    public boolean endCombat(Hero hero) {
+    private boolean endCombat(Hero hero) {
         AtomicBoolean enemiesStillAlive = new AtomicBoolean(false); //besoin d'un atomic boolean pour le foreach, aurait sinon pu utiliser  map.entrySet
         this.enemies.forEach((k, v) -> {
             enemiesStillAlive.set(enemiesStillAlive.get() || v.isAlive());

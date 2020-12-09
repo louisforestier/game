@@ -20,24 +20,24 @@ public class Attack extends Command {
         return (Attackable) hero.getPlace().getInteractions().get(name);
     }
 
-    public void startCombat(NonPlayerCharacter npc){
-        if (!npc.isHostile()){
+    public void startCombat(NonPlayerCharacter npc) {
+        if (!npc.isHostile()) {
             npc.setHostile(true);
             System.out.println("Hey ! What have I done to deserve this ?!");
         }
-        Combat c = new Combat(this.hero, this.hero.getPlace().getEnemiesInPlace(),this.scanner);
+        Combat c = new Combat(this.hero, this.hero.getPlace().getEnemiesInPlace(), this.scanner);
         this.hero.setOngoingCombat(c);
-        this.hero.getOngoingCombat().runCombat(this.hero);
     }
 
-    public void attackInCombat(NonPlayerCharacter npc){
+    public void attackInCombat(NonPlayerCharacter npc) throws NullPointerException{
         this.hero.attack(this.hero.getOngoingCombat().getEnemies().get(npc.getName()));
     }
 
-    public void attackNonPlayerCharacter(NonPlayerCharacter npc){
+    public void attackNonPlayerCharacter(NonPlayerCharacter npc) throws NullPointerException {
         if (npc.isAlive()) {
             if (this.hero.getOngoingCombat() == null) {
                 this.startCombat(npc);
+                this.hero.getOngoingCombat().runCombat(this.hero);
             } else this.attackInCombat(npc);
         } else {
             System.out.println("You're attacking a dead body...");
@@ -47,11 +47,11 @@ public class Attack extends Command {
     }
 
     @Override
-    public void launchCommand(List<String> argument) throws InvalidArgumentNumberException, ClassCastException, NullPointerException{
-        if (argument.size() == Attack.NB_ARG){
+    public void launchCommand(List<String> argument) throws InvalidArgumentNumberException, ClassCastException, NullPointerException {
+        if (argument.size() == Attack.NB_ARG) {
             if (!(argument.get(0).equals(hero.getName()))) {
                 Attackable a = stringToAttackableInPlace(argument.get(0));
-                if (a instanceof NonPlayerCharacter ){
+                if (a instanceof NonPlayerCharacter) {
                     this.attackNonPlayerCharacter((NonPlayerCharacter) a);
                 } else hero.attack(a);
             } else {
