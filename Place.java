@@ -27,7 +27,7 @@ public class Place extends Interaction {
         return this.name;
     }
 
-    public int getENEMY_DETECTION_THRESHOLD() {
+    public int getEnemyDetectionthreshold() {
         return ENEMY_DETECTION_THRESHOLD;
     }
 
@@ -62,9 +62,9 @@ public class Place extends Interaction {
     public Map<String, Character> getEnemiesInPlace() {
         Map<String, Character> enemies = new HashMap<>();
         this.interactions.forEach((k, v) -> {
-                    if (v instanceof NonPlayerCharacter && ((NonPlayerCharacter) v).isAlive() && ((NonPlayerCharacter) v).isHostile()) {
-                        enemies.put(((Character) v).getName(), (Character) v);
-                    }
+        	if (v instanceof NonPlayerCharacter && ((NonPlayerCharacter) v).isAlive() && ((NonPlayerCharacter) v).isHostile()) {
+        		enemies.put(((Character) v).getName(), (Character) v);
+        	}
         });
         return enemies;
     }
