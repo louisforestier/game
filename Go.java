@@ -5,16 +5,17 @@ import java.util.List;
 public class Go extends Command {
 
     private static final int NB_ARG = 1;
-    private static Hero hero;
+    
+    private final Hero hero;
 
     public Go(Hero hero) {
         super();
-        Go.hero = hero;
+        this.hero = hero;
     }
 
 
     public Door convertStringToDoor(String name) throws  ClassCastException{
-        Place p = hero.getPlace();
+        Place p = this.hero.getPlace();
         return (Door) p.getInteractions().get(name);
     }
 
@@ -22,7 +23,7 @@ public class Go extends Command {
     public void launchCommand(List<String> argument) throws ClassCastException, NullPointerException , InvalidArgumentNumberException{
         if (argument.size() == Go.NB_ARG) {
             Door door = this.convertStringToDoor(argument.get(0));
-            hero.go(door);
+            this.hero.go(door);
         } else throw new InvalidArgumentNumberException();
     }
 
