@@ -117,6 +117,10 @@ public class Game {
             }
         } else System.out.println("You died.");
         System.out.println("Thank you for playing Morlynn Castle.");
+        System.out.println("This game was made by :");
+        System.out.println("FRADET Amandine");
+        System.out.println("GUILLOT Clémentine");
+        System.out.println("FORESTIER Louis");
     }
 
     public static void main(String[] args) {
