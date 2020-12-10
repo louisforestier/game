@@ -22,33 +22,39 @@ public class DoorTest {
     }
 
     @Test
+    //test fonctionnel
     public void getEntrance() {
     	assertSame(null, d1.getEntrance());
     }
 
     @Test
+    //test fonctionnel
     public void getExit() {
     	assertSame(null, d1.getExit());
     }
     
     @Test
+    //test fonctionnel
     public void setEntrance() {
     	d1.setEntrance(p1);
     	assertSame(p1, d1.getEntrance());
     }
     
     @Test
+    //test fonctionnel
     public void setExit() {
     	d1.setExit(p1);
     	assertSame(p1, d1.getExit());
     }
 
     @Test
+    //test fonctionnel
     public void cross1() {
     	assertSame(null, d1.getExit());
     }
     
     @Test
+    //test fonctionnel
     public void cross2() {
     	d1.setExit(p1);
     	assertSame(p1, d1.getExit());

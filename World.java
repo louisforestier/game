@@ -261,6 +261,11 @@ public class World {
         this.places.put(hall.getName(), hall);
         this.places.put(weaponroom.getName(), weaponroom);
         this.places.put(gallery.getName(), gallery);
+        this.places.put(guardroom.getName(), guardroom);
+        this.places.put(cellar.getName(), cellar);
+        this.places.put(throneroom.getName(),throneroom);
+        this.places.put(exit.getName(),exit);
+
     }
 
     //

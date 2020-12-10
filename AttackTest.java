@@ -30,38 +30,38 @@ class AttackTest {
         armor = new LeatherArmor("armor", "test_armor");
         p1.getInteractions().put(commoner.getName(), commoner);
         p1.getInteractions().put(guard.getName(), guard);
-        p1.getInteractions().put(armor.getName(),armor);
+        p1.getInteractions().put(armor.getName(), armor);
         attack1 = new Attack(hero, scanner1);
         attack2 = new Attack(hero, scanner2);
-        combat = new Combat(hero,hero.getPlace().getEnemiesInPlace(), scanner2);
+        combat = new Combat(hero, hero.getPlace().getEnemiesInPlace(), scanner2);
     }
 
     @Test
-    //test boite noir
+        //test fonctionnel
     void stringToAttackableInPlace1() {
         assertSame(commoner, attack1.stringToAttackableInPlace(commoner.getName()));
     }
 
     @Test
-    //test boite blanche ?
+        //test fonctionnel
     void stringToAttackableInPlace2() {
         assertSame(null, attack1.stringToAttackableInPlace("arg"));
     }
 
     @Test
-    //test boite blanche
+        //test fonctionnel
     void stringToAttackableInPlace3() {
         assertThrows(ClassCastException.class, () -> attack1.stringToAttackableInPlace(armor.getName()));
     }
 
     @Test
-    //test boite blanche
+        //test fonctionnel
     void stringToAttackableInPlace4() {
         assertDoesNotThrow(() -> attack1.stringToAttackableInPlace(commoner.getName()));
     }
 
     @Test
-    //test boite blanche/noire ? permet de tester un chemin mais permet aussi de vérifier que la fonction fait bien ce qu'il faut
+        //test boite fonctionnel ? permet de tester un chemin mais permet aussi de vérifier que la fonction fait bien ce qu'il faut
     void startCombat1() {
         attack1.startCombat(commoner);
         assertTrue(commoner.isHostile());
@@ -69,7 +69,7 @@ class AttackTest {
     }
 
     @Test
-        //test boite noire
+        //test fonctionnel
     void startCombat2() {
         attack1.startCombat(guard);
         assertNotNull(hero.getOngoingCombat());
@@ -77,59 +77,56 @@ class AttackTest {
 
 
     @Test
-    //test boite blanche
+        //test fonctionnel
     void attackInCombat1() {
         attack1.startCombat(guard);
         assertDoesNotThrow(() -> attack1.attackInCombat(guard));
     }
 
     @Test
-    //test boite blanche
+        //test fonctionnel
     void attackInCombat2() {
         attack1.startCombat(guard);
-        assertThrows(NullPointerException.class,() -> attack1.attackInCombat(commoner));
+        assertThrows(NullPointerException.class, () -> attack1.attackInCombat(commoner));
     }
 
     /*
-    attackNonPlayerCharacter ne semble pas testable en boite noire à cause des générateurs de nombres aléatoires
+    attackNonPlayerCharacter ne semble pas testable en fonctionnel à cause des générateurs de nombres aléatoires
     dans attack de character.
-    De plus, il est inutile de tester si hero.ungoingCombat est différent de null dans le cas où on attaque
-    un personnage mort, car à la fin de cette méthode dans tous les cas cet attribut est null.
+    De plus, il est inutile de tester si hero.ungoingCombat est différent de null,
+     car à la fin de cette méthode dans tous les cas cet attribut est null.
 */
 
-    @Test
-    void attackNonPlayerCharacter1() {
-        assertThrows(NullPointerException.class,() -> attack1.attackNonPlayerCharacter(null));
-    }
 
     @Test
-    //test boite blanche
-    void attackNonPlayerCharacter2() {
+        //test structurel
+    void attackNonPlayerCharacter1() {
         assertDoesNotThrow(() -> attack1.attackNonPlayerCharacter(guard));
     }
 
     @Test
-    //test boite blanche
-    void attackNonPlayerCharacter3() {
+        //test structurel
+    void attackNonPlayerCharacter2() {
         hero.setOngoingCombat(combat);
         assertDoesNotThrow(() -> attack2.attackNonPlayerCharacter(guard));
     }
 
     @Test
-    void attackNonPlayerCharacter4() {
+        //test structurel
+    void attackNonPlayerCharacter3() {
         guard.setAlive(false);
         assertDoesNotThrow(() -> attack1.attackNonPlayerCharacter(guard));
     }
 
     @Test
-        //test boite blanche
+        //test structurel
     void launchCommand1() {
         List<String> arguments = new LinkedList<>();
         assertThrows(InvalidArgumentNumberException.class, () -> attack1.launchCommand(arguments));
     }
 
     @Test
-    //test boite blanche
+    //test structurel
     public void launchCommand2() {
         List<String> arguments = new LinkedList<>();
         arguments.add("arg1");
@@ -138,7 +135,7 @@ class AttackTest {
     }
 
     @Test
-    //test boite blanche
+    //test fonctionnel
     public void launchCommand3() {
         List<String> arguments = new LinkedList<>();
         arguments.add("arg1");
@@ -146,7 +143,7 @@ class AttackTest {
     }
 
     @Test
-    //test boite blanche
+    //test fonctionnel
     public void launchCommand4() {
         List<String> arguments = new LinkedList<>();
         arguments.add(armor.getName());
@@ -154,7 +151,7 @@ class AttackTest {
     }
 
     @Test
-    //test boite blanche
+    //test structurel
     public void launchCommand5() {
         List<String> arguments = new LinkedList<>();
         arguments.add(guard.getName());
@@ -162,7 +159,7 @@ class AttackTest {
     }
 
     @Test
-    //test boite blanche
+    //test structurel
     public void launchCommand6() {
         List<String> arguments = new LinkedList<>();
         arguments.add(hero.getName());
@@ -170,7 +167,7 @@ class AttackTest {
     }
 
     @Test
-    //test boite blanche
+    //test structurel
     public void launchCommand7() {
         List<String> arguments = new LinkedList<>();
         arguments.add(guard.getName());
@@ -178,12 +175,9 @@ class AttackTest {
         assertDoesNotThrow(() -> attack2.launchCommand(arguments));
     }
 
-    //il manque un test boite blanche pour tester le cas où on attaque un attaquable qui n'est pas un personnage
+    //il manque un test pour tester le cas où on attaque un attaquable qui n'est pas un personnage
     //mais nous n'avons pas eu le temps d'implanter une classe remplissant ces conditions, nous voulions cependant
     //laissé cette option, dans le cas de potentiels extensions du programme.
-
-
-
 
 
 }

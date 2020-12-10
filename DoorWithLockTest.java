@@ -40,80 +40,95 @@ public class DoorWithLockTest {
     }
     
     @Test
+    //test fonctionnel
     public void setMirrorDoor() {
     	d1.setMirrorDoor(d3);
     	assertSame(d3, d1.getMirrorDoorForDoorWithLock());
     }
     
     @Test
+    //test fonctionnel
     public void setMirrorDoor2() {
     	assertNull(d3.getMirrorDoorForDoorWithLock());
     }
     
     @Test
+    //test fonctionnel
     public void getMirrorDoorForDoorWithLock() {
     	assertSame(d2, d1.getMirrorDoorForDoorWithLock());
     }
     
     @Test
+    //test fonctionnel
     public void changeMirrorDoor1() {
     	assertFalse(d3.changeMirrorDoor());
     }
     
     @Test
+    //test fonctionnel
     public void changeMirrorDoor2() {
     	assertTrue(d1.changeMirrorDoor());
     }
     
     @Test
+    //test fonctionnel
     public void changeMirrorDoor3() {
     	d1.unlock(key1);
     	assertFalse(d1.changeMirrorDoor());
     }
 
     @Test
+    //test fonctionnel
     public void switchLockedForMirrorDoor() {
     	assertFalse(d1.switchLockedForMirrorDoor());
     }
     
     @Test
+    //test fonctionnel
     public void unlock1() {
         assertFalse(d1.unlock(key1));
     }
 
     @Test
+    //test fonctionnel
     public void unlock2() {
         assertTrue(d1.unlock(key2));
     }
     
     @Test
+    //test fonctionnel
     public void unlock3() {
     	d1.unlock(key1);
         assertFalse(d2.getIsLocked());
     }
 
     @Test
+    //test fonctionnel
     public void lock1() {
         assertTrue(d1.lock(key1));
     }
 
     @Test
+    //test fonctionnel
     public void lock2() {
         assertTrue(d1.lock(key2));
     }
 
     @Test
+    //test fonctionnel
     public void lock3() {
         d1.lock(key1);
         assertTrue(d2.getIsLocked());
     }
 
     @Test
+    //test fonctionnel
     public void cross1() {
         assertSame(p1, d1.cross());
     }
 
     @Test
+    //test fonctionnel
     public void cross2() {
         d1.unlock(key1);
         assertSame(p2, d1.cross());
@@ -121,12 +136,14 @@ public class DoorWithLockTest {
     
     
     @Test
-	public void receiveForKey() {
+    //test fonctionnel
+    public void receiveForKey() {
     	d1.unlock(key1);
     	assertFalse(d1.getIsLocked());
     }
 
     @Test
+    //test fonctionnel
     public void receive() {
     	d2.receive(key1);
     	assertFalse(d2.getIsLocked());

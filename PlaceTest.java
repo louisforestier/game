@@ -31,35 +31,41 @@ public class PlaceTest {
     }
 
     @Test
+    //test fonctionnel
     public void addCharacter() {
         p1.addCharacter(c2.getName(), c2);
         assertTrue(p1.getInteractions().containsKey(c2.getName()));
     }
 
     @Test
+    //test fonctionnel
     public void freeCharacter() {
         p1.freeCharacter(c1.getName());
         assertFalse(p1.getInteractions().containsKey(c1.getName()));
     }
 
     @Test
+    //test fonctionnel
     public void isInPlace1() {
         assertTrue(p1.isInPlace(key1.getName()));
     }
 
     @Test
+    //test fonctionnel
     public void isInPlace2() {
         assertFalse(p1.isInPlace(key2.getName()));
     }
 
 
     @Test
+    //test fonctionnel
     public void takeOut() {
         p1.takeOut(key1);
         assertFalse(p1.getInteractions().containsKey(key1.getName()));
     }
 
     @Test
+    //test fonctionnel
     public void getEnemiesInPlace1() {
         p1.addCharacter(c2.getName(), c2);
         Map<String, Character> enemies = new HashMap<>();
@@ -69,31 +75,35 @@ public class PlaceTest {
     }
 
     @Test
+    //test fonctionnel
     public void getEnemiesInPlace2() {
         assertTrue(p2.getEnemiesInPlace().isEmpty());
     }
 
 
     @Test
+    //test fonctionnel
     public void randomEncoutner1(){
         assertTrue(p1.randomEncoutner());
     }
 
     @Test
+    //test fonctionnel
     public void randomEncoutner2(){
         assertFalse(p2.randomEncoutner());
     }
 
     @Test
+    //test fonctionnel
     public void randomEncoutner3(){
         p2.addCharacter(c2.getName(), c2);
         assertFalse(p2.randomEncoutner());
     }
 
     @Test
+    //test fonctionnel
     public void getAnEnemyName(){
         assertEquals(c1.getName(),p1.getAnEnemyName());
     }
-
 
 }

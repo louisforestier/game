@@ -56,27 +56,27 @@ class CombatTest {
 
 
     @Test
-        //test boite noire
+        //test fonctionnel
     void endCombat1() {
         assertTrue(combat.endCombat(hero));
     }
 
     @Test
-        //test boite noire
+        //test fonctionnel
     void endCombat2() {
         enemy1.setAlive(false);
         assertTrue(combat.endCombat(hero));
     }
 
     @Test
-        //test boite noire
+        //test fonctionnel
     void endCombat3() {
         hero.setAlive(false);
         assertFalse(combat.endCombat(hero));
     }
 
     @Test
-        //test boite noire
+        //test fonctionnel
     void endCombat4() {
         enemy1.setAlive(false);
         enemy2.setAlive(false);
@@ -84,7 +84,7 @@ class CombatTest {
     }
 
     @Test
-    //test boite noire ?
+        //test fonctionnel
     void runCombat() {
         combat.runCombat(hero);
         assertNull(hero.getOngoingCombat());

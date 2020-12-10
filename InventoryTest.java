@@ -23,6 +23,7 @@ public class InventoryTest {
 	}
 
 	@Test
+	//test fonctionnel
 	public void launchCommand1() {
 		List<String> arguments = new LinkedList<>(); 
 		arguments.add("arg1");
@@ -31,12 +32,14 @@ public class InventoryTest {
 	}
 
 	@Test
+	//test fonctionnel
 	public void launchCommand2() {
 		List<String> arguments = new LinkedList<>(); 
 		assertDoesNotThrow(() -> inventory.launchCommand(arguments));
 	}
 	
 	@Test
+	//test fonctionnel
 	public void launchCommand3() {
 		List<String> arguments = new LinkedList<>(); 
 		arguments.add("book");
@@ -44,6 +47,7 @@ public class InventoryTest {
 	}
 	
 	@Test
+	//test fonctionnel
 	public void launchCommand4() {
 		List<String> arguments = new LinkedList<>(); 
 		arguments.add("arg1");

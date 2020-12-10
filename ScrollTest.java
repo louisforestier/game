@@ -18,6 +18,7 @@ public class ScrollTest {
 	
 
 	@Test
+	//test fonctionnel
 	public void use1() {
 		assertDoesNotThrow(() -> scroll.use(chest));
 	}

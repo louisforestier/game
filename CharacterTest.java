@@ -28,12 +28,14 @@ public class CharacterTest {
     }
 
     @Test
+    //test fonctionnel
     public void setPlace1() {
         c1.setPlace(p1);
         assertSame(p1, c1.getPlace());
     }
 
     @Test
+    //test fonctionnel
     public void setPlace2() {
         c1.setPlace(p1);
         c1.setPlace(p2);
@@ -43,6 +45,7 @@ public class CharacterTest {
 
 
     @Test
+    //test fonctionnel
     public void freePlace() {
         c1.setPlace(p1);
         c1.freePlace();
@@ -51,25 +54,35 @@ public class CharacterTest {
     }
 
     @Test
+    //test fonctionnel
     public void isAttacked1() {
-        c1.isAttacked(9, 1);
-        assertNotEquals(c1.getCurrentHealthPoints(), c1.getMaxHealthPoints() - 1);
+        int missedAttack = 9;
+        int damage = 1;
+        c1.isAttacked(missedAttack, damage);
+        assertNotEquals(c1.getCurrentHealthPoints(), c1.getMaxHealthPoints() - damage);
     }
 
     @Test
+    //test fonctionnel
     public void isAttacked2() {
-        c1.isAttacked(11, 1);
-        assertEquals(c1.getCurrentHealthPoints(), c1.getMaxHealthPoints() - 1);
+        int successfullAttack = 11;
+        int damage = 1;
+        c1.isAttacked(successfullAttack, damage);
+        assertEquals(c1.getCurrentHealthPoints(), c1.getMaxHealthPoints() - damage);
     }
 
     @Test
+    //test fonctionnel
     public void isAttacked3() {
-        c1.isAttacked(11, 11);
+        int successfullAttack = 11;
+        int damage = 11;
+        c1.isAttacked(successfullAttack, damage);
         assertEquals(0, c1.getCurrentHealthPoints());
         assertFalse(c1.isAlive());
     }
 
     @Test
+    //test fonctionnel
     public void equipArmor1() {
         c1.equipArmor(armor1);
         assertEquals(c1.getArmorClass(), armor1.getArmorClass());
@@ -77,6 +90,7 @@ public class CharacterTest {
     }
 
     @Test
+    //test fonctionnel
     public void equipArmor2() {
         c1.equipArmor(armor1);
         c1.equipArmor(armor2);
@@ -86,6 +100,7 @@ public class CharacterTest {
     }
 
     @Test
+    //test fonctionnel
     public void equipWeapon1() {
         c1.equipWeapon(weapon1);
         assertEquals(c1.getAttackPower(), weapon1.getAttackPower());
@@ -93,6 +108,7 @@ public class CharacterTest {
     }
 
     @Test
+    //test fonctionnel
     public void equipWeapon2() {
         c1.equipWeapon(weapon1);
         c1.equipWeapon(weapon2);

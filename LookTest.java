@@ -25,12 +25,14 @@ public class LookTest {
 	}
 	
 	@Test
+	//test structurel
 	public void launchCommand1() {
 		List<String> arguments = new LinkedList<>(); 
 		assertDoesNotThrow(() -> look.launchCommand(arguments));	
 	}
 	
 	@Test
+	//test structurel
 	public void launchCommand2() {
 		List<String> arguments = new LinkedList<>(); 
 		arguments.add("arg1");
@@ -39,6 +41,7 @@ public class LookTest {
 	}
 	
 	@Test
+	//test fonctionnel
 	public void launchCommand3() {
 		List<String> arguments = new LinkedList<>(); 
 		arguments.add("book");
@@ -46,6 +49,7 @@ public class LookTest {
 	}
 	
 	@Test
+	//test fonctionnel
 	public void launchCommand4() {
 		List<String> arguments = new LinkedList<>(); 
 		arguments.add(gold.getName());

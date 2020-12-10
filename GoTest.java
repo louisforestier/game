@@ -38,37 +38,44 @@ public class GoTest {
 	}
 	
 	@Test
-    public void convertStringToDoor1(){
+	//test fonctionnel
+	public void convertStringToDoor1(){
 		assertThrows(ClassCastException.class, () -> go.convertStringToDoor(hero.getName()));
 	}
 	
 	@Test
+	//test fonctionnel
 	public void convertStringToDoor2() {
 		assertDoesNotThrow(() -> go.convertStringToDoor("p2"));
 	}
 	
 	@Test
+	//test fonctionnel
 	public void convertStringToDoor3() {
 		assertDoesNotThrow(() -> go.convertStringToDoor("p3"));
 	}
 	
 	@Test
+	//test fonctionnel
 	public void convertStringToDoor4() {
 		assertSame(d1, go.convertStringToDoor("p2"));
 	}
 	
 	@Test
+	//test fonctionnel
 	public void convertStringToDoor5() {
 		assertSame(d2, go.convertStringToDoor("p3"));
 	}
 
     @Test
-    public void launchCommand1(){
+	//test structurel
+	public void launchCommand1(){
         List<String> arguments = new LinkedList<>(); 
     	assertThrows(InvalidArgumentNumberException.class, () -> go.launchCommand(arguments));
     }
     
     @Test
+	//test structurel
 	public void launchCommand2() {
 		List<String> arguments = new LinkedList<>(); 
 		arguments.add("arg1");
@@ -78,6 +85,7 @@ public class GoTest {
 
     
 	@Test
+	//test fonctionnel
 	public void launchCommand3() {
 		List<String> arguments = new LinkedList<>(); 
 		arguments.add("arg1");
@@ -85,6 +93,7 @@ public class GoTest {
 	}
 	
 	@Test
+	//test fonctionnel
 	public void launchCommand4() {
 		List<String> arguments = new LinkedList<>(); 
 		arguments.add("p2");

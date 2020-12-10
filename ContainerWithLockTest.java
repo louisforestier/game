@@ -18,46 +18,60 @@ public class ContainerWithLockTest {
     }
     
     @Test
+	//test fonctionnel
 	public void unlock() {
 		assertFalse(chest.unlock(key));
 	}
 
 	@Test
+	//test fonctionnel
 	public void lock() {
 		assertTrue(chest.lock(key));
 	}
 	
 	@Test
+	//test fonctionnel
 	public void receiveForKey() {
 		chest.receiveForKey(key);
     	assertFalse(chest.getIsLocked());
 	}
 	
 	@Test
-    public void receive1(){
+	//test fonctionnel
+	public void receive1(){
 		assertThrows(ClassCastException.class, () -> chest.receive(book));
     }
 	
 	@Test
-    public void receive2(){
+	//test fonctionnel
+	public void receive2(){
 		assertDoesNotThrow(() -> chest.receive(key));
     }
-	
+
+
+/*
+    les test de addItem et removeItem sont fonctionnels mais ils correspondent aussi aux tests structurels,
+  	on passe par toutes les décisions.
+*/
+
 	@Test
-	public void addObj1() {
+	//test fonctionnel
+	public void addItem1() {
 		chest.unlock(key);
 		chest.addItem("book", book);
-		assertNotNull(chest.getContent());
+		assertFalse(chest.getContent().isEmpty());
 	}
 	
 	@Test
-	public void addObj2() {
+	//test fonctionnel
+	public void addItem2() {
 		chest.addItem("book", book);
 		assertTrue(chest.getContent().isEmpty());
 	}
 	
 	@Test
-	public void supprObj1() {
+	//test fonctionnel
+	public void removeItem1() {
 		chest.unlock(key);
 		chest.addItem("book", book);
 		chest.removeItem("book");
@@ -65,12 +79,13 @@ public class ContainerWithLockTest {
 	}
 	
 	@Test
-	public void supprObj2() {
+	//test fonctionnel
+	public void removeItem2() {
 		chest.unlock(key);
 		chest.addItem("book", book);
 		chest.lock(key);
 		chest.removeItem("book");
-		assertNotNull(chest.getContent());
+		assertFalse(chest.getContent().isEmpty());
 	}
 	
 	

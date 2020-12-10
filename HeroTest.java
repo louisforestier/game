@@ -31,7 +31,7 @@ public class HeroTest {
         d1 = new Door("is d1");
         d2 = new DoorWithLock(key1, "locked door");
         d3 = new Door("door with no entrance nor exit");
-        chest = new Container("chest","chest_test");
+        chest = new Container("chest", "chest_test");
         chest.getContent().put(key2.getName(), key2);
         Map<String, Interaction> l1 = new HashMap<>();
         l1.put("p2", d1);
@@ -46,44 +46,44 @@ public class HeroTest {
         d2.setExit(p3);
         hero = new Hero();
         hero.setPlace(p1);
-        armor = new LeatherArmor("leather_armor_test","testequip1");
-        weapon = new Dagger("dagger_test","testequip2");
+        armor = new LeatherArmor("leather_armor_test", "testequip1");
+        weapon = new Dagger("dagger_test", "testequip2");
     }
 
     @Test
+    //test fonctionnel
     public void go1() {
         hero.go(d1);
         assertSame(p2, hero.getPlace());
     }
 
     @Test
+    //test fonctionnel
     public void go2() {
         hero.go(d2);
         assertSame(p1, hero.getPlace());
     }
 
-        @Test //should never happen
-    public void go3() {
-        assertThrows(NullPointerException.class, () -> hero.go(d3));
-    }
-
 
     @Test
+    //test fonctionnel
     public void take() {
         hero.take(key1);
-        assertSame(key1,hero.getInventory().get(key1.getName()));
+        assertSame(key1, hero.getInventory().get(key1.getName()));
         assertFalse(hero.getPlace().getInteractions().containsKey(key1.getName()));
     }
 
     @Test
+    //test fonctionnel
     public void takeFromChest() {
-        hero.takeFromContainer(chest,key2);
+        hero.takeFromContainer(chest, key2);
         assertSame(key2, hero.getInventory().get(key2.getName()));
         assertFalse(chest.getContent().containsKey(key2.getName()));
     }
 
 
     @Test
+    //test fonctionnel
     public void equip1() {
         hero.equip(armor);
         assertSame(armor, hero.getArmor());
@@ -91,16 +91,11 @@ public class HeroTest {
     }
 
     @Test
+    //test fonctionnel
     public void equip2() {
         hero.equip(weapon);
         assertSame(weapon, hero.getWeapon());
         assertEquals(hero.getAttackPower(), weapon.getAttackPower());
     }
-
-    @Test
-    public void equip3() {
-        assertThrows(NullPointerException.class, () -> hero.equip(null));
-    }
-
 
 }

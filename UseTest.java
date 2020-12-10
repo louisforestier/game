@@ -40,61 +40,41 @@ public class UseTest {
         use = new Use(hero);
     }
 
-    //pour la différence entre les tests fonctionnels et structurels,
-    //nous ne sommes pas sûrs du tout, le cours était assez rapide dessus,
-    //donc j'ai supposé que les tests boites noires étaient ceux qui faisait
-    //que la méthode donnait un résultat cohérent, regardant la valeur de retour
-    //ou le(s) attribut(s) modifié(s)
-    //pour les tests boites blanches, j'ai compté les lancements d'erreurs
-    //comme des chemins étant donné que nous les utilisons, notamment pour l'affichage,
-    //et car les erreurs ne sont visibles que dans le code, donc si on ne connait pas
-    //le code on ne peut pas savoir si une exception est lancé
 
     @Test
-    //test boite noire
+    //test fonctionnel
     public void convertStringToUsable1() {
         assertSame(key1, use.convertStringToUsable(key1.getName()));
     }
 
     @Test
-    // test boite blanche
+    //test fonctionnel
     public void convertStringToUsable2() {
         assertThrows(ClassCastException.class, () -> use.convertStringToUsable(hero.getName()));
     }
 
     @Test
-    // test boite blanche
+    //test fonctionnel
     public void convertStringToUsable3() {
-        assertDoesNotThrow(() -> use.convertStringToUsable("arg"));
-    }
-
-    @Test
-    // test boite noire ?
-    public void convertStringToUsable4() {
         assertNull(use.convertStringToUsable("arg"));
     }
 
 
     @Test
-    //test boite noire
+    //test fonctionnel
     public void convertStringToReceiver1() {
         assertSame(d2, use.convertStringToReceiver(d2.getExit().getName()));
     }
 
     @Test
-    //test boite blanche
+    //test fonctionnel
     public void convertStringToReceiver2() {
         assertThrows(ClassCastException.class, () -> use.convertStringToReceiver(d1.getExit().getName()));
     }
 
-    @Test
-    //test boite blanche
-    public void convertStringToReceiver3() {
-        assertDoesNotThrow(() -> use.convertStringToReceiver("arg"));
-    }
 
     @Test
-    //test boite blanche
+    //test structurel
     public void launchCommand1() {
         List<String> arguments = new LinkedList<>();
         assertThrows(InvalidArgumentNumberException.class, () -> use.launchCommand(arguments));
@@ -102,7 +82,7 @@ public class UseTest {
     }
 
     @Test
-    //test boite blanche
+    //test structurel
     public void launchCommand2() {
         List<String> arguments = new LinkedList<>();
         arguments.add("arg1");
@@ -112,7 +92,7 @@ public class UseTest {
     }
 
     @Test
-    //test boite blanche
+    //test fonctionnel
     public void launchCommand3() {
         List<String> arguments = new LinkedList<>();
         arguments.add("arg1");
@@ -120,7 +100,7 @@ public class UseTest {
     }
 
     @Test
-    //test boite blanche
+    //test fonctionnel
     public void launchCommand4() {
         List<String> arguments = new LinkedList<>();
         arguments.add(key1.getName());
@@ -129,7 +109,7 @@ public class UseTest {
     }
 
     @Test
-    //test boite blanche
+    //test fonctionnel
     public void launchCommand5() {
         List<String> arguments = new LinkedList<>();
         arguments.add(key1.getName());
@@ -138,7 +118,7 @@ public class UseTest {
     }
 
     @Test
-    //test boite blanche
+    //test fonctionnel
     public void launchCommand6() {
         List<String> arguments = new LinkedList<>();
         arguments.add(d1.getExit().getName());
@@ -147,7 +127,7 @@ public class UseTest {
     }
 
     @Test
-    //test boite blanche
+    //test fonctionnel
     public void launchCommand7() {
         List<String> arguments = new LinkedList<>();
         arguments.add(key2.getName());
@@ -155,19 +135,10 @@ public class UseTest {
         assertDoesNotThrow(() -> use.launchCommand(arguments));
     }
 
+
     @Test
-    //test boite blanche
+    //test fonctionnel
     public void launchCommand8() {
-        List<String> arguments = new LinkedList<>();
-        arguments.add(key1.getName());
-        arguments.add(d2.getExit().getName());
-        assertDoesNotThrow(() -> use.launchCommand(arguments));
-    }
-
-
-    @Test
-    //test boite noire
-    public void launchCommand9() {
         List<String> arguments = new LinkedList<>();
         arguments.add(key1.getName());
         arguments.add(d2.getExit().getName());
@@ -176,8 +147,8 @@ public class UseTest {
     }
 
     @Test
-    //test boire noire
-    public void launchCommand10() {
+    //test fonctionnel
+    public void launchCommand9() {
         List<String> arguments = new LinkedList<>();
         arguments.add(key2.getName());
         arguments.add(d2.getExit().getName());

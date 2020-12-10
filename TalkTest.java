@@ -34,38 +34,32 @@ class TalkTest {
     }
 
     @Test
-        //test boite noire
+        //test fonctionnel
     void stringToTalkableInPlace1() {
         assertSame(commoner, p1.getInteractions().get(commoner.getName()));
     }
 
     @Test
-        //test boite blanche ou noire ?
+        //test fonctionnel
     void stringToTalkableInPlace2() {
         assertSame(null, p1.getInteractions().get("arg"));
     }
 
     @Test
-        //test boite blanche
+        //test fonctionnel
     void stringToTalkableInPlace3() {
         assertThrows(ClassCastException.class, () -> talk.stringToTalkableInPlace(guard.getName()));
     }
 
     @Test
-        //test boite blanche
-    void stringToTalkableInPlace4() {
-        assertDoesNotThrow(() -> talk.stringToTalkableInPlace("arg"));
-    }
-
-    @Test
-        //test boite blanche
+        //test structurel
     void launchCommand1() {
         List<String> arguments = new LinkedList<>();
         assertThrows(InvalidArgumentNumberException.class, () -> talk.launchCommand(arguments));
     }
 
     @Test
-    //test boite blanche
+    //test structurel
     public void launchCommand2() {
         List<String> arguments = new LinkedList<>();
         arguments.add("arg1");
@@ -74,7 +68,7 @@ class TalkTest {
     }
 
     @Test
-    //test boite blanche
+    //test fonctionnel
     public void launchCommand3() {
         List<String> arguments = new LinkedList<>();
         arguments.add("arg1");
@@ -82,27 +76,11 @@ class TalkTest {
     }
 
     @Test
-    //test boite blanche
+    //test fonctionnel
     public void launchCommand4() {
         List<String> arguments = new LinkedList<>();
         arguments.add(guard.getName());
         assertThrows(ClassCastException.class, () -> talk.launchCommand(arguments));
-    }
-
-    @Test
-    //test boite blanche
-    public void launchCommand5() {
-        List<String> arguments = new LinkedList<>();
-        arguments.add(commoner.getName());
-        assertDoesNotThrow(() -> talk.launchCommand(arguments));
-    }
-
-    @Test
-    //test boite blanche
-    public void launchCommand6() {
-        List<String> arguments = new LinkedList<>();
-        arguments.add(hero.getName());
-        assertDoesNotThrow(() -> talk.launchCommand(arguments));
     }
 
 }

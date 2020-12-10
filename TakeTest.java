@@ -31,75 +31,65 @@ class TakeTest {
     }
 
     @Test
-        //test boite noire
+        //test fonctionnel
     void stringToItemInPlace1() {
         assertSame(container, take.stringToItemInPlace(container.getName()));
     }
 
     @Test
-        //test boite noire
+        //test fonctionnel
     void stringToItemInPlace2() {
         assertNull(take.stringToItemInPlace(key2.getName()));
     }
 
     @Test
-        //test boite blanche
+        //test fonctionnel
     void stringToItemInPlace3() {
         assertThrows(ClassCastException.class, () -> take.stringToItemInPlace(hero.getName()));
     }
 
-    @Test
-        //test boite blanche
-    void stringToItemInPlace4() {
-        assertDoesNotThrow(() -> take.stringToItemInPlace(container.getName()));
-    }
 
     @Test
-        //test boite noire
+        //test fonctionnel
     void stringToChestInPlace1() {
         assertSame(container, take.stringToContainerInPlace(container.getName()));
     }
 
     @Test
-        //test boite noire
+        //test fonctionnel
     void stringToChestInPlace2() {
         assertNull(take.stringToContainerInPlace("arg"));
     }
 
     @Test
-        //test boite blanche ?
+        //test fonctionnel
     void stringToChestInPlace3() {
         assertThrows(ClassCastException.class, () -> take.stringToContainerInPlace(key1.getName()));
     }
 
-    @Test
-        //test boite blanche
-    void stringToChestInPlace4() {
-        assertDoesNotThrow(() -> take.stringToContainerInPlace(container.getName()));
-    }
 
     @Test
-        //test boite noire
+        //test fonctionnel
     void stringToItemInChest1() {
         assertSame(key2, take.stringToItemInContainer(key2.getName(), container));
 
     }
 
     @Test
-        //test boite noire
+        //test fonctionnel
     void stringToItemInChest2() {
         assertNull(take.stringToItemInContainer(key1.getName(), container));
     }
 
     @Test
-        //test boite blanche
+        //test structurel
     void launchCommand1() {
         List<String> arguments = new LinkedList<>();
         assertThrows(InvalidArgumentNumberException.class, () -> take.launchCommand(arguments));
     }
 
     @Test
-        //test boite blanche
+        //test structurel
     void launchCommand2() {
         List<String> arguments = new LinkedList<>();
         arguments.add("arg1");
@@ -109,7 +99,7 @@ class TakeTest {
     }
 
     @Test
-        //test boite noire ?
+        //test fonctionnel
     void launchCommand3() {
         List<String> arguments = new LinkedList<>();
         arguments.add(key2.getName());
@@ -117,7 +107,7 @@ class TakeTest {
     }
 
     @Test
-        //test boite noire ?
+        //test fonctionnel
     void launchCommand4() {
         List<String> arguments = new LinkedList<>();
         arguments.add(hero.getName());
@@ -125,7 +115,7 @@ class TakeTest {
     }
 
     @Test
-        //test boite blanche
+        //test fonctionnel
     void launchCommand5() {
         List<String> arguments = new LinkedList<>();
         arguments.add(key1.getName());
@@ -133,7 +123,7 @@ class TakeTest {
     }
 
     @Test
-        //test boite noire ?
+        //test fonctionnel
     void launchCommand6() {
         List<String> arguments = new LinkedList<>();
         arguments.add("arg1");
@@ -142,7 +132,7 @@ class TakeTest {
     }
 
     @Test
-        //test boite noire ?
+        //test fonctionnel
     void launchCommand7() {
         List<String> arguments = new LinkedList<>();
         arguments.add(key1.getName());
@@ -151,7 +141,7 @@ class TakeTest {
     }
 
     @Test
-        //test boite noire ?
+        //test fonctionnel
     void launchCommand8() {
         List<String> arguments = new LinkedList<>();
         arguments.add("arg1");
@@ -160,7 +150,7 @@ class TakeTest {
     }
 
     @Test
-        //test boite noire ?
+        //test fonctionnel
     void launchCommand9() {
         List<String> arguments = new LinkedList<>();
         arguments.add(container.getName());
@@ -169,7 +159,7 @@ class TakeTest {
     }
 
     @Test
-        //test boite blanche
+        //test structurel
     void launchCommand10() {
         List<String> arguments = new LinkedList<>();
         arguments.add(container.getName());
@@ -179,7 +169,7 @@ class TakeTest {
 
 
     @Test
-        //test boite noire
+        //test fonctionnel
     void launchCommand11() {
         List<String> arguments = new LinkedList<>();
         arguments.add(key1.getName());
@@ -188,7 +178,7 @@ class TakeTest {
     }
 
     @Test
-        //test boite noire
+        //test fonctionnel
     void launchCommand12() {
         List<String> arguments = new LinkedList<>();
         arguments.add(container.getName());

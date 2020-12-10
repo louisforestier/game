@@ -30,6 +30,7 @@ public class KeyTest {
     }
 
     @Test
+
     public void use_Receiver() {
         assertDoesNotThrow(() -> k1.use(r1));
     }

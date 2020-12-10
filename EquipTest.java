@@ -10,13 +10,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class EquipTest {
 
+    private Hero hero;
     private Equip equip;
     private Key key;
     private Weapon weapon;
 
     @BeforeEach
     void setUp() {
-        Hero hero = new Hero();
+        hero = new Hero();
         key = new Key("key", "test_key");
         weapon = new Dagger("equipment", "test_equipment");
         hero.getInventory().put(weapon.getName(), weapon);
@@ -25,13 +26,13 @@ class EquipTest {
     }
 
     @Test
-        //test boite noire
+        //test fonctionnel
     void stringtoEquipable1() {
         assertSame(weapon, equip.stringtoEquipable("equipment"));
     }
 
     @Test
-        //test boite noire
+        //test fonctionnel
     void stringtoEquipable2() {
         assertNull(equip.stringtoEquipable("arg"));
     }
@@ -43,21 +44,21 @@ class EquipTest {
     }
 
     @Test
-    //test boite blanche
+        //test boite blanche
     void stringtoEquipable4() {
         assertDoesNotThrow(() -> equip.stringtoEquipable(weapon.getName()));
     }
 
 
     @Test
-    //test boite blanche
+        //test structurel
     void launchCommand1() {
         List<String> arguments = new LinkedList<>();
         assertThrows(InvalidArgumentNumberException.class, () -> equip.launchCommand(arguments));
     }
 
     @Test
-    //test boite blanche
+        //test structurel
     void launchCommand2() {
         List<String> arguments = new LinkedList<>();
         arguments.add("arg1");
@@ -66,7 +67,7 @@ class EquipTest {
     }
 
     @Test
-        //test boite blanche
+        //test fonctionnel
     void launchCommand3() {
         List<String> arguments = new LinkedList<>();
         arguments.add("arg1");
@@ -74,7 +75,7 @@ class EquipTest {
     }
 
     @Test
-        //test boite blanche
+        //test fonctionnel
     void launchCommand4() {
         List<String> arguments = new LinkedList<>();
         arguments.add(key.getName());
@@ -82,11 +83,12 @@ class EquipTest {
     }
 
     @Test
-        //test boite blanche
+        //test fonctionnel
     void launchCommand5() {
         List<String> arguments = new LinkedList<>();
         arguments.add(weapon.getName());
-        assertDoesNotThrow(() -> equip.launchCommand(arguments));
+        equip.launchCommand(arguments);
+        assertSame(weapon,hero.getWeapon() );
     }
 
 
