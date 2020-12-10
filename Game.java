@@ -38,18 +38,26 @@ public class Game {
     }
 
     public void help() {
+        System.out.println("To play this game, you will have to type combination of words in the command line.");
+        System.out.println("When you play, the \"..._name\" in the description of the usable commands below must be replace with the name of what you want to interact with.");
         System.out.println("You can use the commands :");
-        System.out.println("go : with a direction to move through a door to the next room in this direction, if it exists.");
-        System.out.println("help : (which you are using right now) to get the details of the commands, if you want a specific command specified after the help.");
-        System.out.println("look : to get information about the room you are in or an object.");
-        System.out.println("take : object to put the object in your inventory, if you want to take an item from a chest, enter the name of the chest first.");
-        System.out.println("use : object to use an object in your inventory, you can use one object on another.");
+        System.out.println("go \"room_name\" : to move to the room with the name you put, if it exists and if it is adjacent to yours.");
+        System.out.println("help : to get this text.");
+        System.out.println("help \"command_name\" : to get the syntax of a specific command.");
+        System.out.println("look : to get information about the room you are in.");
+        System.out.println("look \"thing_name\" : to get information about a specific thing.");
+        System.out.println("take \"item_name\" : object to put the object in your inventory, if you want to take an item from a chest, enter the name of the chest first.");
+        System.out.println("use \"thing_name\" : to use an object.");
+        System.out.println("use \"thing1_name\" \"thing2_name\" : to use an object on something.");
         System.out.println("inventory : allows you to see the objects in our inventory, you can see a particular object.");
-        System.out.println("talk : to someone to get more information.");
+        System.out.println("inventory \"item_name\" : allows you look at a specific object in your inventory.");
+        System.out.println("talk  \"someone_name\" : to talk to someone to get more information.");
         System.out.println("quit : if you want to quit the game.");
-        System.out.println("attack : to someone.");
-        System.out.println("equip : an item if it is in your inventory.");
-        System.out.println("stat : gives the hero statistics.");
+        System.out.println("attack \"someone_name\" : to attack someone. If you are in combat, it will attack an enemy, \n" +
+                "else it will start a combat with all enemies in the room.");
+        System.out.println("flee : to flee a combat. Be careful, even if you flee, your enemies can attack you.");
+        System.out.println("equip \"item_name\": to equip an item in your inventory.");
+        System.out.println("stat : gives the hero attributes.");
         System.out.println();
     }
 
