@@ -18,7 +18,6 @@ public class Game {
     }
 
 
-
     public Scanner getScanner() {
         return scanner;
     }

@@ -102,16 +102,16 @@ public class World {
         playerChoice2.add("Hello.");
 	    playerChoice2.add("I need to find exit.");
 	    playerChoice3.add("Please to meet you, your majesty.");
-	    playerChoice3.add("I am an hero.");
-	    playerChoice3.add("I need to find exit.");
+	    playerChoice3.add("Please sire it is my duty. But I wish I could go home..");
+	    playerChoice3.add("Thank you your majesty.");
 
         //choix des reponses du pnj
         dialogs1.add("Hello, my name is Michel the old man.");
         dialogs1.add("You are looking for a key ? I think I saw one in a chest of the hall and another in the throne room.");
         dialogs2.add("Hello, I am a servant.");
         dialogs2.add("You want to find the exit, go see the king.");
-        dialogs3.add("Mmm...Who are you ? You killed my guards.");
-        dialogs3.add("What do you want from me ?");
+        dialogs3.add("You saved me and prevented a coup d'état, how can I thank you.");
+        dialogs3.add("You want to go home! Ahaha! Take what you like from this trunk, and open the door with this key. ");
         dialogs3.add("You want to find the exit ! Ah ! Take this this key and go away.");
 
         //creation 
