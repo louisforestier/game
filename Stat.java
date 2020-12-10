@@ -17,8 +17,17 @@ public class Stat extends Command {
         if (argument.size() == Stat.NB_ARG) {
             System.out.println("Your attributes : ");
             System.out.println("HP : " + hero.getCurrentHealthPoints() + "/" + this.hero.getMaxHealthPoints());
-            System.out.println("Armor class : " + this.hero.getArmorClass());
-            System.out.println("Attack power : " + this.hero.getAttackPower());
+            String armorClass = "Armor class : " + this.hero.getArmorClass();
+            if (this.hero.getArmor() != null) {
+                armorClass = armorClass + " ("+ this.hero.getArmor().getName() + ")";
+            }
+            System.out.println(armorClass);
+            String attackPower = "Attack power : " + this.hero.getAttackPower();
+            if (this.hero.getArmor() != null) {
+                attackPower = attackPower + " ("+ this.hero.getWeapon().getName() + ")";
+            }
+            System.out.println(armorClass);
+            System.out.println(attackPower);
         } else throw new InvalidArgumentNumberException();
     }
 

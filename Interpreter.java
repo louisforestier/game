@@ -29,6 +29,10 @@ public class Interpreter {
         this.commands.put("equip", equip);
         Command stat = new Stat(hero);
         this.commands.put("stat", stat);
+        Command save = new Save(game);
+        this.commands.put("save", save);
+        Command load = new Load(game);
+        this.commands.put("load", load);
     }
 
     public Interpreter(Hero hero, Scanner input) {

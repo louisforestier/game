@@ -1,20 +1,21 @@
 package game;
 
+import java.io.*;
 import java.util.*;
 
 public class Game {
 
     private boolean running = true;
-    private final Hero hero;
-    private final World world;
+    private Hero hero;
+    private World world;
     private final Scanner scanner;
-    private final Interpreter interpreter;
+    private Interpreter interpreter;
 
     public Game(Scanner input) {
         this.hero = new Hero();
         this.world = new World();
         this.scanner = input;
-        this.interpreter = new Interpreter(this.hero, this);
+        this.interpreter = new Interpreter(this.hero,this);
     }
 
 
@@ -76,18 +77,79 @@ public class Game {
         }
     }
 
-    public void init() {
-        System.out.println("To start the game, please type \"start\" and press Enter");
-        while (!scanner.nextLine().equals("start") && scanner.hasNext()) {
-            System.out.println("I didn't understand your command.");
+    public void save() {
+        System.out.println("Type the name of the save file you wish to create, without extension, and press Return.");
+        String fileName = this.scanner.nextLine();
+        try {
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fileName + ".sav"));
+            oos.writeObject(this.running);
+            oos.writeObject(this.hero);
+            oos.writeObject(this.world);
+            oos.flush();
+            oos.close();
+        } catch (FileNotFoundException e){
+            System.out.println("It seems you can't save in this directory.");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+    }
+
+    public void showSaveFiles(){
+        String pathname = System.getProperty("user.dir");
+        File file = new File(pathname);
+        FilenameFilter filter = (f, name) -> name.endsWith(".sav");
+        String[] filesNames = file.list(filter);
+        for (String fileName : filesNames) {
+            System.out.println(fileName);
+        }
+    }
+
+
+    public boolean load(){
+        boolean success = false;
+        this.showSaveFiles();
+        System.out.println("Type the name of the save file you wish to load, without extension, and press Return.");
+        String fileName = this.scanner.nextLine();
+        try {
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName + ".sav"));
+            this.running = (boolean) ois.readObject();
+            this.hero = (Hero) ois.readObject();
+            this.world = (World) ois.readObject();
+            this.interpreter = new Interpreter(this.hero,this);
+            success = true;
+            System.out.println("The save has been successully loaded.");
+        } catch (FileNotFoundException e){
+            System.out.println("This file doesn't exist.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return success;
+    }
+
+    public void initGame(){
         this.history();
-        System.out.println("Type anything and press Enter to continue.");
+        System.out.println("Type anything and press Return to continue.");
         scanner.nextLine();
         this.help();
-        System.out.println("Type anything and press Enter to continue.");
+        System.out.println("Type anything and press Return to continue.");
         scanner.nextLine();
         this.world.setStart(this.hero);
+    }
+
+    public void launchGame() {
+        System.out.println("To start a fresh game, please type \"start\" and press Return.");
+        System.out.println("If you wish to load a save, type \"load\" and press Return.");
+        String input = scanner.nextLine();
+        while (!(input.equals("start") || input.equals("load")) && scanner.hasNext()) {
+            System.out.println("I didn't understand your command.");
+        }
+        if (!(input.equals("load") && this.load())){
+            System.out.println("Type anything and press Return to continue.");
+            scanner.nextLine();
+            this.initGame();
+        }
         this.hero.look();
     }
 
@@ -126,8 +188,10 @@ public class Game {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         Game g = new Game(input);
-        g.init();
+        g.launchGame();
         g.runGame();
         g.ending();
     }
+
+
 }

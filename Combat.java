@@ -1,11 +1,12 @@
 package game;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class Combat {
+public class Combat implements Serializable {
 
     private final Map<String, Character> enemies = new HashMap<>();
     private final Interpreter combatInterpreter;

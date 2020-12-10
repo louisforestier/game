@@ -1,6 +1,8 @@
 package game;
 
-public abstract class Interaction {
+import java.io.Serializable;
+
+public abstract class Interaction implements Serializable {
 
     private final String description;
 

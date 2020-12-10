@@ -1,11 +1,12 @@
 package game;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
-public class Dialog {
+public class Dialog implements Serializable {
 
     private final List<String> playerChoices = new ArrayList<>();
     private final List<String> Dialogs = new ArrayList<>();

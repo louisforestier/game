@@ -1,8 +1,9 @@
 package game;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class World {
+public class World implements Serializable {
 
     private final Map<String, Place> places = new HashMap<>();
 
